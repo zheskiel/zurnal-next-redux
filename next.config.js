@@ -1,6 +1,10 @@
 let routes = [];
 let redirects = [];
+let sitemapRoutes = require("./routes-sitemaps");
 let redirectRoutes = require("./route-redirects");
+
+// Sitemap routes
+sitemapRoutes.map((route) => routes.push(route));
 
 // Redirect routes
 redirectRoutes.map((route) => redirects.push(route));
