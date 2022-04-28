@@ -57,7 +57,7 @@ a {
 }
 #main-wrapper {
   @include for-mobile {
-    padding: 80px 0px 15px 0px;
+    padding: 70px 0px 0px 0px;
   }
 
   @include for-desktop {
@@ -110,6 +110,12 @@ a {
             @include for-desktop {
               height: 350px;
             }
+          }
+        }
+
+        article {
+          @include for-mobile {
+            padding: 10px;
           }
         }
 
@@ -237,6 +243,12 @@ a {
   }
 
   .sidebar {
+    .vce-sticky {
+      @include for-mobile {
+        display: none;
+      }
+    }
+
     @include for-desktop-only {
       width: 25%;
     }

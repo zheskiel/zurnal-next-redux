@@ -1,7 +1,21 @@
 import React, { Component } from "react";
 import ContentLoader from "react-content-loader";
 
+import { isMobileView } from "../../../utils/helpers";
+
 class PostListSkeleton extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { isMobile: "" };
+  }
+
+  componentDidMount() {
+    this.setState({
+      isMobile: isMobileView(window.innerWidth),
+    });
+  }
+
   render() {
     const DesktopSkeleton = () => {
       return (
@@ -22,16 +36,18 @@ class PostListSkeleton extends Component {
     };
 
     const Skeleton = () => {
+      const { isMobile } = this.state;
+
       return (
         <ContentLoader
           speed={2}
           style={{ width: "100%" }}
           width={"100%"}
-          height={380}
+          height={isMobile ? 650 : 380}
           backgroundColor={"#f3f3f3"}
           foregroundColor={"#ecebeb"}
         >
-          <DesktopSkeleton />
+          {isMobile ? <MobileSkeleton /> : <DesktopSkeleton />}
         </ContentLoader>
       );
     };

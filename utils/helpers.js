@@ -31,6 +31,13 @@ export const isProduction = () => {
   return env == "production";
 };
 
+export const isMobileView = (currentWidth) => {
+  let minWidth = 679;
+  let isMobileView = currentWidth < minWidth;
+
+  return isMobileView;
+};
+
 export const ImgError = (source) => {
   source.target.onerror = null;
   source.target.style.display = "none";
