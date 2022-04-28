@@ -6,6 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "pull": "git pull --rebase && yarn reload",
+    "reload": "yarn build && pm2 reload zurnal",
+    "restart": "yarn build && pm2 restart zurnal",
+    "prod": "pm2 start pm2.json -i 2 --wait-ready --listen-timeout 10000",
     "lint": "next lint"
   },
   "dependencies": {
