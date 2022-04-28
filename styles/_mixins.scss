@@ -1,0 +1,73 @@
+// 僅套用在寬度 360px 以下
+@mixin for-xs-mobile {
+  @media (max-width: 360px) {
+    @content;
+  }
+}
+
+// 僅套用在寬度 650px 以下
+@mixin for-lg-mobile {
+  @media (max-width: 650px) {
+    @content;
+  }
+}
+
+// 僅套用在寬度 767px 以下
+@mixin for-mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin for-desktop-only {
+  @media (max-width: 992px) {
+    @content;
+  }
+}
+
+@mixin for-md-desktop-only {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+// 僅套用在寬度 768px 以上
+@mixin for-desktop {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+// 僅套用在寬度 992px 以上
+@mixin for-md-desktop {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+// 僅套用在寬度 1200px 以上
+@mixin for-lg-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+// 僅套用在寬度 1400px 以上
+@mixin for-extra-desktop {
+  @media (min-width: 1400px) {
+    @content;
+  }
+}
+
+// 僅套用在 retina 螢幕上
+@mixin for-retina {
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    @content;
+  }
+}
+
+@mixin not-last-child($selector) {
+  & #{$selector}:not(:last-child) {
+    @content;
+  }
+}

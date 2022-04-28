@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "next/router";
 
-import { FetchPosts, ResetPosts } from "../redux/actions";
-import { getPosts } from "../apis";
+import { FetchPosts, ResetPosts } from "../../redux/actions";
+import { getPosts } from "../../apis";
 
-import PostsList from "../Sections/PostsList";
-import MetaHeader from "../Components/MetaHeader";
+import PostsList from "../../Sections/PostsList";
+import MetaHeader from "../../Components/MetaHeader/index";
 
-import { processSSR } from "../utils/helpers";
+import { processSSR } from "../../utils/helpers";
 
 class Index extends Component {
   componentDidMount() {
@@ -19,6 +19,18 @@ class Index extends Component {
     let { page } = query;
 
     this.handleFetch(page);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { isRobot } = this.props;
+
+    if (!isRobot && prevProps.query.username !== this.props.query.username) {
+      const { query } = this.props;
+
+      let { page } = query;
+
+      this.handleFetch(page);
+    }
   }
 
   componentWillUnmount() {
@@ -36,7 +48,9 @@ class Index extends Component {
   };
 
   render() {
-    const { isRobot, ssrData, clientData } = this.props;
+    const { isRobot, clientData, ssrData, router } = this.props;
+    const { query } = router;
+    const { username } = query;
 
     let isLoading = clientData.loading;
 
@@ -46,7 +60,11 @@ class Index extends Component {
 
     return (
       <>
-        <MetaHeader type="index" />
+        <MetaHeader
+          title={username}
+          description={`cari semua artikel dari ${username} hanya di Zurnal.co`}
+          type="user"
+        />
 
         <PostsList
           isLoading={isLoading}
@@ -65,18 +83,16 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    FetchPosts: (params) => {
-      dispatch(FetchPosts(params));
-    },
-    ResetPosts: () => {
-      dispatch(ResetPosts());
-    },
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  FetchPosts: (params) => {
+    dispatch(FetchPosts(params));
+  },
+  ResetPosts: () => {
+    dispatch(ResetPosts());
+  },
+});
 
-export const getServerSideProps = async ({ req, query }) => {
+export const getServerSideProps = ({ req, query }) => {
   let userAgent = req.headers["user-agent"];
   let parameter = { query };
 

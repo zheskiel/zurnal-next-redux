@@ -1,0 +1,15 @@
+{
+  "apps": [
+    {
+      "name": "zurnal",
+      "script": "node_modules/next/dist/bin/next",
+      "args": "start",
+      "cwd": "./",
+      "instances": 2,
+      "instance_var": "ZURNAL_INSTANCE",
+      "exec_mode": "cluster",
+      "listen_timeout": 10000,
+      "restart_timeout": 10000
+    }
+  ]
+}

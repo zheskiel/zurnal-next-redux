@@ -1,0 +1,43 @@
+@import "variables";
+
+.PaginationSection {
+  text-align: center;
+  margin: 30px 0px;
+
+  ul {
+    list-style-type: none;
+    margin-bottom: 0px;
+
+    li {
+      display: inline-block;
+      margin: 0px 10px;
+
+      a {
+        background-color: #f6f9fc;
+        border: 1px solid #000;
+        text-decoration: none;
+        display: block;
+        padding: 5px 15px;
+        color: #000;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        &.active,
+        &:hover {
+          background-color: #eaab00 !important;
+          border-color: #eaab00 !important;
+          color: $white !important;
+        }
+
+        &[disabled] {
+          cursor: not-allowed;
+          border-color: $softGrayBlue !important;
+          background-color: #f6f9fc !important;
+          color: $softGrayBlue !important;
+        }
+      }
+    }
+  }
+}
