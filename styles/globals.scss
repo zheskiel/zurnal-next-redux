@@ -1,5 +1,8 @@
 @import "mixins";
 
+.fb_iframe_widget_fluid_desktop iframe {
+  width: 100% !important;
+}
 .inlineBlock {
   display: inline-block !important;
 }
@@ -51,6 +54,7 @@ a {
         width: 100% !important;
         height: 30px !important;
         line-height: 30px !important;
+        max-width: 200px;
       }
     }
   }
