@@ -1,11 +1,27 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+import { withRouter } from "next/router";
 import Link from "next/link";
 
 import Menus from "../../Menus";
 
 class MobileMenu extends Component {
+  componentDidMount() {
+    this.props.router.events.on("routeChangeComplete", this.removeStuckClass);
+  }
+
+  componentWillUnMount() {
+    this.props.router.events.off("routeChangeComplete", this.removeStuckClass);
+  }
+
+  removeStuckClass = () => {
+    const ref = document.querySelector(".sidebar-menus");
+
+    if (ref.classList.contains("is_stuck")) {
+      ref.classList.remove("is_stuck");
+    }
+  };
+
   handleClick = () => {
     const ref = document.querySelector(".sidebar-menus");
 
@@ -42,4 +58,6 @@ class MobileMenu extends Component {
 const mapStateToProps = (state) => ({});
 const mapDispatchToProps = (dispatch) => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(MobileMenu);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(MobileMenu)
+);
