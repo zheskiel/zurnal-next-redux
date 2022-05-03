@@ -23,7 +23,6 @@ class HeaderSection extends Component {
   }
 
   calculateHeader = () => {
-    console.log("calculate");
     this.setState({
       isMobile: isMobileView(window.innerWidth),
     });

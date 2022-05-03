@@ -138,6 +138,14 @@ const formatUrl = (target) => {
   return newUrl;
 };
 
+/**
+ * It takes a string of XML children and a string of the type of sitemap (index or urlset) and returns
+ * a string of the sitemap skeleton
+ * @param children - The children of the sitemap. This is the actual URLs that you want to include in
+ * the sitemap.
+ * @param type - The type of sitemap we're creating. This can be either "index" or "page".
+ * @returns A string of XML that contains the sitemap index or sitemap.
+ */
 const sitemapSkeleton = (children, type) => {
   let skeletonHeader = type == "index" ? "sitemapindex" : "urlset";
 
@@ -145,6 +153,12 @@ const sitemapSkeleton = (children, type) => {
     <${skeletonHeader} xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${children}</${skeletonHeader}>`;
 };
 
+/**
+ * It takes an array of static urls and returns a sitemap
+ * @param staticUrls - An array of static urls that you want to include in the sitemap.
+ * @param [type=index] - This is the type of sitemap we're creating. It can be either index or url.
+ * @returns A string of XML that is a sitemap.
+ */
 export const createSitemap = (staticUrls, type = "index") => {
   let skeletonHeader = type == "index" ? "sitemap" : "url";
 

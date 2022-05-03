@@ -60,11 +60,11 @@ a {
   }
 }
 #main-wrapper {
-  @include for-mobile {
+  @include for-lg-mobile {
     padding: 70px 0px 0px 0px;
   }
 
-  @include for-desktop {
+  @include for-lg-mobile-over {
     padding: 30px 0px 15px 0px;
   }
 
@@ -240,6 +240,41 @@ a {
 
           @include for-lg-desktop {
             width: 48.5%;
+          }
+        }
+
+        @include for-mobile {
+          article {
+            display: flex !important;
+            flex-direction: row;
+            padding-bottom: 0px !important;
+            border: 1px solid #ddd;
+            padding: 10px !important;
+            margin-bottom: 10px !important;
+
+            .entry-header {
+              .entry-date {
+                padding-right: 0px !important;
+              }
+              .entry-title {
+                padding: 5px 0px 0px 15px !important;
+                margin-bottom: 0px;
+                font-size: 16px !important;
+              }
+            }
+
+            .meta-image {
+              margin-bottom: 0px !important;
+
+              img {
+                width: 100px !important;
+                height: 100px !important;
+              }
+            }
+
+            header {
+              flex: 1;
+            }
           }
         }
       }
@@ -451,6 +486,12 @@ a {
     .site-brand {
       height: 80px;
       line-height: 80px;
+
+      img {
+        @include for-desktop-only {
+          width: 200px;
+        }
+      }
     }
   }
 
@@ -514,10 +555,9 @@ a {
 
         article {
           float: left;
-          min-height: 360px !important;
-
           background-color: #fff;
           box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%);
+          padding-bottom: 15px;
           display: block;
 
           &:nth-of-type(1n) {
@@ -551,7 +591,7 @@ a {
             .meta-category {
               display: inline-block;
               text-align: left;
-              padding: 0px 20px;
+              padding: 0px 15px;
               a {
                 font-weight: 700;
                 color: #eaab00;
@@ -560,16 +600,16 @@ a {
 
             .entry-date {
               float: right;
-              padding: 0 20px;
+              padding: 0 15px;
               color: #d6d6d6;
             }
 
             .entry-title {
-              padding: 15px 20px 0px 20px;
-              line-height: 28px;
+              padding: 10px 15px 5px 15px;
+              line-height: 24px;
               color: #232323;
-              font-size: 22px;
-              font-weight: normal;
+              font-size: 18px;
+              font-weight: 900;
               a,
               a:hover {
                 color: #000;
@@ -592,6 +632,12 @@ a {
 
           .entry-title {
             margin: 0 auto 15px;
+            text-align: left;
+            font-size: 2rem;
+
+            @include for-mobile {
+              font-size: 1.5rem;
+            }
           }
         }
 

@@ -31,6 +31,12 @@
   }
 }
 
+@mixin for-lg-mobile-over {
+  @media (min-width: 651px) {
+    @content;
+  }
+}
+
 // 僅套用在寬度 768px 以上
 @mixin for-desktop {
   @media (min-width: 768px) {

@@ -10,7 +10,7 @@ class DesktopMenu extends Component {
     return (
       <header id="header" className="main-header">
         <div className="top-header">
-          <div className="container">
+          <div className="container-fluid">
             <div className="row">
               <div className="col-8 f-left">
                 <ul>
