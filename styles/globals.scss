@@ -254,7 +254,9 @@ a {
 
             .entry-header {
               .meta-category {
-                font-weight: normal !important;
+                a {
+                  font-weight: normal !important;
+                }
               }
 
               .entry-date {
