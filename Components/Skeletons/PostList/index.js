@@ -29,8 +29,11 @@ class PostListSkeleton extends Component {
     const MobileSkeleton = () => {
       return (
         <>
-          <rect x="3%" y="0" rx="3" ry="3" width="94%" height="300" />
-          <rect x="3%" y="330" rx="3" ry="3" width="94%" height="300" />
+          <rect x="3%" y="10" rx="3" ry="3" width="94%" height="100" />
+          <rect x="3%" y="130" rx="3" ry="3" width="94%" height="100" />
+          <rect x="3%" y="250" rx="3" ry="3" width="94%" height="100" />
+          <rect x="3%" y="370" rx="3" ry="3" width="94%" height="100" />
+          <rect x="3%" y="490" rx="3" ry="3" width="94%" height="100" />
         </>
       );
     };
@@ -43,7 +46,7 @@ class PostListSkeleton extends Component {
           speed={2}
           style={{ width: "100%" }}
           width={"100%"}
-          height={isMobile ? 650 : 380}
+          height={isMobile ? 610 : 380}
           backgroundColor={"#f3f3f3"}
           foregroundColor={"#ecebeb"}
         >

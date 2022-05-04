@@ -269,6 +269,9 @@ a {
                 margin-bottom: 0px;
                 font-weight: normal !important;
                 font-size: 14px !important;
+                a {
+                  display: block;
+                }
               }
             }
 
@@ -420,10 +423,10 @@ a {
     line-height: 50px;
     height: 50px;
     width: 100%;
-    border-bottom: 1px solid #ddd;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    border-bottom: 1px solid #b9b9b9;
     padding: 0px;
 
     .left-section,
