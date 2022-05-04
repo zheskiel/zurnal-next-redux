@@ -1,3 +1,4 @@
+@import "variables";
 @import "mixins";
 
 .fb_iframe_widget_fluid_desktop iframe {
@@ -14,9 +15,6 @@ body {
   font-family: "Open Sans";
 
   line-height: 26px;
-  color: #444444;
-
-  background-color: #f0f0f0;
 }
 
 a {
@@ -431,7 +429,6 @@ a {
 
     .left-section,
     .right-section {
-      width: 50px;
       text-align: center;
       display: block;
 
@@ -440,6 +437,16 @@ a {
       }
       i {
         color: #eaab00;
+      }
+    }
+    .left-section {
+      width: 50px;
+    }
+    .right-section {
+      width: 100px;
+      .section-detail {
+        display: inline-block;
+        margin: 0px 10px;
       }
     }
   }
@@ -869,6 +876,74 @@ a {
         list-style: none;
         position: relative;
         margin: 0 10px 0 0;
+      }
+    }
+  }
+}
+
+body {
+  .light {
+    background-color: #f0f0f0;
+    color: #444444;
+  }
+
+  .dark {
+    background-color: $black;
+    color: $white;
+
+    #header {
+      .header-bottom-wrapper {
+        a {
+          color: $black;
+        }
+      }
+      .mobile-header {
+        background-color: #f0f0f0;
+      }
+    }
+    #main-wrapper {
+      .main-box {
+        border: 1px solid #3c3c3c;
+        background-color: $black;
+
+        &.main-content {
+          .main-box-inside {
+            article {
+              border-bottom: 1px solid #3c3c3c;
+              background-color: $black;
+              .entry-header {
+                .entry-date {
+                  color: $white !important;
+                }
+                .entry-title {
+                  a {
+                    color: $white !important;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .tags-area {
+          .post-tags {
+            a {
+              color: $white;
+            }
+          }
+        }
+        .comment-wrapper {
+          background-color: #f0f0f0;
+        }
+      }
+
+      .footer-categories-wrapper {
+        .center-categories {
+          .list-tag > li a {
+            border: 1px solid $white;
+            color: $white;
+          }
+        }
       }
     }
   }

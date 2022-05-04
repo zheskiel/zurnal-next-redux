@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import Link from "next/link";
 
+import ThemeSwitcher from "../ThemeSwitcher";
 import Menus from "../../Menus";
 
 class DesktopMenu extends Component {
@@ -34,6 +35,11 @@ class DesktopMenu extends Component {
 
               <div className="col-4 f-right">
                 <ul className="soc-nav-menu">
+                  <li>
+                    <a href="#">
+                      <ThemeSwitcher />
+                    </a>
+                  </li>
                   <li>
                     <a href="#">
                       <i className="fa fa-facebook"></i>

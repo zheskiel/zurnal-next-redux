@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import ContentLoader from "react-content-loader";
 
 import { isMobileView } from "../../../utils/helpers";
@@ -40,6 +41,8 @@ class PostListSkeleton extends Component {
 
     const Skeleton = () => {
       const { isMobile } = this.state;
+      const { theme } = this.props;
+      const isLight = theme == "light";
 
       return (
         <ContentLoader
@@ -47,8 +50,8 @@ class PostListSkeleton extends Component {
           style={{ width: "100%" }}
           width={"100%"}
           height={isMobile ? 610 : 380}
-          backgroundColor={"#f3f3f3"}
-          foregroundColor={"#ecebeb"}
+          backgroundColor={isLight ? "#f3f3f3" : "#272727"}
+          foregroundColor={isLight ? "#ecebeb" : "#272727"}
         >
           {isMobile ? <MobileSkeleton /> : <DesktopSkeleton />}
         </ContentLoader>
@@ -65,4 +68,9 @@ class PostListSkeleton extends Component {
   }
 }
 
-export default PostListSkeleton;
+const mapStateToProps = (state) => ({
+  theme: state.theme.theme,
+});
+const mapDispatchToProps = (dispatch) => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostListSkeleton);

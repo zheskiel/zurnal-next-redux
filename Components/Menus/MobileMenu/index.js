@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "next/router";
 import Link from "next/link";
 
+import ThemeSwitcher from "../ThemeSwitcher";
 import Menus from "../../Menus";
 
 class MobileMenu extends Component {
@@ -47,7 +48,12 @@ class MobileMenu extends Component {
             </Link>
           </div>
           <div className="right-section">
-            <i className="fa fa-search"></i>
+            <div className="section-detail">
+              <ThemeSwitcher />
+            </div>
+            <div className="section-detail">
+              <i className="fa fa-search"></i>
+            </div>
           </div>
         </div>
       </header>
