@@ -885,6 +885,20 @@ body {
   .light {
     background-color: #f0f0f0;
     color: #444444;
+
+    #header {
+      .sidebar-menus-wrapper {
+        .sidebar-menus {
+          ul {
+            li {
+              a {
+                color: #444444 !important;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
   .dark {
@@ -892,6 +906,20 @@ body {
     color: $white;
 
     #header {
+      .sidebar-menus-wrapper {
+        .sidebar-menus {
+          background-color: $black;
+          border-right: 1px solid #434141;
+          ul {
+            li {
+              border-bottom: 1px solid #434141;
+              a {
+                color: $white !important;
+              }
+            }
+          }
+        }
+      }
       .header-bottom-wrapper {
         a {
           color: $black;
@@ -909,8 +937,15 @@ body {
         &.main-content {
           .main-box-inside {
             article {
-              border-bottom: 1px solid #3c3c3c;
               background-color: $black;
+              @include for-desktop {
+                border: 1px solid #3c3c3c;
+              }
+
+              @include for-mobile {
+                border-bottom: 1px solid #3c3c3c;
+              }
+
               .entry-header {
                 .entry-date {
                   color: $white !important;
