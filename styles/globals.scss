@@ -50,9 +50,9 @@ a {
     img {
       @include for-mobile {
         width: 100% !important;
-        height: 30px !important;
+        height: auto !important;
         line-height: 30px !important;
-        max-width: 200px;
+        max-width: 100px;
       }
     }
   }
