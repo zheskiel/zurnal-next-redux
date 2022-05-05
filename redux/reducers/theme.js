@@ -1,3 +1,5 @@
+import cookieCutter from "cookie-cutter";
+
 import { TOGGLE_THEME } from "../actions/types";
 
 const defaultTheme =
@@ -19,7 +21,10 @@ export default function ThemeReducer(state = initialState, action) {
         theme: selectedTheme,
       };
 
-      localStorage.setItem("theme", selectedTheme);
+      if (typeof window !== "undefined") {
+        cookieCutter.set("theme", selectedTheme);
+        localStorage.setItem("theme", selectedTheme);
+      }
 
       return { ...state, ...newState };
     default:

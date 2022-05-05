@@ -4,15 +4,41 @@ import { connect } from "react-redux";
 import { ToggleTheme } from "../../../redux/actions";
 
 class ThemeSwitcher extends Component {
+  switchBodyClass = (newTheme, oldTheme) => {
+    let dom = document.body;
+    if (oldTheme != null) dom.classList.remove(oldTheme);
+    dom.classList.add(newTheme);
+  };
+
+  handleSwitch = () => {
+    let lightTheme = "light";
+    let darkTheme = "dark";
+
+    new Promise((resolve) => resolve())
+      .then(() => {
+        const { theme } = this.props;
+
+        let prevTheme = theme;
+        let newTheme = theme == lightTheme ? darkTheme : lightTheme;
+
+        this.switchBodyClass(newTheme, prevTheme);
+      })
+      .then(() => {
+        const { ToggleTheme } = this.props;
+
+        ToggleTheme();
+      });
+  };
+
   render() {
-    const { theme, ToggleTheme } = this.props;
+    const { theme } = this.props;
     const isLight = theme == "light";
 
     return (
       <>
         <i
           className={`fa fa-${isLight ? "moon" : "sun"}-o`}
-          onClick={ToggleTheme}
+          onClick={() => this.handleSwitch()}
         ></i>
       </>
     );

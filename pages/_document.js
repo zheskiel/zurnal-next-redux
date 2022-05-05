@@ -1,17 +1,27 @@
 import NextDocument, { Html, Head, Main, NextScript } from "next/document";
-import { isProduction } from "../utils/helpers";
+import { isProduction, processThemeCookie } from "../utils/helpers";
 
 class Document extends NextDocument {
   static async getInitialProps(ctx) {
     const initialProps = await NextDocument.getInitialProps(ctx);
 
-    return { ...initialProps };
+    let theme = "light";
+
+    if (ctx.req && ctx.req.headers.cookie) {
+      let req = ctx.req;
+
+      theme = processThemeCookie(req);
+    }
+
+    return { ...initialProps, theme };
   }
 
   render() {
     let date = new Date();
     let year = date.getFullYear();
     let isProd = isProduction();
+
+    const { theme } = this.props;
 
     return (
       <Html translate="no">
@@ -133,7 +143,7 @@ class Document extends NextDocument {
           <link rel="dns-prefetch" href="//connect.facebook.net" />
         </Head>
 
-        <body>
+        <body className={theme}>
           <Main />
           <NextScript />
         </body>
