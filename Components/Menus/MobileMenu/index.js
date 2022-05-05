@@ -16,7 +16,7 @@ class MobileMenu extends Component {
   }
 
   removeStuckClass = () => {
-    const ref = document.querySelector(".sidebar-menus");
+    const ref = document.querySelector(".sidebar-background");
 
     if (ref.classList.contains("is_stuck")) {
       ref.classList.remove("is_stuck");
@@ -24,7 +24,7 @@ class MobileMenu extends Component {
   };
 
   handleClick = () => {
-    const ref = document.querySelector(".sidebar-menus");
+    const ref = document.querySelector(".sidebar-background");
 
     ref.classList.toggle("is_stuck");
   };
@@ -32,12 +32,6 @@ class MobileMenu extends Component {
   render() {
     return (
       <header id="header" className="main-header">
-        <div className="sidebar-menus-wrapper">
-          <div className="sidebar-menus">
-            <Menus />
-          </div>
-        </div>
-
         <div className="mobile-header">
           <div className="left-section" onClick={this.handleClick}>
             <i className="fa fa-bars"></i>
@@ -53,6 +47,14 @@ class MobileMenu extends Component {
             </div>
             <div className="section-detail">
               <i className="fa fa-search"></i>
+            </div>
+          </div>
+        </div>
+
+        <div className="sidebar-menus-wrapper">
+          <div className="sidebar-background" onClick={this.handleClick}>
+            <div className="sidebar-menus">
+              <Menus />
             </div>
           </div>
         </div>
