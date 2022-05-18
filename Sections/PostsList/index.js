@@ -13,7 +13,7 @@ import { buildUrl } from "../../utils/helpers";
 
 class PostsList extends Component {
   handlePagination = (page) => {
-    const { handleFetch, router } = this.props;
+    const { router } = this.props;
     const { query } = router;
 
     const { category = null, username = null, tag = null } = query;
@@ -30,15 +30,13 @@ class PostsList extends Component {
       targetUrl = HOME_URL;
     }
 
-    new Promise((resolve) => resolve())
-      .then(() => handleFetch(page))
-      .then(() => {
-        let params = { page };
+    new Promise((resolve) => resolve()).then(() => {
+      let params = { page };
 
-        const url = buildUrl(targetUrl, params);
+      const url = buildUrl(targetUrl, params);
 
-        Router.push(url);
-      });
+      Router.push(url);
+    });
   };
 
   render() {

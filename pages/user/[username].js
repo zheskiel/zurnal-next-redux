@@ -24,7 +24,11 @@ class Index extends Component {
   componentDidUpdate(prevProps) {
     const { isRobot } = this.props;
 
-    if (!isRobot && prevProps.query.username !== this.props.query.username) {
+    if (
+      !isRobot &&
+      (prevProps.query.page !== this.props.query.page ||
+        prevProps.query.username) !== this.props.query.username
+    ) {
       const { query } = this.props;
 
       let { page } = query;

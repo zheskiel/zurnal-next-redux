@@ -21,6 +21,18 @@ class Index extends Component {
     this.handleFetch(page);
   }
 
+  componentDidUpdate(prevProps) {
+    const { isRobot } = this.props;
+
+    if (!isRobot && prevProps.query.page !== this.props.query.page) {
+      const { query } = this.props;
+
+      let { page } = query;
+
+      this.handleFetch(page);
+    }
+  }
+
   componentWillUnmount() {
     const { isRobot } = this.props;
 
@@ -48,12 +60,7 @@ class Index extends Component {
       <>
         <MetaHeader type="index" />
 
-        <PostsList
-          isLoading={isLoading}
-          items={dataItems}
-          posts={dataPosts}
-          handleFetch={this.handleFetch}
-        />
+        <PostsList isLoading={isLoading} items={dataItems} posts={dataPosts} />
       </>
     );
   }
