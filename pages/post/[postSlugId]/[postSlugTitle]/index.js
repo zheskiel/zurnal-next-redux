@@ -20,13 +20,22 @@ const scripts = [
   "https://connect.facebook.net/en_US/sdk.js#xfbml=1&appId=396954390897339&version=v2.0",
 ];
 
+const initialState = {
+  mounted: false,
+};
 class Index extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = initialState;
+  }
+
   componentDidMount() {
     const { isRobot, query } = this.props;
 
     if (isRobot) return;
 
-    new Promise((resolve) => resolve())
+    Promise.resolve()
       .then(() => {
         let { page } = query;
 
@@ -38,7 +47,11 @@ class Index extends Component {
   }
 
   componentWillUnmount() {
-    this.props.ResetPost();
+    Promise.resolve()
+      .then((props) => {
+        this.props.ResetPost();
+      })
+      .then(() => this.setState({ mounted: false }));
   }
 
   refreshAddthis = () => {
@@ -46,8 +59,12 @@ class Index extends Component {
       window.addthis !== undefined &&
       window.addthis.layers.refresh !== undefined
     ) {
-      window.addthis.init();
-      window.addthis.layers.refresh();
+      Promise.resolve()
+        .then(() => this.setState({ mounted: true }))
+        .then(() => {
+          window.addthis.init();
+          window.addthis.layers.refresh();
+        });
     }
   };
 
@@ -61,6 +78,7 @@ class Index extends Component {
   };
 
   render() {
+    const { mounted } = this.state;
     const { query, isRobot, clientData, ssrData } = this.props;
 
     let dataSource = isRobot ? ssrData : clientData;
@@ -74,7 +92,7 @@ class Index extends Component {
           <PostContent post={dataPost} handleFetch={this.handleFetch} />
 
           <PostShare />
-          <PostComment {...query} />
+          {mounted && <PostComment {...query} />}
         </div>
       </>
     );
