@@ -4,14 +4,13 @@ import { withRouter } from "next/router";
 
 import PostContent from "../../../../Sections/PostContent";
 
-import PostShare from "../../../../Components/PostShare";
-
 import { FetchPost, ResetPost } from "../../../../redux/actions";
 
 import { getPost } from "../../../../apis";
 
 import { processSSR, loadScript } from "../../../../utils/helpers";
 
+import PostShare from '../../../../Components/PostShare';
 import PostComment from "../../../../Components/PostComment";
 import PostMetaHeader from "../../../../Components/MetaHeader/post";
 
@@ -23,6 +22,7 @@ const scripts = [
 const initialState = {
   mounted: false,
 };
+
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -48,9 +48,7 @@ class Index extends Component {
 
   componentWillUnmount() {
     Promise.resolve()
-      .then((props) => {
-        this.props.ResetPost();
-      })
+      .then(() => this.props.ResetPost())
       .then(() => this.setState({ mounted: false }));
   }
 
