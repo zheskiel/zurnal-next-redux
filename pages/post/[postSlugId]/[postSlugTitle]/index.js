@@ -19,15 +19,9 @@ const scripts = [
   "https://connect.facebook.net/en_US/sdk.js#xfbml=1&appId=396954390897339&version=v2.0",
 ];
 
-const initialState = {
-  mounted: false,
-};
-
 class Index extends Component {
   constructor(props) {
     super(props);
-
-    this.state = initialState;
   }
 
   componentDidMount() {
@@ -47,9 +41,7 @@ class Index extends Component {
   }
 
   componentWillUnmount() {
-    Promise.resolve()
-      .then(() => this.props.ResetPost())
-      .then(() => this.setState({ mounted: false }));
+    Promise.resolve().then(() => this.props.ResetPost());
   }
 
   refreshAddthis = () => {
@@ -76,7 +68,6 @@ class Index extends Component {
   };
 
   render() {
-    const { mounted } = this.state;
     const { query, isRobot, clientData, ssrData } = this.props;
 
     let dataSource = isRobot ? ssrData : clientData;
@@ -90,7 +81,7 @@ class Index extends Component {
           <PostContent post={dataPost} handleFetch={this.handleFetch} />
 
           <PostShare />
-          {mounted && <PostComment {...query} />}
+          <PostComment {...query} />
         </div>
       </>
     );
