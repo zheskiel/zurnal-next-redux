@@ -8,51 +8,55 @@ import Menus from "../../Menus";
 
 class DesktopMenu extends Component {
   render() {
+    const { theme } = this.props;
+    const Img = theme == 'dark' ? `zurnal_logo_dark` : `zurnal_logo`;
+    const LogoImage = `https://www.zurnal.co/images/${Img}.png`;
+
     return (
-      <header id="header" className="main-header">
-        <div className="top-header">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-8 f-left">
+      <header id='header' className='main-header'>
+        <div className='top-header'>
+          <div className='container-fluid'>
+            <div className='row'>
+              <div className='col-8 f-left'>
                 <ul>
                   <li>
-                    <a href="#">About Us</a>
+                    <a href='#'>About Us</a>
                   </li>
                   <li>
-                    <a href="#">Term of Services</a>
+                    <a href='#'>Term of Services</a>
                   </li>
                   <li>
-                    <a href="#">Privacy Policy</a>
+                    <a href='#'>Privacy Policy</a>
                   </li>
                   <li>
-                    <a href="#">EULA</a>
+                    <a href='#'>EULA</a>
                   </li>
                   <li>
-                    <a href="#">Contact Us</a>
+                    <a href='#'>Contact Us</a>
                   </li>
                 </ul>
               </div>
 
-              <div className="col-4 f-right">
-                <ul className="soc-nav-menu">
+              <div className='col-4 f-right'>
+                <ul className='soc-nav-menu'>
                   <li>
-                    <a href="#">
+                    <a href='#'>
                       <ThemeSwitcher />
                     </a>
                   </li>
                   <li>
-                    <a href="#">
-                      <i className="fa fa-facebook"></i>
+                    <a href='#'>
+                      <i className='fa fa-facebook'></i>
                     </a>
                   </li>
                   <li>
-                    <a href="#">
-                      <i className="fa fa-twitter"></i>
+                    <a href='#'>
+                      <i className='fa fa-twitter'></i>
                     </a>
                   </li>
                   <li>
-                    <a href="#">
-                      <i className="fa fa-instagram"></i>
+                    <a href='#'>
+                      <i className='fa fa-instagram'></i>
                     </a>
                   </li>
                 </ul>
@@ -61,13 +65,13 @@ class DesktopMenu extends Component {
           </div>
         </div>
 
-        <div className="header-wrapper">
-          <div className="container">
-            <div className="row">
-              <div className="col-4">
-                <div className="site-brand">
+        <div className='header-wrapper'>
+          <div className='container'>
+            <div className='row'>
+              <div className='col-4'>
+                <div className='site-brand'>
                   <Link href={{ pathname: `/` }}>
-                    <img src="https://www.zurnal.co/images/zurnal_logo.png" />
+                    <img src={LogoImage} />
                   </Link>
                 </div>
               </div>
@@ -75,9 +79,9 @@ class DesktopMenu extends Component {
           </div>
         </div>
 
-        <div className="header-bottom-wrapper">
-          <div className="container">
-            <div className="row">
+        <div className='header-bottom-wrapper'>
+          <div className='container'>
+            <div className='row'>
               <Menus />
             </div>
           </div>
@@ -87,7 +91,9 @@ class DesktopMenu extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  theme: state.theme.theme,
+});
 const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(DesktopMenu);

@@ -30,6 +30,10 @@ class MobileMenu extends Component {
   };
 
   render() {
+    const { theme } = this.props;
+    const Img = theme == 'dark' ? `zurnal_logo_dark` : `zurnal_logo`;
+    const LogoImage = `https://www.zurnal.co/images/${Img}.png`;
+
     return (
       <header id="header" className="main-header">
         <div className="mobile-header">
@@ -38,7 +42,7 @@ class MobileMenu extends Component {
           </div>
           <div className="center-section">
             <Link href={{ pathname: `/` }}>
-              <img src="https://www.zurnal.co/images/zurnal_logo.png" />
+              <img src={LogoImage} />
             </Link>
           </div>
           <div className="right-section">
@@ -63,7 +67,9 @@ class MobileMenu extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  theme: state.theme.theme,
+});
 const mapDispatchToProps = (dispatch) => ({});
 
 export default withRouter(
