@@ -21,7 +21,4 @@ jobs:
 
     steps:
       - working-directory: /var/www/zurnal_app
-        run: yarn install
-
-      - working-directory: /var/www/zurnal_app
-        run: yarn reload
+        run: yarn pull
