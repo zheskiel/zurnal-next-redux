@@ -25,5 +25,4 @@ jobs:
 
       - working-directory: ./var/www/zurnal_app
         run: yarn reload
-          env:
-            CI: true
+
