@@ -20,7 +20,10 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - run: yarn install
-    - run: yarn reload
-      env:
-        CI: true
+      working-directory: ./var/www/zurnal_app
+      - name: "installing packages"
+        run: yarn install
+      - name: "reload app"
+        run: yarn reload
+          env:
+            CI: true
