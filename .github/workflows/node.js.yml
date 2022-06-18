@@ -9,6 +9,10 @@ on:
   pull_request:
     branches: [ "main" ]
 
+defaults:
+  run:
+    working-directory: ./var/www/zurnal_app
+
 jobs:
   build:
 
@@ -18,9 +22,7 @@ jobs:
       matrix:
         node-version: [12.20.0]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-    defaults:
-      run:
-        working-directory: ./var/www/zurnal_app
+
     steps:
       - run: yarn install
       - run: yarn reload
