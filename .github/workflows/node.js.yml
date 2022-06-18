@@ -20,8 +20,8 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      - working-directory: ./var/www/zurnal_app
+      - working-directory: ../../../../var/www/zurnal_app
         run: yarn install
 
-      - working-directory: ./var/www/zurnal_app
+      - working-directory: ../../../../var/www/zurnal_app
         run: yarn reload
