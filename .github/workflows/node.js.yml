@@ -22,9 +22,7 @@ jobs:
       run:
         working-directory: ./var/www/zurnal_app
     steps:
-      - name: "installing packages"
-        run: yarn install
-      - name: "reload app"
-        run: yarn reload
+      - run: yarn install
+      - run: yarn reload
           env:
             CI: true
