@@ -9,10 +9,6 @@ on:
   pull_request:
     branches: [ "main" ]
 
-defaults:
-  run:
-    working-directory: ./var/www/zurnal_app
-
 jobs:
   build:
 
@@ -24,7 +20,10 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      - run: yarn install
-      - run: yarn reload
+      - working-directory: ./var/www/zurnal_app
+        run: yarn install
+
+      - working-directory: ./var/www/zurnal_app
+        run: yarn reload
           env:
             CI: true
