@@ -24,6 +24,7 @@ function getIntersectionObserver() {
       threshold: 0.9,
     });
   }
+
   return observer;
 }
 

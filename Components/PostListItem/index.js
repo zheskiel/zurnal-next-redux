@@ -32,9 +32,9 @@ class PostsListItem extends Component {
 
     return (
       <article>
-        <div className='meta-image'>
+        <div className='meta-image' ref={this.imgRef}>
           <PostLink elem={elem}>
-            <a ref={this.imgRef}>
+            <a>
               {isInView && (
                 <img
                   className='img-fluid'
