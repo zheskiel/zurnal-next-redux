@@ -41,6 +41,6 @@
     "@babel/preset-env": "^7.9.6"
   },
   "resolutions": {
-    "cssnano-preset-simple": "3.0.2"
+    "cssnano-preset-simple": "3.0.1"
   }
 }
