@@ -24,7 +24,7 @@ class Document extends NextDocument {
     const { theme } = this.props;
 
     return (
-      <Html translate="no">
+      <Html lang="en" translate="no">
         <Head>
           <meta charSet="utf-8" />
           <meta name="google" content="notranslate" />

@@ -71,7 +71,7 @@ class DesktopMenu extends Component {
               <div className='col-4'>
                 <div className='site-brand'>
                   <Link href={{ pathname: `/` }}>
-                    <img src={LogoImage} />
+                    <img src={LogoImage} alt="zurnal" />
                   </Link>
                 </div>
               </div>

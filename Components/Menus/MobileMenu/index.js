@@ -42,7 +42,7 @@ class MobileMenu extends Component {
           </div>
           <div className="center-section">
             <Link href={{ pathname: `/` }}>
-              <img src={LogoImage} />
+              <img src={LogoImage} alt="zurnal" />
             </Link>
           </div>
           <div className="right-section">
