@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 class PostComment extends Component {
   render() {
-    const { postSlugId, postSlugTitle } = this.props;
+    const { theme, postSlugId, postSlugTitle } = this.props;
 
     return (
       <div className="comment-wrapper">
@@ -12,9 +13,10 @@ class PostComment extends Component {
           id="comments"
           className="fb-comments"
           data-href={`https://www.zurnal.co/post/${postSlugId}/${postSlugTitle}`}
-          data-colorscheme="light"
+          data-colorscheme={theme}
           data-width="100%"
           data-numposts="5"
+          data-lazy="true"
         ></div>
       </div>
     );
@@ -26,4 +28,10 @@ PostComment.propTypes = {
   postSlugTitle: PropTypes.string.isRequired,
 };
 
-export default PostComment;
+const mapStateToProps = (state) => ({
+  theme: state.theme.theme,
+});
+
+const mapDispatchToProps = (dispatch) => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostComment);
