@@ -33,7 +33,7 @@ a {
 .container-xl,
 .container-xxl {
   @include for-desktop {
-    max-width: 768px;
+    max-width: 948px;
   }
 
   @include for-md-desktop {
@@ -290,11 +290,9 @@ a {
     }
   }
 
-  .sidebar {
-    .vce-sticky {
-      @include for-mobile {
-        display: none;
-      }
+  .sidebar-section {
+    @include for-desktop {
+      position: relative;
     }
 
     @include for-desktop-only {
@@ -304,6 +302,24 @@ a {
     @include for-mobile {
       margin-top: 25px;
       width: 100%;
+    }
+
+    .sidebar {
+      @include for-desktop {
+        height: 100%;
+      }
+
+      .vce-sticky {
+        @include for-desktop {
+          position: sticky;
+          padding: 0;
+          top: 0;
+        }
+
+        @include for-mobile {
+          display: none;
+        }
+      }
     }
   }
 }
@@ -516,6 +532,10 @@ a {
         @include for-desktop-only {
           width: 200px;
         }
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
@@ -637,6 +657,7 @@ a {
               font-weight: 900;
               a,
               a:hover {
+                color: #232323;
               }
             }
           }
@@ -941,19 +962,19 @@ body {
         }
 
         ul {
-            li {
-                &.current-item {
-                    a {
-                        background-color: #3a3a3a;
-                    }
-                }
-
-                a {
-                    &:hover {
-                        background-color: #3a3a3a;
-                    }
-                }
+          li {
+            &.current-item {
+              a {
+                background-color: #3a3a3a;
+              }
             }
+
+            a {
+              &:hover {
+                background-color: #3a3a3a;
+              }
+            }
+          }
         }
       }
       .mobile-header {

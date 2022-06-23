@@ -1,9 +1,9 @@
 import React, { Component, createRef } from "react";
 
 import { CategoryLink, PostLink } from "../../utils/link-generator";
-import { ImgError } from '../../utils/helpers';
+import { ImgError } from "../../utils/helpers";
 
-import watchIntersection from '../../libs/intersection';
+import watchIntersection from "../../libs/intersection";
 
 class PostsListItem extends Component {
   constructor(props) {
@@ -12,8 +12,8 @@ class PostsListItem extends Component {
     this.imgRef = createRef();
 
     this.state = {
-      isInView: false
-    }
+      isInView: false,
+    };
   }
 
   componentDidMount() {
@@ -32,12 +32,12 @@ class PostsListItem extends Component {
 
     return (
       <article>
-        <div className='meta-image' ref={this.imgRef}>
+        <div className="meta-image" ref={this.imgRef}>
           <PostLink elem={elem}>
             <a>
               {isInView && (
                 <img
-                  className='img-fluid'
+                  className="img-fluid"
                   onError={(e) => ImgError(e)}
                   src={featured_image}
                   alt={title}
@@ -47,14 +47,14 @@ class PostsListItem extends Component {
           </PostLink>
         </div>
 
-        <header className='entry-header'>
-          <span className='meta-category'>
+        <header className="entry-header">
+          <span className="meta-category">
             <CategoryLink elem={elem}>{elem.category.name}</CategoryLink>
           </span>
 
-          <span className='entry-date'>{elem.published_at}</span>
+          <span className="entry-date">{elem.published_at}</span>
 
-          <h2 className='entry-title'>
+          <h2 className="entry-title">
             <PostLink elem={elem}>{elem.title}</PostLink>
           </h2>
         </header>
