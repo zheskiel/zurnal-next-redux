@@ -10,7 +10,7 @@ import { getPost } from "../../../../apis";
 
 import { processSSR, loadScript } from "../../../../utils/helpers";
 
-import PostShare from '../../../../Components/PostShare';
+import PostShare from "../../../../Components/PostShare";
 import PostComment from "../../../../Components/PostComment";
 import PostMetaHeader from "../../../../Components/MetaHeader/post";
 

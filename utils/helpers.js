@@ -1,5 +1,7 @@
 import getConfig from "next/config";
+
 import config from "../utils/config";
+import watchIntersection from "../libs/intersection";
 
 const { publicRuntimeConfig } = getConfig();
 const { APP_ENV, SITE_URL } = publicRuntimeConfig;
@@ -353,4 +355,32 @@ export const buildUrl = (url, parameters) => {
   }
 
   return url;
+};
+
+export const lazyloadContentImages = () => {
+  setTimeout(() => {
+    let target = document.getElementById("article");
+    let entryContent = target.getElementsByClassName("entry-content")[0];
+    let images = entryContent.querySelectorAll("img");
+
+    images.forEach((img) => {
+      let dataSrc = img.getAttribute("data-src");
+      let parent = img.parentNode;
+
+      if (dataSrc !== null) {
+        watchIntersection(parent, () => {
+          let child = parent.querySelector("img");
+          child.removeAttribute("data-src");
+          child.setAttribute("src", dataSrc);
+          child.classList.add("show");
+        });
+      } else {
+        let child = parent.querySelector("img");
+
+        child.classList.add("show");
+
+        return;
+      }
+    });
+  }, 1000);
 };

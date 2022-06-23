@@ -1,44 +1,34 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 import { connect } from "react-redux";
 import Router, { withRouter } from "next/router";
 
 import Pagination from "../../Components/Pagination";
 import PostContentSkeleton from "../../Components/Skeletons/PostContent";
 
-import { buildUrl } from "../../utils/helpers";
+import { buildUrl, ImgError, lazyloadContentImages } from "../../utils/helpers";
 import { CategoryLink, UserLink, TagLink } from "../../utils/link-generator";
 
-import watchIntersection from '../../libs/intersection';
-
-function lazyloadContentImages() {
-    setTimeout(() => {
-      let target = document.getElementById('article');
-      let entryContent = target.getElementsByClassName('entry-content')[0];
-      let images = entryContent.querySelectorAll('img');
-
-      images.forEach((img) => {
-        let dataSrc = img.getAttribute('data-src');
-        let parent = img.parentNode;
-
-        if (dataSrc !== null) {
-            watchIntersection(parent, () => {
-              let child = parent.querySelector('img');
-              child.removeAttribute('data-src');
-              child.setAttribute('src', dataSrc);
-              child.classList.add('show');
-            });
-        } else {
-            let child = parent.querySelector('img');
-
-            child.classList.add('show');
-
-            return;
-        }
-      });
-    }, 1000);
-}
+import watchIntersection from "../../libs/intersection";
 
 class Index extends Component {
+  constructor(props) {
+    super(props);
+
+    this.imgRef = createRef();
+
+    this.state = {
+      isInView: false,
+    };
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      watchIntersection(this.imgRef.current, () => {
+        this.setState({ isInView: true });
+      });
+    }, 500);
+  }
+
   handlePagination = (page) => {
     const { handleFetch, router } = this.props;
     const { query } = router;
@@ -66,7 +56,11 @@ class Index extends Component {
       handlePagination: this.handlePagination,
     };
 
+    // Lazy load user generated content's images
     lazyloadContentImages();
+
+    const { isInView } = this.state;
+    const { title, featured_image } = post;
 
     return (
       <article id="article">
@@ -79,12 +73,15 @@ class Index extends Component {
           <div className="entry-date">{post.published_at}</div>
         </header>
 
-        <div className="meta-image">
-          <img
-            src={post.featured_image}
-            className="img-fluid"
-            alt={post.title}
-          />
+        <div className="meta-image" ref={this.imgRef}>
+          {isInView && (
+            <img
+              className="img-fluid"
+              onError={(e) => ImgError(e)}
+              src={featured_image}
+              alt={title}
+            />
+          )}
         </div>
 
         <div className="pagination-area">
