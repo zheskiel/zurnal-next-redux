@@ -8,6 +8,36 @@ import PostContentSkeleton from "../../Components/Skeletons/PostContent";
 import { buildUrl } from "../../utils/helpers";
 import { CategoryLink, UserLink, TagLink } from "../../utils/link-generator";
 
+import watchIntersection from '../../libs/intersection';
+
+function lazyloadContentImages() {
+    setTimeout(() => {
+      let target = document.getElementById('article');
+      let entryContent = target.getElementsByClassName('entry-content')[0];
+      let images = entryContent.querySelectorAll('img');
+
+      images.forEach((img) => {
+        let dataSrc = img.getAttribute('data-src');
+        let parent = img.parentNode;
+
+        if (dataSrc !== null) {
+            watchIntersection(parent, () => {
+              let child = parent.querySelector('img');
+              child.removeAttribute('data-src');
+              child.setAttribute('src', dataSrc);
+              child.classList.add('show');
+            });
+        } else {
+            let child = parent.querySelector('img');
+
+            child.classList.add('show');
+
+            return;
+        }
+      });
+    }, 1000);
+}
+
 class Index extends Component {
   handlePagination = (page) => {
     const { handleFetch, router } = this.props;
@@ -36,8 +66,10 @@ class Index extends Component {
       handlePagination: this.handlePagination,
     };
 
+    lazyloadContentImages();
+
     return (
-      <article>
+      <article id="article">
         <header className="entry-header">
           <span className="meta-category">
             <CategoryLink elem={post}>{post.category?.name}</CategoryLink>

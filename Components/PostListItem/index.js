@@ -17,7 +17,7 @@ class PostsListItem extends Component {
   }
 
   componentDidMount() {
-    watchIntersection(this.imgRef, () => {
+    watchIntersection(this.imgRef.current, () => {
       this.setState({
         isInView: true,
       });

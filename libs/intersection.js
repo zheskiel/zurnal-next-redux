@@ -29,7 +29,7 @@ function getIntersectionObserver() {
 }
 
 export default function watchIntersection(elem, callback) {
-  let target = elem.current;
+  let target = elem;
 
   if (!target) return;
 
