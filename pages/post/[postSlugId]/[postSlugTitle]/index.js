@@ -38,7 +38,9 @@ class Index extends Component {
       .then(() => {
         // load twitter post embed
         if (window.twttr) {
-          setTimeout(() => window.twttr.widgets.load(), 5000);
+          console.log('Load twitter embed');
+
+          setTimeout(() => window.twttr.widgets.load(), 3000);
         }
       });
   }
