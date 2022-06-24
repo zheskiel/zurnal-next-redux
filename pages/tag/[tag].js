@@ -55,7 +55,7 @@ class Index extends Component {
     const { query } = router;
     const { tag } = query;
 
-    let isLoading = clientData.loading;
+    let isLoading = !isRobot ? clientData.loading : false;
 
     let dataSource = isRobot ? ssrData : clientData;
     let dataItems = dataSource.items;
