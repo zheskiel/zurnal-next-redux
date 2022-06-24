@@ -36,11 +36,18 @@ class Index extends Component {
       .then(() => this.refreshAddthis())
       .then(() => window.FB?.XFBML.parse())
       .then(() => {
-        // load twitter post embed
-        if (window.twttr) {
-          console.log('Load twitter embed');
+        let retries = 3;
+        let success = false;
 
-          setTimeout(() => window.twttr.widgets.load(), 3000);
+        while (retries-- > 0 && !(success = foo())) {
+          // load twitter post embed
+          if (window.twttr) {
+            console.log('Load twitter embed');
+
+            success = true;
+
+            setTimeout(() => window.twttr.widgets.load(), 3000);
+          }
         }
       });
   }
