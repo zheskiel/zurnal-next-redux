@@ -36,24 +36,45 @@ class Index extends Component {
       .then(() => this.refreshAddthis())
       .then(() => window.FB?.XFBML.parse())
       .then(() => {
-        let retries = 3;
         let success = false;
-        let attempt = 0;
 
-        while (retries-- > 0 && !success) {
-          attempt += 1;
+        const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
-          console.log('Attempt : ', attempt)
+        const retryOperation = (operation, delay, retries) => {
+            console.log('retries left : ', retries)
 
-          // load twitter post embed
-          if (window.twttr) {
-            console.log('Load twitter embed');
-
-            success = true;
-
-            setTimeout(() => window.twttr.widgets.load(), 3000);
-          }
+            return new Promise((resolve, reject) => {
+              return operation()
+                .then(resolve)
+                .catch((reason) => {
+                  if (retries > 0 && !success) {
+                    return wait(delay)
+                      .then(
+                        retryOperation.bind(null, operation, delay, retries - 1)
+                      )
+                      .then(resolve)
+                      .catch(reject);
+                  }
+                  return reject(reason);
+                });
+            });
         }
+
+          const LoadTwitterEmbed = () => {
+              return new Promise((resolve, reject) => {
+                let result = reject();
+
+                if (window.twttr) {
+                  window.twttr.widgets.load();
+                  success = true;
+                  result = resolve();
+                }
+
+                return result;
+              });
+          }
+
+          retryOperation(LoadTwitterEmbed, 3000, 3).then(console.log).catch(console.log);
       });
   }
 
