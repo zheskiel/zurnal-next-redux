@@ -30,13 +30,13 @@ class PostsList extends Component {
       targetUrl = HOME_URL;
     }
 
-    new Promise((resolve) => resolve()).then(() => {
-      let params = { page };
+    Promise.resolve()
+      .then(() => {
+        let params = { page },
+          url = buildUrl(targetUrl, params);
 
-      const url = buildUrl(targetUrl, params);
-
-      Router.push(url);
-    });
+        Router.push(url);
+      });
   };
 
   render() {

@@ -36,7 +36,7 @@ class Index extends Component {
     const { handleFetch, router } = this.props;
     const { query } = router;
 
-    new Promise((resolve) => resolve())
+    Promise.resolve()
       .then(() => handleFetch(page))
       .then(() => {
         let params = { page };
@@ -44,7 +44,8 @@ class Index extends Component {
         let url = buildUrl(postUrl, params);
 
         Router.push(url);
-      });
+      })
+      .then(() => setTimeout(() => lazyloadContentImages(), 2000));
   };
 
   render() {

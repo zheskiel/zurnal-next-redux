@@ -14,7 +14,7 @@ class ThemeSwitcher extends Component {
     let lightTheme = "light";
     let darkTheme = "dark";
 
-    new Promise((resolve) => resolve())
+    Promise.resolve()
       .then(() => {
         const { theme } = this.props;
 
