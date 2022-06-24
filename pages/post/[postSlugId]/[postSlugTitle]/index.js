@@ -8,7 +8,12 @@ import { FetchPost, ResetPost } from "../../../../redux/actions";
 
 import { getPost } from "../../../../apis";
 
-import { processSSR, loadScript } from "../../../../utils/helpers";
+import {
+  retryOperation,
+  LoadTwitterEmbed,
+  processSSR,
+  loadScript,
+} from "../../../../utils/helpers";
 
 import PostShare from "../../../../Components/PostShare";
 import PostComment from "../../../../Components/PostComment";
@@ -27,55 +32,11 @@ class Index extends Component {
     if (isRobot) return;
 
     Promise.resolve()
-      .then(() => {
-        let { page } = query;
-
-        this.handleFetch(page);
-      })
+      .then(() => this.handleFetch(query.page))
       .then(() => scripts.map((script) => loadScript(false, script)))
       .then(() => this.refreshAddthis())
       .then(() => window.FB?.XFBML.parse())
-      .then(() => {
-        let success = false;
-
-        const wait = (ms) => new Promise((r) => setTimeout(r, ms));
-
-        const retryOperation = (operation, delay, retries) => {
-            console.log('retries left : ', retries)
-
-            return new Promise((resolve, reject) => {
-              return operation()
-                .then(resolve)
-                .catch((reason) => {
-                  if (retries > 0 && !success) {
-                    return wait(delay)
-                      .then(
-                        retryOperation.bind(null, operation, delay, retries - 1)
-                      )
-                      .then(resolve)
-                      .catch(reject);
-                  }
-                  return reject(reason);
-                });
-            });
-        }
-
-          const LoadTwitterEmbed = () => {
-              return new Promise((resolve, reject) => {
-                let result = reject();
-
-                if (window.twttr) {
-                  window.twttr.widgets.load();
-                  success = true;
-                  result = resolve();
-                }
-
-                return result;
-              });
-          }
-
-          retryOperation(LoadTwitterEmbed, 3000, 3).then(console.log).catch(console.log);
-      });
+      .then(() => retryOperation(LoadTwitterEmbed, 3000, 3));
   }
 
   componentWillUnmount() {

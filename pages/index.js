@@ -50,7 +50,7 @@ class Index extends Component {
   render() {
     const { isRobot, ssrData, clientData } = this.props;
 
-    let isLoading = (!isRobot) ? clientData.loading : false;
+    let isLoading = !isRobot ? clientData.loading : false;
 
     let dataSource = isRobot ? ssrData : clientData;
     let dataItems = dataSource.items;

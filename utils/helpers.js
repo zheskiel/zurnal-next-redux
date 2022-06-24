@@ -358,29 +358,62 @@ export const buildUrl = (url, parameters) => {
 };
 
 export const lazyloadContentImages = () => {
-  let target = document.getElementById('article'),
-    entryContent = target.getElementsByClassName('entry-content')[0],
-    images = entryContent.querySelectorAll('img');
+  let target = document.getElementById("article"),
+    entryContent = target.getElementsByClassName("entry-content")[0],
+    images = entryContent.querySelectorAll("img");
 
   images.forEach((img) => {
-    let dataSrc = img.getAttribute('data-src'),
-        parent = img.parentNode,
-        child;
+    let dataSrc = img.getAttribute("data-src"),
+      parent = img.parentNode,
+      child;
 
     if (dataSrc !== null) {
       watchIntersection(parent, () => {
-        child = parent.querySelector('img');
+        child = parent.querySelector("img");
 
-        child.removeAttribute('data-src');
-        child.setAttribute('src', dataSrc);
+        child.removeAttribute("data-src");
+        child.setAttribute("src", dataSrc);
 
-        child.classList.add('show');
+        child.classList.add("show");
       });
     } else {
-      child = parent.querySelector('img');
-      child.classList.add('show');
+      child = parent.querySelector("img");
+      child.classList.add("show");
 
       return;
     }
+  });
+};
+
+let success = false;
+let wait = (ms) => new Promise((r) => setTimeout(r, ms));
+
+export const retryOperation = (operation, delay, retries) => {
+  return new Promise((resolve, reject) => {
+    return operation()
+      .then(resolve)
+      .catch((reason) => {
+        if (retries > 0 && !success) {
+          return wait(delay)
+            .then(retryOperation.bind(null, operation, delay, retries - 1))
+            .then(resolve)
+            .catch(reject);
+        }
+        return reject(reason);
+      });
+  });
+};
+
+export const LoadTwitterEmbed = () => {
+  return new Promise((resolve, reject) => {
+    let result = reject();
+
+    if (window.twttr) {
+      window.twttr.widgets.load();
+      success = true;
+      result = resolve();
+    }
+
+    return result;
   });
 };
