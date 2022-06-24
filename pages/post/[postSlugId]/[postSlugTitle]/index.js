@@ -38,8 +38,13 @@ class Index extends Component {
       .then(() => {
         let retries = 3;
         let success = false;
+        let attempt = 0;
 
-        while (retries-- > 0 && !(success = foo())) {
+        while (retries-- > 0 && !success) {
+          attempt += 1;
+
+          console.log('Attempt : ', attempt)
+
           // load twitter post embed
           if (window.twttr) {
             console.log('Load twitter embed');
