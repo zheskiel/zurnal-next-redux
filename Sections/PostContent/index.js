@@ -26,7 +26,10 @@ class Index extends Component {
       watchIntersection(this.imgRef.current, () => {
         this.setState({ isInView: true });
       });
-    }, 500);
+
+      // Lazy load user generated content's images
+      lazyloadContentImages();
+    }, 2000);
   }
 
   handlePagination = (page) => {
@@ -55,9 +58,6 @@ class Index extends Component {
       pageSize: 1,
       handlePagination: this.handlePagination,
     };
-
-    // Lazy load user generated content's images
-    lazyloadContentImages();
 
     const { isInView } = this.state;
     const { title, featured_image } = post;
