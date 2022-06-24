@@ -17,13 +17,10 @@ import PostMetaHeader from "../../../../Components/MetaHeader/post";
 const scripts = [
   "https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6209f866f185a6e6",
   "https://connect.facebook.net/en_US/sdk.js#xfbml=1&appId=396954390897339&version=v2.0",
+  "https://platform.twitter.com/widgets.js",
 ];
 
 class Index extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     const { isRobot, query } = this.props;
 
@@ -37,7 +34,13 @@ class Index extends Component {
       })
       .then(() => scripts.map((script) => loadScript(false, script)))
       .then(() => this.refreshAddthis())
-      .then(() => window.FB?.XFBML.parse());
+      .then(() => window.FB?.XFBML.parse())
+      .then(() => {
+        // load twitter post embed
+        if (window.twttr) {
+          setTimeout(() => window.twttr.widgets.load(), 3000);
+        }
+      });
   }
 
   componentWillUnmount() {
