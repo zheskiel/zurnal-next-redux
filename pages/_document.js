@@ -1,6 +1,8 @@
 import NextDocument, { Html, Head, Main, NextScript } from "next/document";
 import { isProduction, processThemeCookie } from "../utils/helpers";
 
+import Script from "next/script";
+
 class Document extends NextDocument {
   static async getInitialProps(ctx) {
     const initialProps = await NextDocument.getInitialProps(ctx);
@@ -141,6 +143,10 @@ class Document extends NextDocument {
           <link rel="dns-prefetch" href="//graph.facebook.com" />
           <link rel="dns-prefetch" href="//facebook.com" />
           <link rel="dns-prefetch" href="//connect.facebook.net" />
+
+          <Script
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6983942794145260"
+            strategy="lazyOnload" />
         </Head>
 
         <body className={theme}>
