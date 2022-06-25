@@ -26,9 +26,7 @@ class Index extends Component {
       watchIntersection(this.imgRef.current, () => {
         this.setState({ isInView: true });
       });
-    }, 1000);
 
-    setTimeout(() => {
       // Lazy load user generated content's images
       lazyloadContentImages();
     }, 2000);
