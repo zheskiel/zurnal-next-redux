@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 
 import HeaderSection from "../../Sections/Header";
 import SidebarSection from "../../Sections/Sidebar";
@@ -8,10 +7,8 @@ import FooterCategoriesSection from "../../Sections/FooterCategories";
 
 class Layout extends Component {
   render() {
-    const { theme } = this.props;
-
     return (
-      <div className={`${theme}`}>
+      <>
         <HeaderSection />
 
         <div id="main-container">
@@ -29,14 +26,9 @@ class Layout extends Component {
         </div>
 
         <FooterSection />
-      </div>
+      </>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  theme: state.theme.theme,
-});
-const mapDispatchToProps = (dispatch) => ({});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Layout);
+export default Layout;
