@@ -98,15 +98,15 @@ a {
         }
 
         .entry-content {
-            img {
-                opacity: 0;
+          img {
+            opacity: 0;
 
-                &.show {
-                    transition: opacity 0.3s;
-                    -webkit-transition: opacity 0.3s;
-                    opacity: 1;
-                }
+            &.show {
+              transition: opacity 0.3s;
+              -webkit-transition: opacity 0.3s;
+              opacity: 1;
             }
+          }
         }
 
         img {
@@ -919,11 +919,7 @@ a {
 }
 
 body {
-  -webkit-transition: background-color 1000ms linear;
-  -ms-transition: background-color 1000ms linear;
-  transition: background-color 1000ms linear;
-
-  .light {
+  &.light {
     background-color: #f0f0f0;
     color: #444444;
 
