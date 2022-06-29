@@ -236,7 +236,9 @@ export function loadScript(isSupport, src) {
     if (isSupport) {
       return resolve();
     }
+
     let dom = document.querySelector(`script[src="${src}"]`);
+
     if (dom) {
       const prevCallback = dom.onload ? dom.onload.bind(dom) : null;
       return (dom.onload = () => {
@@ -246,11 +248,13 @@ export function loadScript(isSupport, src) {
         resolve();
       });
     }
+
     let script = document.createElement("script");
-    script.async = true;
-    script.src = src;
-    script.onload = resolve;
-    document.head.appendChild(script);
+
+        script.async = "async";
+        script.src = src;
+        script.onload = resolve;
+        document.head.appendChild(script);
   });
 }
 
