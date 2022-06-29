@@ -1,14 +1,16 @@
+let sitemapUrl = 'https://sitemap.zurnal.co';
+
 module.exports = [
   {
     source: '/sitemap.xml',
-    destination: '/sitemap/index.xml',
+    destination: `${sitemapUrl}/sitemap.xml`,
   },
   {
     source: '/posts/sitemap.xml',
-    destination: '/sitemap/posts/index.xml',
+    destination: `${sitemapUrl}/posts/sitemap.xml`,
   },
   {
     source: '/posts/sitemap-post-:id.xml',
-    destination: '/sitemap/posts/content.xml',
+    destination: `${sitemapUrl}/posts/sitemap-post-:id.xml`,
   },
 ];
