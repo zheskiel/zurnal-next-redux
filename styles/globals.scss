@@ -541,9 +541,8 @@ a {
       line-height: 80px;
 
       img {
-        @include for-desktop-only {
-          width: 200px;
-        }
+        width: 200px;
+        height: auto;
 
         &:hover {
           cursor: pointer;
