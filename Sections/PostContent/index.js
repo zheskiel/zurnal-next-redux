@@ -4,6 +4,7 @@ import Router, { withRouter } from "next/router";
 
 import Pagination from "../../Components/Pagination";
 import PostContentSkeleton from "../../Components/Skeletons/PostContent";
+import PostFeaturedSkeleton from "../../Components/Skeletons/PostFeatured";
 
 import { buildUrl, ImgError, lazyloadContentImages } from "../../utils/helpers";
 import { CategoryLink, UserLink, TagLink } from "../../utils/link-generator";
@@ -63,6 +64,20 @@ class Index extends Component {
     const { isInView } = this.state;
     const { title, featured_image } = post;
 
+    const ImgSkeleton = <PostFeaturedSkeleton />;
+    const ImgDomElem = (
+      <a>
+        <img
+          className="img-fluid"
+          onError={(e) => ImgError(e)}
+          src={featured_image}
+          alt={title}
+        />
+      </a>
+    );
+
+    const ImgElem = isInView ? ImgDomElem : ImgSkeleton;
+
     return (
       <article id="article">
         <header className="entry-header">
@@ -75,14 +90,7 @@ class Index extends Component {
         </header>
 
         <div className="meta-image" ref={this.imgRef}>
-          {isInView && (
-            <img
-              className="img-fluid"
-              onError={(e) => ImgError(e)}
-              src={featured_image}
-              alt={title}
-            />
-          )}
+          {ImgElem}
         </div>
 
         <div className="pagination-area">
