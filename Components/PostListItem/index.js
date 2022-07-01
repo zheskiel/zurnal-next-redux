@@ -1,5 +1,7 @@
 import React, { Component, createRef } from "react";
 
+import PostImageSkeleton from '../Skeletons/PostImage';
+
 import { CategoryLink, PostLink } from "../../utils/link-generator";
 import { ImgError } from "../../utils/helpers";
 
@@ -26,35 +28,39 @@ class PostsListItem extends Component {
 
   render() {
     const { isInView } = this.state;
-
     const { elem } = this.props;
     const { title, featured_image } = elem;
 
+    const ImgSkeleton = <PostImageSkeleton />;
+    const ImgDomElem = (
+      <a>
+        <img
+          className='img-fluid'
+          onError={(e) => ImgError(e)}
+          src={featured_image}
+          alt={title}
+        />
+      </a>
+    );
+
+    const ImgElem = isInView ? ImgDomElem : ImgSkeleton;
+
     return (
       <article>
-        <div className="meta-image" ref={this.imgRef}>
+        <div className='meta-image' ref={this.imgRef}>
           <PostLink elem={elem}>
-            <a>
-              {isInView && (
-                <img
-                  className="img-fluid"
-                  onError={(e) => ImgError(e)}
-                  src={featured_image}
-                  alt={title}
-                />
-              )}
-            </a>
+              {ImgElem}
           </PostLink>
         </div>
 
-        <header className="entry-header">
-          <span className="meta-category">
+        <header className='entry-header'>
+          <span className='meta-category'>
             <CategoryLink elem={elem}>{elem.category.name}</CategoryLink>
           </span>
 
-          <span className="entry-date">{elem.published_at}</span>
+          <span className='entry-date'>{elem.published_at}</span>
 
-          <h2 className="entry-title">
+          <h2 className='entry-title'>
             <PostLink elem={elem}>{elem.title}</PostLink>
           </h2>
         </header>
