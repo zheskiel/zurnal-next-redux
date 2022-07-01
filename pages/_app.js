@@ -39,6 +39,7 @@ const App = ({ Component, pageProps }) => {
 
     const scripts = [
       'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6209f866f185a6e6',
+      'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6983942794145260',
     ];
 
     styles.map((style) => loadStylesheet(style));
