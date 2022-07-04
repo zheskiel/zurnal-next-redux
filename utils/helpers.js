@@ -169,10 +169,10 @@ export function loadScript(isSupport, src) {
 
     let script = document.createElement("script");
 
-        script.async = "async";
-        script.src = src;
-        script.onload = resolve;
-        document.head.appendChild(script);
+    script.async = "async";
+    script.src = src;
+    script.onload = resolve;
+    document.head.appendChild(script);
   });
 }
 
@@ -277,6 +277,10 @@ export const buildUrl = (url, parameters) => {
   }
 
   return url;
+};
+
+export const capitalize = (str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
 export const lazyloadContentImages = () => {

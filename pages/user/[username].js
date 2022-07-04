@@ -8,7 +8,7 @@ import { getPosts } from "../../apis";
 import PostsList from "../../Sections/PostsList";
 import MetaHeader from "../../Components/MetaHeader/index";
 
-import { processSSR } from "../../utils/helpers";
+import { capitalize, processSSR } from "../../utils/helpers";
 
 class Index extends Component {
   componentDidMount() {
@@ -69,6 +69,8 @@ class Index extends Component {
           description={`cari semua artikel dari ${username} hanya di Zurnal.co`}
           type="user"
         />
+
+        <h1>Semua artikel : {capitalize(username)}</h1>
 
         <PostsList
           isLoading={isLoading}
