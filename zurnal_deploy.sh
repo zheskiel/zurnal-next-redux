@@ -6,6 +6,8 @@ git pull
 
 yarn install || exit
 
+BUILD_DIR=temp npm run build || exit
+
 echo "$BUILD_DIR"
 echo "$NEXT_BUILD_DIR"
 
@@ -23,12 +25,15 @@ if [ ! -d ".next" ]; then
 fi
 mv temp/* .next
 
+BUILD_DIR=".next"
 NEXT_BUILD_DIR=".next"
 
 echo "$BUILD_DIR"
 echo "$NEXT_BUILD_DIR"
 
-yarn reload
+# yarn reload
+pm2 reload all --update-env
+pm2 reset all
 
 echo "Deploy done."
 
