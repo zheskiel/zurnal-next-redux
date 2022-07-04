@@ -16,4 +16,4 @@ jobs:
 
     steps:
       - working-directory: /var/www/zurnal_app
-        run: yarn pull
+        run: ./zurnal_deploy.sh
