@@ -20,9 +20,9 @@ if [ ! -d ".next" ]; then
 fi
 mv temp/* .next
 
-rm -rf temp
-
 yarn reload
+
+rm -rf temp
 
 echo "Deploy done."
 
