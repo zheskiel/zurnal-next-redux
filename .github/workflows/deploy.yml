@@ -16,9 +16,4 @@ jobs:
 
     steps:
       - working-directory: /var/www/zurnal_app
-        run: |
-          ls -la
-          pwd
-          chmod +x ./zurnal_deploy.sh
-          ./zurnal_deploy.sh
-        shell: bash
+        run: ./zurnal_deploy.sh

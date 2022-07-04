@@ -6,7 +6,7 @@ git pull
 
 yarn install || exit
 
-NEXT_BUILD_DIR=temp yarn build || exit
+yarn build
 
 if [ ! -d "temp" ]; then
   echo '\033[31m temp Directory not exists!\033[0m'
@@ -22,7 +22,7 @@ mv temp/* .next
 
 rm -rf temp
 
-yarn reload
+# yarn reload
 
 echo "Deploy done."
 
