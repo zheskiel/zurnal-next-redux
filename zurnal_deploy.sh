@@ -21,7 +21,7 @@ rm -rf .next
 if [ ! -d ".next" ]; then
   mkdir .next
 fi
-# mv temp/* .next
+mv temp/* .next
 
 NEXT_BUILD_DIR=".next"
 
