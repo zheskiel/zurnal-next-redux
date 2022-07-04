@@ -13,23 +13,23 @@ if [ ! -d "temp" ]; then
   exit 1;
 fi
 
+rm -rf test
+
+if [ ! -d "test" ]; then
+  mkdir test
+fi
+
+mv temp/* test
+
+
+
 rm -rf temp
 
 if [ ! -d "temp" ]; then
-  mkdir temp
+ mkdir temp
 fi
 
-mv temp/* temp
-
-
-
-rm -rf .next
-
-if [ ! -d ".next" ]; then
- mkdir .next
-fi
-
-mv temp/* .next
+mv test/* .temp
 
 yarn reload
 
