@@ -6,6 +6,8 @@ git pull
 
 yarn install || exit
 
+echo BUILD_DIR
+
 yarn build
 
 if [ ! -d "temp" ]; then
@@ -20,7 +22,11 @@ if [ ! -d ".next" ]; then
 fi
 mv temp/* .next
 
-yarn reload
+BUILD_DIR=".next"
+
+echo BUILD_DIR
+
+# yarn reload
 
 echo "Deploy done."
 
