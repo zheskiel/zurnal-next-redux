@@ -30,8 +30,7 @@ class Index extends Component {
         prevProps.query.username) !== this.props.query.username
     ) {
       const { query } = this.props;
-
-      let { page } = query;
+      const { page } = query;
 
       this.handleFetch(page);
     }
