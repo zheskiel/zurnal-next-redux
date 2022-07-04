@@ -8,28 +8,27 @@ yarn install || exit
 
 yarn build
 
-if [ ! -d "temp" ]; then
-  echo '\033[31m temp Directory not exists!\033[0m'
-  exit 1;
-fi
-
-rm -rf test
-
-if [ ! -d "test" ]; then
-  mkdir test
-fi
-
-mv temp/* test
-
-
+# if [ ! -d "temp" ]; then
+#   echo '\033[31m temp Directory not exists!\033[0m'
+#   exit 1;
+# fi
 
 rm -rf temp
 
 if [ ! -d "temp" ]; then
- mkdir temp
+  mkdir temp
 fi
 
-mv test/* .temp
+mv .next/* temp
+
+
+rm -rf .next
+
+if [ ! -d ".next" ]; then
+ mkdir .next
+fi
+
+mv temp/* .next
 
 yarn reload
 
