@@ -22,8 +22,6 @@ mv temp/* .next
 
 yarn reload
 
-rm -rf temp
-
 echo "Deploy done."
 
 #make sure `next.config.js` it set `distDir: process.env.BUILD_DIR`
