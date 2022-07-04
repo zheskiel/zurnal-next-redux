@@ -13,13 +13,6 @@ if [ ! -d "temp" ]; then
   exit 1;
 fi
 
-# rm -rf .next
-
-# if [ ! -d ".next" ]; then
-#  mkdir .next
-# fi
-# mv temp/* .next
-
 rm -rf temp
 
 if [ ! -d "temp" ]; then
