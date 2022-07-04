@@ -43,8 +43,8 @@ echo "$NEXT_BUILD_DIR"
 echo "Echo Build Dir 4...."
 
 # yarn reload
-pm2 reload zurnal --update-env
-pm2 reset zurnal
+pm2 reload all --update-env
+pm2 reset all
 
 echo "Deploy done."
 
