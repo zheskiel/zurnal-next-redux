@@ -6,7 +6,7 @@ git pull
 
 yarn install || exit
 
-BUILD_DIR=temp npm run build || exit
+BUILD_DIR=temp yarn build || exit
 
 echo "$BUILD_DIR"
 echo "$NEXT_BUILD_DIR"
