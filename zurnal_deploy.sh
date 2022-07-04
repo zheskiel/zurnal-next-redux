@@ -15,18 +15,30 @@ fi
 
 # rm -rf .next
 
-#if [ ! -d ".next" ]; then
+# if [ ! -d ".next" ]; then
 #  mkdir .next
-#fi
+# fi
 # mv temp/* .next
 
-if [ ! -d "test" ]; then
-  mkdir test
+rm -rf temp
+
+if [ ! -d "temp" ]; then
+  mkdir temp
 fi
 
-mv temp/* test
+mv temp/* temp
 
-# yarn reload
+
+
+rm -rf .next
+
+if [ ! -d ".next" ]; then
+ mkdir .next
+fi
+
+mv temp/* .next
+
+yarn reload
 
 echo "Deploy done."
 
