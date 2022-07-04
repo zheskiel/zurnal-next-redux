@@ -22,7 +22,7 @@ mv temp/* .next
 
 rm -rf temp
 
-pm2 reload zurnal --update-env
+yarn reload
 
 echo "Deploy done."
 
