@@ -12,7 +12,7 @@ redirectRoutes.map((route) => redirects.push(route));
 module.exports = {
   swcMinify: false,
   reactStrictMode: true,
-  distDir: process.env.NEXT_BUILD_DIR || '.next',
+  // distDir: process.env.NEXT_BUILD_DIR || '.next',
   eslint: {
     // Warning: This allows production builds to successfully complete even if
     // your project has ESLint errors.
