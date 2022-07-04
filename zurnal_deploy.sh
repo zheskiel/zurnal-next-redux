@@ -28,7 +28,7 @@ NEXT_BUILD_DIR=".next"
 echo "$BUILD_DIR"
 echo "$NEXT_BUILD_DIR"
 
-# yarn reload
+yarn reload
 
 echo "Deploy done."
 
