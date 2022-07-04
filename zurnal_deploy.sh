@@ -6,7 +6,7 @@ git pull
 
 yarn install || exit
 
-echo BUILD_DIR
+echo NEXT_BUILD_DIR
 
 yarn build
 
@@ -20,11 +20,11 @@ rm -rf .next
 if [ ! -d ".next" ]; then
   mkdir .next
 fi
-mv temp/* .next
+# mv temp/* .next
 
-BUILD_DIR=".next"
+NEXT_BUILD_DIR=".next"
 
-echo BUILD_DIR
+echo NEXT_BUILD_DIR
 
 # yarn reload
 
