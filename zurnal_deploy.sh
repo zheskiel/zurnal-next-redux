@@ -6,7 +6,8 @@ git pull
 
 yarn install || exit
 
-echo NEXT_BUILD_DIR
+echo "$BUILD_DIR"
+echo "$NEXT_BUILD_DIR"
 
 yarn build
 
@@ -24,7 +25,8 @@ fi
 
 NEXT_BUILD_DIR=".next"
 
-echo NEXT_BUILD_DIR
+echo "$BUILD_DIR"
+echo "$NEXT_BUILD_DIR"
 
 # yarn reload
 
