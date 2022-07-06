@@ -5,43 +5,21 @@ import { withRouter } from "next/router";
 import { FetchTagPosts, ResetTagPosts } from "../../redux/actions";
 import { getTagPosts } from "../../apis";
 
-import PostsList from "../../Sections/PostsList";
-import MetaHeader from "../../Components/MetaHeader/index";
+import ListItems from "../../Components/ListItems";
+import withListItems from "../../HOC/withListItems";
 
 import { capitalize, processSSR } from "../../utils/helpers";
 
-import ListItems from '../../HOC/ListItems';
-
 class Index extends Component {
   render() {
-    const { isRobot, clientData, ssrData, router } = this.props;
-    const { query } = router;
-    const { tag } = query;
+    const { query } = this.props;
+    const params = {
+      ...this.props,
+      description: `cari semua artikel dengan tagar #${query.tag} hanya di Zurnal.co`,
+      headerContent: `Tagar : ${capitalize(query.tag)}`,
+    };
 
-    let isLoading = !isRobot ? clientData.loading : false;
-
-    let dataSource = isRobot ? ssrData : clientData;
-    let dataItems = dataSource.items;
-    let dataPosts = dataItems.data;
-
-    return (
-      <>
-        <MetaHeader
-          title={tag}
-          description={`cari semua artikel dengan tagar #${tag} hanya di Zurnal.co`}
-          type="tag"
-        />
-
-        <h1>Tagar : {capitalize(tag)}</h1>
-
-        <PostsList
-          isLoading={isLoading}
-          items={dataItems}
-          posts={dataPosts}
-          handleFetch={this.handleFetch}
-        />
-      </>
-    );
+    return <ListItems {...params} />;
   }
 }
 
@@ -52,21 +30,21 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  FetchTagPosts: (params) => {
+  FetchPosts: (params) => {
     dispatch(FetchTagPosts(params));
   },
-  ResetTagPosts: () => {
+  ResetPosts: () => {
     dispatch(ResetTagPosts());
   },
 });
 
 export const getServerSideProps = async ({ req, query }) => {
   let userAgent = req.headers["user-agent"];
-  let parameter = { query, type: 'tag' };
+  let parameter = { query, type: "tag" };
 
   return processSSR(userAgent, getTagPosts, parameter);
 };
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ListItems(Index))
-);
+const enhance = connect(mapStateToProps, mapDispatchToProps);
+
+export default withRouter(enhance(withListItems(Index)));

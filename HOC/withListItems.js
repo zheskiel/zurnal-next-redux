@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default function ListItems(WrapperComponent) {
   return class extends Component {

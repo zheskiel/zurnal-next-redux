@@ -5,43 +5,21 @@ import { withRouter } from "next/router";
 import { FetchPosts, ResetPosts } from "../../redux/actions";
 import { getPosts } from "../../apis";
 
-import PostsList from "../../Sections/PostsList";
-import MetaHeader from "../../Components/MetaHeader/index";
+import ListItems from "../../Components/ListItems";
+import withListItems from "../../HOC/withListItems";
 
 import { capitalize, processSSR } from "../../utils/helpers";
 
-import ListItems from '../../HOC/ListItems';
-
 class Index extends Component {
   render() {
-    const { isRobot, clientData, ssrData, router } = this.props;
-    const { query } = router;
-    const { username } = query;
+    const { type, query } = this.props;
+    const params = {
+      ...this.props,
+      description: `cari semua artikel dari ${type} hanya di Zurnal.co`,
+      headerContent: `Semua artikel : ${capitalize(query.username)}`,
+    };
 
-    let isLoading = !isRobot ? clientData.loading : false;
-
-    let dataSource = isRobot ? ssrData : clientData;
-    let dataItems = dataSource.items;
-    let dataPosts = dataItems.data;
-
-    return (
-      <>
-        <MetaHeader
-          title={username}
-          description={`cari semua artikel dari ${username} hanya di Zurnal.co`}
-          type="user"
-        />
-
-        <h1>Semua artikel : {capitalize(username)}</h1>
-
-        <PostsList
-          isLoading={isLoading}
-          items={dataItems}
-          posts={dataPosts}
-          handleFetch={this.handleFetch}
-        />
-      </>
-    );
+    return <ListItems {...params} />;
   }
 }
 
@@ -67,6 +45,6 @@ export const getServerSideProps = ({ req, query }) => {
   return processSSR(userAgent, getPosts, parameter);
 };
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ListItems(Index))
-);
+const enhance = connect(mapStateToProps, mapDispatchToProps);
+
+export default withRouter(enhance(withListItems(Index)));

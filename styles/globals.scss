@@ -507,6 +507,13 @@ a {
 
       &.soc-nav-menu {
         li {
+          &.theme-switcher {
+            a {
+              &:hover {
+                cursor: pointer;
+              }
+            }
+          }
           a {
             width: 40px;
             height: 40px;

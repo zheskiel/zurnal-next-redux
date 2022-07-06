@@ -5,30 +5,14 @@ import { withRouter } from "next/router";
 import { FetchPosts, ResetPosts } from "../redux/actions";
 import { getPosts } from "../apis";
 
-import PostsList from "../Sections/PostsList";
-import MetaHeader from "../Components/MetaHeader";
+import withListItems from "../HOC/withListItems";
+import ListItems from "../Components/ListItems";
 
 import { processSSR } from "../utils/helpers";
 
-import ListItems from '../HOC/ListItems';
-
 class Index extends Component {
   render() {
-    const { isRobot, ssrData, clientData } = this.props;
-
-    let isLoading = !isRobot ? clientData.loading : false;
-
-    let dataSource = isRobot ? ssrData : clientData;
-    let dataItems = dataSource.items;
-    let dataPosts = dataItems.data;
-
-    return (
-      <>
-        <MetaHeader type="index" />
-
-        <PostsList isLoading={isLoading} items={dataItems} posts={dataPosts} />
-      </>
-    );
+    return <ListItems {...this.props} />;
   }
 }
 
@@ -51,11 +35,11 @@ const mapDispatchToProps = (dispatch) => {
 
 export const getServerSideProps = async ({ req, query }) => {
   let userAgent = req.headers["user-agent"];
-  let parameter = { query };
+  let parameter = { query, type: "index" };
 
   return processSSR(userAgent, getPosts, parameter);
 };
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ListItems(Index))
-);
+const enhance = connect(mapStateToProps, mapDispatchToProps);
+
+export default withRouter(enhance(withListItems(Index)));

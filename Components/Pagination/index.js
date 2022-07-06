@@ -6,7 +6,8 @@ import Styles from "../../styles/pagination.module.scss";
 
 class Pagination extends Component {
   render() {
-    const { totalCount, pageNumber, pageSize, targetUrl, handlePagination } = this.props;
+    const { totalCount, pageNumber, pageSize, targetUrl, handlePagination } =
+      this.props;
 
     const currentPage = pageNumber;
 
@@ -51,7 +52,7 @@ class Pagination extends Component {
         return (
           <li key={index}>
             <a
-              className={page == currentPage ? Styles.active : ''}
+              className={page == currentPage ? Styles.active : ""}
               onClick={(e) => handlePagination(e, page)}
               href={url}
             >
