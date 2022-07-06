@@ -10,46 +10,9 @@ import MetaHeader from "../../Components/MetaHeader/index";
 
 import { capitalize, processSSR } from "../../utils/helpers";
 
+import ListItems from '../../HOC/ListItems';
+
 class Index extends Component {
-  componentDidMount() {
-    const { isRobot, query } = this.props;
-
-    if (isRobot) return;
-
-    const { page } = query;
-
-    this.handleFetch(page);
-  }
-
-  componentDidUpdate(prevProps) {
-    const { isRobot } = this.props;
-
-    if (
-      !isRobot &&
-      (prevProps.query.page !== this.props.query.page ||
-        prevProps.query.tag) !== this.props.query.tag
-    ) {
-      const { query } = this.props;
-      const { page } = query;
-
-      this.handleFetch(page);
-    }
-  }
-
-  componentWillUnmount() {
-    const { isRobot } = this.props;
-
-    if (!isRobot) this.props.ResetTagPosts();
-  }
-
-  handleFetch = async (page = 1) => {
-    const { query, FetchTagPosts } = this.props;
-
-    let params = { ...query, page };
-
-    await FetchTagPosts(params);
-  };
-
   render() {
     const { isRobot, clientData, ssrData, router } = this.props;
     const { query } = router;
@@ -99,9 +62,11 @@ const mapDispatchToProps = (dispatch) => ({
 
 export const getServerSideProps = async ({ req, query }) => {
   let userAgent = req.headers["user-agent"];
-  let parameter = { query };
+  let parameter = { query, type: 'tag' };
 
   return processSSR(userAgent, getTagPosts, parameter);
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Index));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(ListItems(Index))
+);

@@ -10,43 +10,9 @@ import MetaHeader from "../Components/MetaHeader";
 
 import { processSSR } from "../utils/helpers";
 
+import ListItems from '../HOC/ListItems';
+
 class Index extends Component {
-  componentDidMount() {
-    const { isRobot, query } = this.props;
-
-    if (isRobot) return;
-
-    let { page } = query;
-
-    this.handleFetch(page);
-  }
-
-  componentDidUpdate(prevProps) {
-    const { isRobot } = this.props;
-
-    if (!isRobot && prevProps.query.page !== this.props.query.page) {
-      const { query } = this.props;
-
-      let { page } = query;
-
-      this.handleFetch(page);
-    }
-  }
-
-  componentWillUnmount() {
-    const { isRobot } = this.props;
-
-    if (!isRobot) this.props.ResetPosts();
-  }
-
-  handleFetch = async (page = 1) => {
-    const { query, FetchPosts } = this.props;
-
-    let params = { ...query, page };
-
-    await FetchPosts(params);
-  };
-
   render() {
     const { isRobot, ssrData, clientData } = this.props;
 
@@ -90,4 +56,6 @@ export const getServerSideProps = async ({ req, query }) => {
   return processSSR(userAgent, getPosts, parameter);
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Index));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(ListItems(Index))
+);
