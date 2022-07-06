@@ -34,13 +34,13 @@ class PostImageSkeleton extends Component {
       return (
         <ContentLoader
           speed={2}
-          style={{ width: "100%" }}
-          width={isMobile ? 80 : "100%"}
-          height={isMobile ? 80 : 210}
-          backgroundColor={isLight ? "#f3f3f3" : "#272727"}
-          foregroundColor={isLight ? "#ecebeb" : "#272727"}
+          style={{ width: '100%' }}
+          width={!isMobile ? '100%' : 80}
+          height={!isMobile ? 210 : 80}
+          backgroundColor={isLight ? '#f3f3f3' : '#272727'}
+          foregroundColor={isLight ? '#ecebeb' : '#272727'}
         >
-          {isMobile ? <MobileSkeleton /> : <DesktopSkeleton />}
+          {!isMobile ? <DesktopSkeleton /> : <MobileSkeleton />}
         </ContentLoader>
       );
     };
