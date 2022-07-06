@@ -918,7 +918,8 @@ a {
 }
 
 body {
-  &.light {
+  &.light,
+  .light {
     background-color: #f0f0f0;
     color: #444444;
 

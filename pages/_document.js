@@ -23,8 +23,6 @@ class Document extends NextDocument {
     let year = date.getFullYear();
     let isProd = isProduction();
 
-    const { theme } = this.props;
-
     return (
       <Html lang="en" translate="no">
         <Head>
@@ -149,7 +147,7 @@ class Document extends NextDocument {
             strategy="lazyOnload" />
         </Head>
 
-        <body className={theme}>
+        <body>
           <Main />
           <NextScript />
         </body>

@@ -9,6 +9,7 @@ import Menus from "../../Menus";
 class DesktopMenu extends Component {
   render() {
     const { theme } = this.props;
+
     const Img = theme == 'dark' ? `zurnal_logo_dark` : `zurnal_logo`;
     const LogoImage = `https://www.zurnal.co/images/${Img}.png`;
 
