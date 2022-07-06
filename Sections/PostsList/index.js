@@ -12,7 +12,7 @@ import { HOME_URL } from "../../utils/route-constants";
 import { buildUrl } from "../../utils/helpers";
 
 class PostsList extends Component {
-  handlePagination = (page) => {
+  getTargetUrl = () => {
     const { router } = this.props;
     const { query } = router;
 
@@ -29,6 +29,14 @@ class PostsList extends Component {
     } else {
       targetUrl = HOME_URL;
     }
+
+    return targetUrl;
+  }
+
+  handlePagination = (e, page) => {
+    e.preventDefault();
+
+    let targetUrl = this.getTargetUrl()
 
     Promise.resolve()
       .then(() => {
@@ -49,7 +57,8 @@ class PostsList extends Component {
       totalCount: items.total,
       pageNumber: items.current_page,
       pageSize: items.per_page,
-      handlePagination: this.handlePagination,
+      handlePagination: (e, page) => this.handlePagination(e, page),
+      targetUrl: this.getTargetUrl()
     };
 
     return (

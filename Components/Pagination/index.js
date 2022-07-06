@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 
-import { calculatePagination } from "../../utils/helpers";
+import { buildUrl, calculatePagination } from "../../utils/helpers";
 
 import Styles from "../../styles/pagination.module.scss";
 
 class Pagination extends Component {
   render() {
-    const { totalCount, pageNumber, pageSize, handlePagination } = this.props;
+    const { totalCount, pageNumber, pageSize, targetUrl, handlePagination } = this.props;
 
     const currentPage = pageNumber;
 
@@ -23,7 +23,7 @@ class Pagination extends Component {
           <a
             className={isEligible ? "active" : ""}
             disabled={isEligible ? "" : "disabled"}
-            onClick={() => (isEligible ? handlePagination(page) : null)}
+            onClick={(e) => (isEligible ? handlePagination(e, page) : null)}
           >
             {arrow === "prev" ? "<" : ">"}
           </a>
@@ -45,11 +45,15 @@ class Pagination extends Component {
 
     const PageBtn = () => {
       return pagination.map((page, index) => {
+        let params = { page };
+        let url = buildUrl(targetUrl, params);
+
         return (
           <li key={index}>
             <a
-              className={page == currentPage ? Styles.active : ""}
-              onClick={() => handlePagination(page)}
+              className={page == currentPage ? Styles.active : ''}
+              onClick={(e) => handlePagination(e, page)}
+              href={url}
             >
               {page}
             </a>

@@ -33,15 +33,25 @@ class Index extends Component {
     }, 2000);
   }
 
-  handlePagination = (page) => {
-    const { handleFetch, router } = this.props;
+  getPostUrl = () => {
+    const {router} = this.props;
     const { query } = router;
+
+    let postUrl = `/post/${query.postSlugId}/${query.postSlugTitle}`;
+
+    return postUrl;
+  }
+
+  handlePagination = (e, page) => {
+    e.preventDefault();
+
+    const { handleFetch } = this.props;
 
     Promise.resolve()
       .then(() => handleFetch(page))
       .then(() => {
         let params = { page };
-        let postUrl = `/post/${query.postSlugId}/${query.postSlugTitle}`;
+        let postUrl = this.getPostUrl();
         let url = buildUrl(postUrl, params);
 
         Router.push(url);
@@ -58,7 +68,8 @@ class Index extends Component {
       totalCount: post.post_paginate_total,
       pageNumber: post.post_paginate_current,
       pageSize: 1,
-      handlePagination: this.handlePagination,
+      handlePagination: (e, page) => this.handlePagination(e, page),
+      targetUrl: this.getPostUrl(),
     };
 
     const { isInView } = this.state;
