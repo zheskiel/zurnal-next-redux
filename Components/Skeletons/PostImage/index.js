@@ -34,7 +34,7 @@ class PostImageSkeleton extends Component {
       return (
         <ContentLoader
           speed={2}
-          style={{ width: '100%' }}
+          style={!isMobile ? '100%' : 80}
           width={!isMobile ? '100%' : 80}
           height={!isMobile ? 210 : 80}
           backgroundColor={isLight ? '#f3f3f3' : '#272727'}
