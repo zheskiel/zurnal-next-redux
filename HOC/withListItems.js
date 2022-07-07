@@ -27,12 +27,6 @@ export default function ListItems(WrapperComponent) {
       }
     }
 
-    componentWillUnmount() {
-      const { isRobot } = this.props;
-
-      if (!isRobot) this.props.ResetPosts();
-    }
-
     handleFetch = async (page = 1) => {
       const { query, FetchPosts } = this.props;
 
