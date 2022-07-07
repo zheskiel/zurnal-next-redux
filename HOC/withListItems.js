@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 export default function ListItems(WrapperComponent) {
-  return class extends Component {
+  return class extends PureComponent {
     componentDidMount() {
       const { isRobot, query } = this.props;
 
