@@ -4,7 +4,6 @@ import ImgDom from "../../Components/ImgDom";
 import PostImageSkeleton from "../Skeletons/PostImage";
 
 import { CategoryLink, PostLink } from "../../utils/link-generator";
-import { ImgError } from "../../utils/helpers";
 
 import watchIntersection from "../../libs/intersection";
 

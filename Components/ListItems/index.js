@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import MetaHeader from "../MetaHeader";
+import MetaHeader from "../../Components/MetaHeader";
 import PostsList from "../../Sections/PostsList";
 
 class ListItems extends Component {

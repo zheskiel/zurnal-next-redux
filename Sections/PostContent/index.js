@@ -2,12 +2,12 @@ import React, { Component, createRef } from "react";
 import { connect } from "react-redux";
 import Router, { withRouter } from "next/router";
 
+import ImgDom from "../../Components/ImgDom";
 import Pagination from "../../Components/Pagination";
 import PostContentSkeleton from "../../Components/Skeletons/PostContent";
 import PostFeaturedSkeleton from "../../Components/Skeletons/PostFeatured";
-import ImgDom from "../../Components/ImgDom";
 
-import { buildUrl, ImgError, lazyloadContentImages } from "../../utils/helpers";
+import { buildUrl, lazyloadContentImages } from "../../utils/helpers";
 import { CategoryLink, UserLink, TagLink } from "../../utils/link-generator";
 
 import watchIntersection from "../../libs/intersection";
