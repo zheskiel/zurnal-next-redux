@@ -29,9 +29,7 @@ class HeaderSection extends Component {
   };
 
   render() {
-    const { isMobile } = this.state;
-
-    return <>{isMobile ? <MobileMenu /> : <DesktopMenu />}</>;
+    return <>{this.state.isMobile ? <MobileMenu /> : <DesktopMenu />}</>;
   }
 }
 

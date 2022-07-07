@@ -5,6 +5,7 @@ import Router, { withRouter } from "next/router";
 import Pagination from "../../Components/Pagination";
 import PostContentSkeleton from "../../Components/Skeletons/PostContent";
 import PostFeaturedSkeleton from "../../Components/Skeletons/PostFeatured";
+import ImgDom from "../../Components/ImgDom";
 
 import { buildUrl, ImgError, lazyloadContentImages } from "../../utils/helpers";
 import { CategoryLink, UserLink, TagLink } from "../../utils/link-generator";
@@ -34,13 +35,13 @@ class Index extends Component {
   }
 
   getPostUrl = () => {
-    const {router} = this.props;
+    const { router } = this.props;
     const { query } = router;
 
     let postUrl = `/post/${query.postSlugId}/${query.postSlugTitle}`;
 
     return postUrl;
-  }
+  };
 
   handlePagination = (e, page) => {
     e.preventDefault();
@@ -73,19 +74,9 @@ class Index extends Component {
     };
 
     const { isInView } = this.state;
-    const { title, featured_image } = post;
 
     const ImgSkeleton = <PostFeaturedSkeleton />;
-    const ImgDomElem = (
-      <a>
-        <img
-          className="img-fluid"
-          onError={(e) => ImgError(e)}
-          src={featured_image}
-          alt={title}
-        />
-      </a>
-    );
+    const ImgDomElem = <ImgDom withLink="false" elem={post} />;
 
     const ImgElem = isInView ? ImgDomElem : ImgSkeleton;
 
@@ -153,4 +144,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, null)(Index));
+export default withRouter(connect(mapStateToProps)(Index));

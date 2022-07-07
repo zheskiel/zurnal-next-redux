@@ -285,8 +285,8 @@ export const capitalize = (str) => {
 
 export const lazyloadContentImages = () => {
   let target = document.getElementById("article"),
-    entryContent = target.getElementsByClassName("entry-content")[0],
-    images = entryContent.querySelectorAll("img");
+    entryContent = target?.getElementsByClassName("entry-content")[0],
+    images = entryContent?.querySelectorAll("img");
 
   images.forEach((img) => {
     let dataSrc = img.getAttribute("data-src"),

@@ -33,20 +33,20 @@ const FooterSection = () => {
 
           <div className="vce-wrap-right">
             <ul id="vce_footer_menu" className="bottom-nav-menu">
-              <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-7283">
-                <a href="#">About Us</a>
+              <li className="menu-item menu-item-type-post_type menu-item-object-page">
+                <a>About Us</a>
               </li>
-              <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-7294">
-                <a href="#">Term of Services</a>
+              <li className="menu-item menu-item-type-post_type menu-item-object-page">
+                <a>Term of Services</a>
               </li>
-              <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-7282">
-                <a href="#">Privacy Policy</a>
+              <li className="menu-item menu-item-type-post_type menu-item-object-page">
+                <a>Privacy Policy</a>
               </li>
-              <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-7290">
-                <a href="#">EULA</a>
+              <li className="menu-item menu-item-type-post_type menu-item-object-page">
+                <a>EULA</a>
               </li>
-              <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-7291">
-                <a href="#">Contact Us</a>
+              <li className="menu-item menu-item-type-post_type menu-item-object-page">
+                <a>Contact Us</a>
               </li>
             </ul>
           </div>

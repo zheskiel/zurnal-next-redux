@@ -9,6 +9,7 @@ import FooterCategoriesSection from "../../Sections/FooterCategories";
 class Layout extends Component {
   render() {
     const { theme } = this.props;
+
     return (
       <div className={theme}>
         <HeaderSection />
@@ -36,7 +37,6 @@ class Layout extends Component {
 const mapStateToProps = (state) => ({
   theme: state.theme.theme,
 });
-const mapDispatchToProps = () => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Layout);
+export default connect(mapStateToProps)(Layout);
 

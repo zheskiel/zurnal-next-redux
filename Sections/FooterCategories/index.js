@@ -4,67 +4,67 @@ const FooterCategories = () => {
       <div className="center-categories col-12">
         <ul className="list-tag list-unstyled">
           <li>
-            <a href="#">Art</a>
+            <a>Art</a>
           </li>
           <li>
-            <a href="#">Automotive</a>
+            <a>Automotive</a>
           </li>
           <li>
-            <a href="#">Business</a>
+            <a>Business</a>
           </li>
           <li>
-            <a href="#">Career</a>
+            <a>Career</a>
           </li>
           <li>
-            <a href="#">Cool</a>
+            <a>Cool</a>
           </li>
           <li>
-            <a href="#">Culinary</a>
+            <a>Culinary</a>
           </li>
           <li>
-            <a href="#">Entertainment</a>
+            <a>Entertainment</a>
           </li>
           <li>
-            <a href="#">Fauna</a>
+            <a>Fauna</a>
           </li>
           <li>
-            <a href="#">Featured</a>
+            <a>Featured</a>
           </li>
           <li>
-            <a href="#">Health</a>
+            <a>Health</a>
           </li>
           <li>
-            <a href="#">Humor</a>
+            <a>Humor</a>
           </li>
           <li>
-            <a href="#">Inspiration</a>
+            <a>Inspiration</a>
           </li>
           <li>
-            <a href="#">Knowledge</a>
+            <a>Knowledge</a>
           </li>
           <li>
-            <a href="#">Life</a>
+            <a>Life</a>
           </li>
           <li>
-            <a href="#">Literature</a>
+            <a>Literature</a>
           </li>
           <li>
-            <a href="#">News</a>
+            <a>News</a>
           </li>
           <li>
-            <a href="#">Others</a>
+            <a>Others</a>
           </li>
           <li>
-            <a href="#">Relationship</a>
+            <a>Relationship</a>
           </li>
           <li>
-            <a href="#">Sport</a>
+            <a>Sport</a>
           </li>
           <li>
-            <a href="#">Tech</a>
+            <a>Tech</a>
           </li>
           <li>
-            <a href="#">Travel</a>
+            <a>Travel</a>
           </li>
         </ul>
       </div>

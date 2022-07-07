@@ -7,29 +7,8 @@ const { SITE_URL: siteUrl } = publicRuntimeConfig;
 function MetaHeader({ title = null, description = null, type = null }) {
   const ogImage = `${siteUrl}/img/idpelago-og.jpg`;
 
-  let normalizedUrl;
-
-  switch (type) {
-    case "category":
-      normalizedUrl = `${siteUrl}/category/${title}`;
-      break;
-
-    case "user":
-      normalizedUrl = `${siteUrl}/user/${title}`;
-      break;
-
-    case "tag":
-      normalizedUrl = `${siteUrl}/tag/${title}`;
-      break;
-
-    case "post":
-      normalizedUrl = `${siteUrl}/post/${title}`;
-      break;
-
-    default:
-      normalizedUrl = `${siteUrl}/`;
-      break;
-  }
+  let normalizedUrl =
+    type !== "index" ? `${siteUrl}/${type}/${title}` : `${siteUrl}/`;
 
   const normalizedTitle =
     title !== null

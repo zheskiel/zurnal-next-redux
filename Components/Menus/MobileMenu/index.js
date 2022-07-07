@@ -31,7 +31,7 @@ class MobileMenu extends Component {
 
   render() {
     const { theme } = this.props;
-    const Img = theme == 'dark' ? `zurnal_logo_dark` : `zurnal_logo`;
+    const Img = theme == "dark" ? `zurnal_logo_dark` : `zurnal_logo`;
     const LogoImage = `https://www.zurnal.co/images/${Img}.png`;
 
     return (
@@ -70,8 +70,5 @@ class MobileMenu extends Component {
 const mapStateToProps = (state) => ({
   theme: state.theme.theme,
 });
-const mapDispatchToProps = (dispatch) => ({});
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(MobileMenu)
-);
+export default withRouter(connect(mapStateToProps)(MobileMenu));

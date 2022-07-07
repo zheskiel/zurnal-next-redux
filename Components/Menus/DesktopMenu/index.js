@@ -95,6 +95,5 @@ class DesktopMenu extends Component {
 const mapStateToProps = (state) => ({
   theme: state.theme.theme,
 });
-const mapDispatchToProps = (dispatch) => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(DesktopMenu);
+export default connect(mapStateToProps)(DesktopMenu);

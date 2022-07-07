@@ -16,17 +16,18 @@ class ListItems extends Component {
     } = this.props;
 
     const { query } = router;
-    const _type = query[type];
+    const title = query[type];
 
-    let isLoading = !isRobot ? clientData.loading : false;
+    let isLoading = !isRobot ? clientData.loading : false,
+      dataSource = isRobot ? ssrData : clientData,
+      dataItems = dataSource.items,
+      dataPosts = dataItems.data;
 
-    let dataSource = isRobot ? ssrData : clientData;
-    let dataItems = dataSource.items;
-    let dataPosts = dataItems.data;
+    let params = { title, type, description };
 
     return (
       <>
-        <MetaHeader title={_type} description={description} type={_type} />
+        <MetaHeader {...params} />
 
         {headerContent && <h1>{headerContent}</h1>}
 
