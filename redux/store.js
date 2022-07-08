@@ -27,7 +27,7 @@ const makeStore = ({ isServer }) => {
 
     const persistConfig = {
       key: "nextjs",
-      whitelist: ["theme", "posts"],
+      whitelist: ["theme"],
       storage, // if needed, use a safer storage
     };
 
