@@ -1,6 +1,18 @@
 @import "variables";
 @import "mixins";
 
+html,
+body,
+#__next,
+.dark,
+.light {
+  min-height: 100vh;
+}
+
+.main-container {
+  min-height: 74vh;
+}
+
 .fb_iframe_widget_fluid_desktop iframe {
   width: 100% !important;
 }
