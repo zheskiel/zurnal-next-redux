@@ -5,7 +5,7 @@ const { publicRuntimeConfig } = getConfig();
 const { SITE_URL: siteUrl } = publicRuntimeConfig;
 
 function MetaHeader({ title = null, description = null, type = null }) {
-  const ogImage = `${siteUrl}/img/idpelago-og.jpg`;
+  const ogImage = `${siteUrl}/images/og.jpg`;
 
   let normalizedUrl =
     type !== "index" ? `${siteUrl}/${type}/${title}` : `${siteUrl}/`;
