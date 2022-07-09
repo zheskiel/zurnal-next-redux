@@ -61,7 +61,6 @@ class Pagination extends Component {
           <li key={index}>
             <a
               className={page == currentPage ? Styles.active : ""}
-              disabled={isEligible ? "" : "disabled"}
               onClick={(e) =>
                 isEligible ? handlePagination(e, page) : e.preventDefault()
               }
