@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { buildUrl, calculatePagination } from "../../utils/helpers";
+import { buildUrl, calculatePagination, isInt } from "../../utils/helpers";
 
 import Styles from "../../styles/pagination.module.scss";
 
@@ -19,12 +19,18 @@ class Pagination extends Component {
     const lastPage = pagination.length;
 
     const processBtn = (arrow, isEligible, page) => {
+      let params = { page };
+      let url = buildUrl(targetUrl, params);
+
       return (
         <li>
           <a
             className={isEligible ? "active" : ""}
             disabled={isEligible ? "" : "disabled"}
-            onClick={(e) => (isEligible ? handlePagination(e, page) : null)}
+            onClick={(e) =>
+              isEligible ? handlePagination(e, page) : e.preventDefault()
+            }
+            href={isEligible ? url : null}
           >
             {arrow === "prev" ? "<" : ">"}
           </a>
@@ -49,12 +55,17 @@ class Pagination extends Component {
         let params = { page };
         let url = buildUrl(targetUrl, params);
 
+        let isEligible = isInt(page);
+
         return (
           <li key={index}>
             <a
               className={page == currentPage ? Styles.active : ""}
-              onClick={(e) => handlePagination(e, page)}
-              href={url}
+              disabled={isEligible ? "" : "disabled"}
+              onClick={(e) =>
+                isEligible ? handlePagination(e, page) : e.preventDefault()
+              }
+              href={isEligible ? url : null}
             >
               {page}
             </a>

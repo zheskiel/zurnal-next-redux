@@ -42,6 +42,14 @@ export const isNumberKey = (evt) => {
   return !(charCode > 31 && (charCode < 48 || charCode > 57));
 };
 
+export const isInt = (value) => {
+  return (
+    !isNaN(value) &&
+    parseInt(Number(value)) == value &&
+    !isNaN(parseInt(value, 10))
+  );
+};
+
 export const isProduction = () => {
   let env = APP_ENV;
 
@@ -288,27 +296,28 @@ export const lazyloadContentImages = () => {
     entryContent = target?.getElementsByClassName("entry-content")[0],
     images = entryContent?.querySelectorAll("img");
 
-  images.forEach((img) => {
-    let dataSrc = img.getAttribute("data-src"),
-      parent = img.parentNode,
-      child;
+  images &&
+    images.forEach((img) => {
+      let dataSrc = img.getAttribute("data-src"),
+        parent = img.parentNode,
+        child;
 
-    if (dataSrc !== null) {
-      watchIntersection(parent, () => {
+      if (dataSrc !== null) {
+        watchIntersection(parent, () => {
+          child = parent.querySelector("img");
+
+          child.removeAttribute("data-src");
+          child.setAttribute("src", dataSrc);
+
+          child.classList.add("show");
+        });
+      } else {
         child = parent.querySelector("img");
-
-        child.removeAttribute("data-src");
-        child.setAttribute("src", dataSrc);
-
         child.classList.add("show");
-      });
-    } else {
-      child = parent.querySelector("img");
-      child.classList.add("show");
 
-      return;
-    }
-  });
+        return;
+      }
+    });
 };
 
 let success = false;
