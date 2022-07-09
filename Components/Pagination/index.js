@@ -26,7 +26,7 @@ class Pagination extends Component {
         <li>
           <a
             className={isEligible ? "active" : ""}
-            disabled={isEligible ? "" : "disabled"}
+            disabled={isEligible}
             onClick={(e) =>
               isEligible ? handlePagination(e, page) : e.preventDefault()
             }
@@ -61,6 +61,7 @@ class Pagination extends Component {
           <li key={index}>
             <a
               className={page == currentPage ? Styles.active : ""}
+              disabled={isEligible}
               onClick={(e) =>
                 isEligible ? handlePagination(e, page) : e.preventDefault()
               }
