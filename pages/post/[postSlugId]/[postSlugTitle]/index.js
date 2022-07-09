@@ -71,6 +71,12 @@ class Index extends Component {
     let dataSource = isRobot ? ssrData : clientData;
     let dataPost = dataSource.items;
 
+    if (!dataPost) {
+      document.location.href = "/";
+
+      return;
+    }
+
     return (
       <>
         <PostMetaHeader elem={dataPost} />
