@@ -31,20 +31,19 @@ class PostsList extends Component {
     }
 
     return targetUrl;
-  }
+  };
 
   handlePagination = (e, page) => {
     e.preventDefault();
 
-    let targetUrl = this.getTargetUrl()
+    let targetUrl = this.getTargetUrl();
 
-    Promise.resolve()
-      .then(() => {
-        let params = { page },
-          url = buildUrl(targetUrl, params);
+    Promise.resolve().then(() => {
+      let params = { page },
+        url = buildUrl(targetUrl, params);
 
-        Router.push(url);
-      });
+      Router.push(url);
+    });
   };
 
   render() {
@@ -58,7 +57,7 @@ class PostsList extends Component {
       pageNumber: items.current_page,
       pageSize: items.per_page,
       handlePagination: (e, page) => this.handlePagination(e, page),
-      targetUrl: this.getTargetUrl()
+      targetUrl: this.getTargetUrl(),
     };
 
     return (
@@ -70,9 +69,11 @@ class PostsList extends Component {
             ))}
         </div>
 
-        <div className="pagination-wrapper d-flex justify-content-center">
-          <Pagination {...newProps} />
-        </div>
+        {items && items.last_page > 1 && (
+          <div className="pagination-wrapper d-flex justify-content-center">
+            <Pagination {...newProps} />
+          </div>
+        )}
       </div>
     );
   }
