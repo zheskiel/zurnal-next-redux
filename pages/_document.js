@@ -10,9 +10,7 @@ class Document extends NextDocument {
     let theme = "light";
 
     if (ctx.req && ctx.req.headers.cookie) {
-      let req = ctx.req;
-
-      theme = processThemeCookie(req);
+      theme = processThemeCookie(ctx.req);
     }
 
     return { ...initialProps, theme };
@@ -144,7 +142,8 @@ class Document extends NextDocument {
 
           <Script
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6983942794145260"
-            strategy="lazyOnload" />
+            strategy="lazyOnload"
+          />
         </Head>
 
         <body>

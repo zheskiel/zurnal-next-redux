@@ -32,6 +32,4 @@ const mapStateToProps = (state) => ({
   theme: state.theme.theme,
 });
 
-const mapDispatchToProps = (dispatch) => ({});
-
-export default connect(mapStateToProps, mapDispatchToProps)(PostComment);
+export default connect(mapStateToProps)(PostComment);

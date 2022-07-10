@@ -34,11 +34,11 @@ class PostImageSkeleton extends Component {
       return (
         <ContentLoader
           speed={2}
-          style={{ width: !isMobile ? '100%' : 80 }}
-          width={!isMobile ? '100%' : 80}
+          style={{ width: !isMobile ? "100%" : 80 }}
+          width={!isMobile ? "100%" : 80}
           height={!isMobile ? 210 : 80}
-          backgroundColor={isLight ? '#f3f3f3' : '#272727'}
-          foregroundColor={isLight ? '#ecebeb' : '#272727'}
+          backgroundColor={isLight ? "#f3f3f3" : "#272727"}
+          foregroundColor={isLight ? "#ecebeb" : "#272727"}
         >
           {!isMobile ? <DesktopSkeleton /> : <MobileSkeleton />}
         </ContentLoader>
@@ -52,6 +52,5 @@ class PostImageSkeleton extends Component {
 const mapStateToProps = (state) => ({
   theme: state.theme.theme,
 });
-const mapDispatchToProps = (dispatch) => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostImageSkeleton);
+export default connect(mapStateToProps)(PostImageSkeleton);

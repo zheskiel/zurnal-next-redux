@@ -71,9 +71,5 @@ class PostContentSkeleton extends Component {
 const mapStateToProps = (state) => ({
   theme: state.theme.theme,
 });
-const mapDispatchToProps = (dispatch) => ({});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PostContentSkeleton);
+export default connect(mapStateToProps)(PostContentSkeleton);

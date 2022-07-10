@@ -52,9 +52,5 @@ class PostFeaturedImageSkeleton extends Component {
 const mapStateToProps = (state) => ({
   theme: state.theme.theme,
 });
-const mapDispatchToProps = (dispatch) => ({});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PostFeaturedImageSkeleton);
+export default connect(mapStateToProps)(PostFeaturedImageSkeleton);

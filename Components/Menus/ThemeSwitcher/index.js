@@ -48,6 +48,7 @@ class ThemeSwitcher extends Component {
 const mapStateToProps = (state) => ({
   theme: state.theme.theme,
 });
+
 const mapDispatchToProps = (dispatch) => ({
   ToggleTheme: () => {
     dispatch(ToggleTheme());

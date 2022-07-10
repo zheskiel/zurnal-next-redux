@@ -21,10 +21,10 @@ class PostListSkeleton extends Component {
     const DesktopSkeleton = () => {
       return (
         <>
-          <rect x='0' y='0' rx='3' ry='3' width='49%' height='300' />
-          <rect x='52%' y='0' rx='3' ry='3' width='49%' height='300' />
-          <rect x='0' y='320' rx='3' ry='3' width='49%' height='300' />
-          <rect x='52%' y='320' rx='3' ry='3' width='49%' height='300' />
+          <rect x="0" y="0" rx="3" ry="3" width="49%" height="300" />
+          <rect x="52%" y="0" rx="3" ry="3" width="49%" height="300" />
+          <rect x="0" y="320" rx="3" ry="3" width="49%" height="300" />
+          <rect x="52%" y="320" rx="3" ry="3" width="49%" height="300" />
         </>
       );
     };
@@ -73,6 +73,5 @@ class PostListSkeleton extends Component {
 const mapStateToProps = (state) => ({
   theme: state.theme.theme,
 });
-const mapDispatchToProps = (dispatch) => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostListSkeleton);
+export default connect(mapStateToProps)(PostListSkeleton);
