@@ -18,7 +18,7 @@ class MobileMenu extends Component {
   removeStuckClass = () => {
     const ref = document.querySelector(".sidebar-background");
 
-    if (ref.classList.contains("is_stuck")) {
+    if (ref && ref.classList.contains("is_stuck")) {
       ref.classList.remove("is_stuck");
     }
   };

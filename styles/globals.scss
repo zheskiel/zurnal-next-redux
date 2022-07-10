@@ -70,7 +70,7 @@ a {
   }
 }
 #main-wrapper {
-  @include for-lg-mobile {
+  @include for-mobile {
     padding: 70px 0px 0px 0px;
   }
 
@@ -145,12 +145,22 @@ a {
           }
         }
 
+        .entry-content {
+          h2 {
+            margin: 25px 0px 15px 0px;
+          }
+        }
+
         .entry-content,
         .tags-area,
         .author-area,
         .pagination-area,
         .share-items-wrapper,
         .comment-wrapper {
+          font-family: "Roboto", sans-serif;
+          font-size: 18px;
+          line-height: 180%;
+
           @include for-mobile {
             width: 100%;
             margin: 15px auto;
@@ -243,7 +253,7 @@ a {
 
         article {
           @include for-mobile {
-            width: 48%;
+            width: 100%;
           }
           @include for-lg-mobile {
             width: 100%;
@@ -883,9 +893,9 @@ a {
   }
 }
 .post-tags > span {
-  background: #1c1c1c;
-  color: $white;
-  font-size: 12px;
+  background: #eeeeee;
+  color: $black;
+  font-size: 18px;
   padding: 3px 6px;
   margin-right: 5px;
 }
