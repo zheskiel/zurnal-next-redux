@@ -38,16 +38,15 @@ class Pagination extends Component {
       );
     };
 
-    const PrevBtn = () => {
-      const isEligible = currentPage > firstPage;
+    const ActionBtn = (type) => {
+      let isNext = type == "next";
+      let isEligible = isNext
+        ? currentPage < lastPage
+        : currentPage > firstPage;
 
-      return processBtn("prev", isEligible, pageNumber - 1);
-    };
+      let page = isNext ? pageNumber + 1 : pageNumber - 1;
 
-    const NextBtn = () => {
-      const isEligible = currentPage < lastPage;
-
-      return processBtn("next", isEligible, pageNumber + 1);
+      return processBtn(type, isEligible, page);
     };
 
     const PageBtn = () => {
@@ -56,6 +55,7 @@ class Pagination extends Component {
         let url = buildUrl(targetUrl, params);
 
         let isEligible = isInt(page);
+        let isClickable = isEligible && page !== currentPage;
 
         return (
           <li key={index}>
@@ -63,7 +63,7 @@ class Pagination extends Component {
               className={page == currentPage ? Styles.active : ""}
               disabled={!isEligible}
               onClick={(e) =>
-                isEligible ? handlePagination(e, page) : e.preventDefault()
+                isClickable ? handlePagination(e, page) : e.preventDefault()
               }
               href={isEligible ? url : null}
             >
@@ -77,9 +77,11 @@ class Pagination extends Component {
     return (
       <div className={Styles.PaginationSection}>
         <ul>
-          <PrevBtn />
+          {ActionBtn("prev")}
+
           <PageBtn />
-          <NextBtn />
+
+          {ActionBtn("next")}
         </ul>
       </div>
     );
