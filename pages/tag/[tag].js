@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "next/router";
+import Router, { withRouter } from "next/router";
 
 import { FetchTagPosts, ResetTagPosts } from "../../redux/actions";
 import { getTagPosts } from "../../apis";
@@ -8,9 +8,17 @@ import { getTagPosts } from "../../apis";
 import ListItems from "../../Components/ListItems";
 import withListItems from "../../HOC/withListItems";
 
-import { capitalize, processSSR } from "../../utils/helpers";
+import { capitalize, isNull, processSSR } from "../../utils/helpers";
 
 class Index extends Component {
+  componentDidMount() {
+    const { query } = this.props;
+
+    if (isNull(query, "tag")) {
+      Router.push(`/`);
+    }
+  }
+
   render() {
     const { query } = this.props;
     const params = {

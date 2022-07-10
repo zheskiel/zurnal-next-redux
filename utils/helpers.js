@@ -36,6 +36,10 @@ export const shouldTrack = (currentIp) => {
   return shouldTrack;
 };
 
+export const isNull = (query, type) => {
+  return query[type] == "null" || query[type] == null || query[type] == "";
+};
+
 export const isNumberKey = (evt) => {
   var charCode = evt.which ? evt.which : evt.keyCode;
 
