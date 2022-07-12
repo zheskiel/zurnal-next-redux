@@ -53,7 +53,7 @@ class PostContentSkeleton extends Component {
           width={"100%"}
           height={isMobile ? 390 : 600}
           backgroundColor={isLight ? "#f3f3f3" : "#272727"}
-          foregroundColor={isLight ? "#ecebeb" : "#272727"}
+          foregroundColor={isLight ? "#ecebeb" : "#3b3b3b"}
         >
           {isMobile ? <MobileSkeleton /> : <DesktopSkeleton />}
         </ContentLoader>

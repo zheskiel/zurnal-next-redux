@@ -38,7 +38,7 @@ class PostFeaturedImageSkeleton extends Component {
           width={"100%"}
           height={isMobile ? 208 : 350}
           backgroundColor={isLight ? "#f3f3f3" : "#272727"}
-          foregroundColor={isLight ? "#ecebeb" : "#272727"}
+          foregroundColor={isLight ? "#ecebeb" : "#3b3b3b"}
         >
           {isMobile ? <MobileSkeleton /> : <DesktopSkeleton />}
         </ContentLoader>
