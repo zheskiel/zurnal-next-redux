@@ -113,7 +113,9 @@ class Index extends Component {
         <div className="pagination-area">
           {post.post_paginate_total > 1 && (
             <>
-              <h4>Halaman Berikutnya :</h4>
+              <h4>
+                Halaman {post.post_paginate_current == 1 ? "Berikutnya" : ""}:
+              </h4>
 
               <Pagination {...newProps} />
             </>
