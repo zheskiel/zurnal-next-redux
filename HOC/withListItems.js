@@ -28,6 +28,7 @@ export default function ListItems(WrapperComponent) {
       console.log("fetch & track");
 
       Promise.resolve()
+        .then(() => console.log(">>>>>>>>>>>>>>>>>"))
         .then(() => {
           const { query } = this.props;
           const { page = 1 } = query;
@@ -45,7 +46,7 @@ export default function ListItems(WrapperComponent) {
 
           gtag.pageview(url);
         })
-        .then(() => console.log("=================="));
+        .then(() => console.log("<<<<<<<<<<<<<<<<<"));
     }
 
     handleFetch = async (page = 1) => {

@@ -34,13 +34,16 @@ export const sentPageView = (url) => {
 
 // // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview = (url) => {
+  console.log("*******************");
+  console.log("log : ", url);
+  console.log("isProd : ", isProd);
+  console.log("*******************");
+
   if (!isProd) return;
 
-  if (typeof window.gtag !== "undefined") {
-    window.gtag("config", GA_TRACKING, {
-      page_path: url,
-    });
-  }
+  window.gtag("config", GA_TRACKING, {
+    page_path: url,
+  });
 };
 
 // // https://developers.google.com/analytics/devguides/collection/gtagjs/events
