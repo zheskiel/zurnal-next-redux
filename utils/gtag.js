@@ -41,11 +41,11 @@ export const pageview = (url) => {
 
   if (!isProd) return;
 
-  setTimeout(() => {
+  if (typeof window.gtag !== "undefined") {
     window.gtag("config", GA_TRACKING, {
       page_path: url,
     });
-  }, 1000);
+  }
 };
 
 // // https://developers.google.com/analytics/devguides/collection/gtagjs/events
