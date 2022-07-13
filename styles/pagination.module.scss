@@ -37,6 +37,10 @@
           padding: 5px 12px;
         }
 
+        @include for-xs-mobile {
+          padding: 5px 11px;
+        }
+
         &:hover {
           cursor: pointer;
         }
