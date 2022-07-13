@@ -148,6 +148,10 @@ a {
         .entry-content {
           h2 {
             margin: 25px 0px 15px 0px;
+
+            @include for-mobile {
+              margin: 15px 0px;
+            }
           }
         }
 
@@ -174,6 +178,27 @@ a {
           @include for-md-desktop {
             width: 700px;
             margin: 30px auto;
+          }
+        }
+
+        .tags-area,
+        .entry-content,
+        .pagination-area {
+          @include for-mobile {
+            padding: 0px;
+          }
+        }
+
+        .author-area {
+          @include for-mobile {
+            margin-bottom: 0px;
+            padding: 0px;
+          }
+        }
+
+        .comment-wrapper {
+          @include for-mobile {
+            margin-bottom: 0px;
           }
         }
 
@@ -334,7 +359,6 @@ a {
     }
 
     @include for-mobile {
-      margin-top: 25px;
       width: 100%;
     }
 
@@ -677,6 +701,11 @@ a {
               display: inline-block;
               text-align: left;
               padding: 0px 15px;
+
+              @include for-xs-mobile {
+                padding: 0px 0px 0px 15px !important;
+              }
+
               a {
                 font-weight: 700;
                 color: #eaab00;
@@ -708,6 +737,10 @@ a {
         .entry-header {
           text-align: center;
 
+          @include for-mobile {
+            text-align: left;
+          }
+
           .meta-category {
             a,
             a:hover {
@@ -721,7 +754,13 @@ a {
             font-size: 2rem;
 
             @include for-mobile {
-              font-size: 1.5rem;
+              font-size: 1.2rem;
+              font-weight: bold;
+            }
+          }
+          .entry-date {
+            @include for-mobile {
+              margin-bottom: 10px;
             }
           }
         }
@@ -1070,6 +1109,16 @@ body {
           }
         }
       }
+    }
+  }
+}
+
+#copyRightFooter {
+  br {
+    display: none;
+
+    @include for-mobile {
+      display: block;
     }
   }
 }

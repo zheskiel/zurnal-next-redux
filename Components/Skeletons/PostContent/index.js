@@ -60,8 +60,10 @@ class PostContentSkeleton extends Component {
       );
     };
 
+    const { isMobile } = this.state;
+
     return (
-      <div className="col-lg-12 col-md-12" style={{ padding: "0px 25px" }}>
+      <div style={{ padding: isMobile ? "0px 10px" : "0px 25px" }}>
         <Skeleton />
       </div>
     );

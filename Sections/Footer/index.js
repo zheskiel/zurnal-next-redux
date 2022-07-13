@@ -26,6 +26,7 @@ const FooterSection = () => {
               <span id="copyRightFooter">
                 {FooterTextFirst}
                 <FooterLink />
+                <br />
                 {FooterTextSecond}
               </span>
             </p>

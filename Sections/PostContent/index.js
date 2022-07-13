@@ -124,7 +124,6 @@ class Index extends Component {
 
         <div className="tags-area clearfix">
           <div className="post-tags">
-            <span>Tagar:</span>
             {post.tags.map((tag, index) => {
               return <TagLink key={index} elem={tag}>{`#${tag.name}`}</TagLink>;
             })}
