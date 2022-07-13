@@ -4,6 +4,7 @@ import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
 
 export const { GA_TRACKING } = publicRuntimeConfig;
+
 // export const GTM_TRACKING_ID = process.env.PUBLIC_GTM_ID;
 
 const isProd = isProduction();

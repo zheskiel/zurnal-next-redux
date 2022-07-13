@@ -1,15 +1,15 @@
 import React, { PureComponent } from "react";
 
+import * as gtag from "../utils/gtag";
+
 export default function ListItems(WrapperComponent) {
   return class extends PureComponent {
     componentDidMount() {
-      const { isRobot, query } = this.props;
+      const { isRobot } = this.props;
 
       if (isRobot) return;
 
-      let { page } = query;
-
-      this.handleFetch(page);
+      this.fetchAndTrack();
     }
 
     componentDidUpdate(prevProps) {
@@ -20,11 +20,32 @@ export default function ListItems(WrapperComponent) {
         (prevProps.query.page !== this.props.query.page ||
           prevProps.query[type] !== this.props.query[type])
       ) {
-        const { query } = this.props;
-        const { page } = query;
-
-        this.handleFetch(page);
+        this.fetchAndTrack();
       }
+    }
+
+    fetchAndTrack() {
+      console.log("fetch & track");
+
+      Promise.resolve()
+        .then(() => {
+          const { query } = this.props;
+          const { page = 1 } = query;
+
+          console.log("fetch ", page);
+
+          this.handleFetch(page);
+        })
+        .then(() => {
+          // Only track when normal user, not bot
+          const { router } = this.props;
+          const { asPath: url } = router;
+
+          console.log("track  ", url);
+
+          gtag.pageview(url);
+        })
+        .then(() => console.log("=================="));
     }
 
     handleFetch = async (page = 1) => {
