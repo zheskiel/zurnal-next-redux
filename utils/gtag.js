@@ -45,7 +45,7 @@ export const pageview = (url) => {
     window.gtag("config", GA_TRACKING, {
       page_path: url,
     });
-  }, 500);
+  }, 1000);
 };
 
 // // https://developers.google.com/analytics/devguides/collection/gtagjs/events
