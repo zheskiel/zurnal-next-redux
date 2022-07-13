@@ -90,4 +90,12 @@ const App = ({ Component, pageProps }) => {
   return renderComponent(component);
 };
 
+App.getInitialProps = async ({ req }) => {
+  const ip = req?.headers["x-real-ip"] || req?.connection.remoteAddress;
+
+  console.log("ip : ", ip);
+
+  return { ip };
+};
+
 export default wrapper.withRedux(App);
