@@ -65,8 +65,8 @@ const App = ({ Component, pageProps }) => {
           __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
-            gtag('config', ${GA_TRACKING}, {
+            gtag("js", new Date());
+            gtag("config", "${GA_TRACKING}", {
                 page_path: window.location.pathname,
             });
            `,
