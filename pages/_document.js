@@ -1,7 +1,5 @@
 import NextDocument, { Html, Head, Main, NextScript } from "next/document";
-import { isProduction, processThemeCookie } from "../utils/helpers";
-
-import { GA_TRACKING } from "../utils/gtag";
+import { processThemeCookie } from "../utils/helpers";
 
 import Script from "next/script";
 
@@ -21,7 +19,6 @@ class Document extends NextDocument {
   render() {
     let date = new Date();
     let year = date.getFullYear();
-    let isProd = isProduction();
 
     return (
       <Html lang="en" translate="no">
@@ -146,32 +143,6 @@ class Document extends NextDocument {
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6983942794145260"
             strategy="lazyOnload"
           />
-
-          {isProd && (
-            <>
-              <Script
-                strategy="afterInteractive"
-                src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING}`}
-              />
-
-              <Script
-                strategy="afterInteractive"
-                dangerouslySetInnerHTML={{
-                  __html: `
-                    window.dataLayer = window.dataLayer || [];
-
-                    function gtag() { dataLayer.push(arguments); }
-
-                    gtag('js', new Date());
-
-                    gtag('config', ${GA_TRACKING}, {
-                        page_path: window.location.pathname,
-                    });
-                `,
-                }}
-              />
-            </>
-          )}
         </Head>
 
         <body>

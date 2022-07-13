@@ -36,18 +36,22 @@ export const sentPageView = (url) => {
 export const pageview = (url) => {
   if (!isProd) return;
 
-  window.gtag("config", GA_TRACKING, {
-    page_path: url,
-  });
+  if (typeof window.gtag !== "undefined") {
+    window.gtag("config", GA_TRACKING, {
+      page_path: url,
+    });
+  }
 };
 
 // // https://developers.google.com/analytics/devguides/collection/gtagjs/events
 export const event = ({ action, category, label, value }) => {
   if (!isProd) return;
 
-  window.gtag("event", action, {
-    event_category: category,
-    event_label: label,
-    value: value,
-  });
+  if (typeof window.gtag !== "undefined") {
+    window.gtag("event", action, {
+      event_category: category,
+      event_label: label,
+      value: value,
+    });
+  }
 };
