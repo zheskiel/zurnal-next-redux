@@ -15,8 +15,6 @@ import {
   loadScript,
 } from "../../../../utils/helpers";
 
-import * as gtag from "../../../../utils/gtag";
-
 import PostShare from "../../../../Components/PostShare";
 import PostComment from "../../../../Components/PostComment";
 import PostMetaHeader from "../../../../Components/MetaHeader/post";
@@ -58,27 +56,13 @@ class Index extends Component {
     }
   };
 
-  handleTrack = () => {
-    const { router } = this.props;
-    const { asPath: url } = router;
-
-    gtag.pageview(url);
-  };
-
   handleFetch = async (page = 1) => {
     const { router, FetchPost } = this.props;
     const { query } = router;
 
     let params = { ...query, page };
 
-    Promise.resolve()
-      .then(() => FetchPost(params))
-      .then(() => {
-        return new Promise((resolve) => {
-          return setTimeout(() => resolve(), 1000);
-        });
-      })
-      .then(this.handleTrack(page));
+    Promise.resolve().then(() => FetchPost(params));
   };
 
   render() {

@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import Script from "next/script";
-
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { wrapper } from "../redux/store";
 import { useStore } from "react-redux";
@@ -50,6 +50,15 @@ const App = ({ Component, pageProps }) => {
       scripts.map((script) => loadScript(false, script));
     }, 1000);
   }, []);
+
+  const router = useRouter();
+  const { asPath } = router;
+
+  useEffect(() => {
+    gtag("config", "${GA_TRACKING_ID}", {
+      page_path: window.location.pathname,
+    });
+  }, [asPath]);
 
   const isProd = isProduction();
   const TrackScripts = (

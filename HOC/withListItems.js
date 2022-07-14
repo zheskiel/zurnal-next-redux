@@ -1,7 +1,5 @@
 import React, { PureComponent } from "react";
 
-import * as gtag from "../utils/gtag";
-
 export default function ListItems(WrapperComponent) {
   return class extends PureComponent {
     componentDidMount() {
@@ -20,38 +18,8 @@ export default function ListItems(WrapperComponent) {
         (prevProps.query.page !== this.props.query.page ||
           prevProps.query[type] !== this.props.query[type])
       ) {
-        this.fetchAndTrack();
+        this.handleFetch();
       }
-    }
-
-    fetchAndTrack() {
-      console.log("fetch & track");
-
-      Promise.resolve()
-        .then(() => console.log(">>>>>>>>>>>>>>>>>"))
-        .then(() => {
-          const { query } = this.props;
-          const { page = 1 } = query;
-
-          console.log("fetch ", page);
-
-          this.handleFetch(page);
-        })
-        .then(() => {
-          return new Promise((resolve) => {
-            return setTimeout(() => resolve(), 1000);
-          });
-        })
-        .then(() => {
-          // Only track when normal user, not bot
-          const { router } = this.props;
-          const { asPath: url } = router;
-
-          console.log("track  ", url);
-
-          gtag.pageview(url);
-        })
-        .then(() => console.log("<<<<<<<<<<<<<<<<<"));
     }
 
     handleFetch = async (page = 1) => {
