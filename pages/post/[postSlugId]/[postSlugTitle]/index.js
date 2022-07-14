@@ -58,15 +58,11 @@ class Index extends Component {
     }
   };
 
-  handleTrack = (page) => {
+  handleTrack = () => {
     const { router } = this.props;
     const { asPath: url } = router;
 
-    console.log("fetch ", page);
-    console.log("track  ", url);
-    console.log("==================");
-
-    gtag.pageEvent(url);
+    gtag.pageview(url);
   };
 
   handleFetch = async (page = 1) => {
@@ -77,6 +73,11 @@ class Index extends Component {
 
     Promise.resolve()
       .then(() => FetchPost(params))
+      .then(() => {
+        return new Promise((resolve) => {
+          return setTimeout(() => resolve(), 1000);
+        });
+      })
       .then(this.handleTrack(page));
   };
 

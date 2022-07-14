@@ -38,13 +38,18 @@ export default function ListItems(WrapperComponent) {
           this.handleFetch(page);
         })
         .then(() => {
+          return new Promise((resolve) => {
+            return setTimeout(() => resolve(), 1000);
+          });
+        })
+        .then(() => {
           // Only track when normal user, not bot
           const { router } = this.props;
           const { asPath: url } = router;
 
           console.log("track  ", url);
 
-          gtag.pageEvent(url);
+          gtag.pageview(url);
         })
         .then(() => console.log("<<<<<<<<<<<<<<<<<"));
     }
