@@ -66,7 +66,7 @@ class Index extends Component {
     console.log("track  ", url);
     console.log("==================");
 
-    gtag.pageview(url);
+    gtag.pageEvent(url);
   };
 
   handleFetch = async (page = 1) => {

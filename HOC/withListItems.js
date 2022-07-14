@@ -44,7 +44,7 @@ export default function ListItems(WrapperComponent) {
 
           console.log("track  ", url);
 
-          gtag.pageview(url);
+          gtag.pageEvent(url);
         })
         .then(() => console.log("<<<<<<<<<<<<<<<<<"));
     }
