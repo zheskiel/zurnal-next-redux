@@ -55,6 +55,9 @@ const App = ({ Component, pageProps }) => {
   const { asPath } = router;
 
   useEffect(() => {
+    console.log("asPath :", asPath);
+    console.log("===============");
+
     setTimeout(() => {
       gtag("config", "${GA_TRACKING_ID}", {
         page_path: window.location.pathname,
