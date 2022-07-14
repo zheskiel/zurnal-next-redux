@@ -59,8 +59,9 @@ const App = ({ Component, pageProps }) => {
 
     if (typeof window.gtag !== "undefined") {
       console.log("asPath 2 : ", asPath);
+      console.log("gtag : ", window);
 
-      gtag("config", "${GA_TRACKING}", {
+      window.gtag("config", "${GA_TRACKING}", {
         page_path: window.location.pathname,
       });
     }
