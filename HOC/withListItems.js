@@ -3,7 +3,7 @@ import React, { PureComponent } from "react";
 export default function ListItems(WrapperComponent) {
   return class extends PureComponent {
     componentDidMount() {
-      const { isRobot } = this.props;
+      const { isRobot, query } = this.props;
 
       if (isRobot) return;
 
