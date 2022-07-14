@@ -58,12 +58,15 @@ const App = ({ Component, pageProps }) => {
     console.log("asPath 1 : ", asPath);
 
     if (typeof window.gtag !== "undefined") {
-      console.log("asPath 2 : ", asPath);
-      console.log("gtag : ", window);
+      const pageEvent = {
+        event: "pageview",
+        page: window.location.pathname,
+      };
 
-      window.gtag("config", "${GA_TRACKING}", {
-        page_path: window.location.pathname,
-      });
+      console.log("asPath 2 : ", asPath);
+      console.log("pageEvent : ", pageEvent);
+
+      window.gtag(pageEvent);
     }
   }, [asPath]);
 
