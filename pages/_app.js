@@ -55,18 +55,10 @@ const App = ({ Component, pageProps }) => {
   const { asPath } = router;
 
   useEffect(() => {
-    console.log("asPath 1 : ", asPath);
-
     if (typeof window.gtag !== "undefined") {
-      const pageEvent = {
-        event: "page_view",
-        page: window.location.pathname,
-      };
-
-      console.log("asPath 2 : ", asPath);
-      console.log("pageEvent : ", pageEvent);
-
-      window.gtag(pageEvent);
+      window.gtag("config", "${GA_TRACKING}", {
+        page_path: window.location.pathname,
+      });
     }
   }, [asPath]);
 
