@@ -59,7 +59,7 @@ const App = ({ Component, pageProps }) => {
 
     if (typeof window.gtag !== "undefined") {
       const pageEvent = {
-        event: "pageview",
+        event: "page_view",
         page: window.location.pathname,
       };
 
