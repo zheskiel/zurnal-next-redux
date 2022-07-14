@@ -7,7 +7,9 @@ export default function ListItems(WrapperComponent) {
 
       if (isRobot) return;
 
-      this.fetchAndTrack();
+      let { page } = query;
+
+      this.handleFetch(page);
     }
 
     componentDidUpdate(prevProps) {
@@ -18,7 +20,10 @@ export default function ListItems(WrapperComponent) {
         (prevProps.query.page !== this.props.query.page ||
           prevProps.query[type] !== this.props.query[type])
       ) {
-        this.handleFetch();
+        const { query } = this.props;
+        const { page } = query;
+
+        this.handleFetch(page);
       }
     }
 
