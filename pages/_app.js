@@ -55,7 +55,7 @@ const App = ({ Component, pageProps }) => {
   const { asPath } = router;
 
   // Analytics Track whenever asPath's value changed
-  useEffect(() => pageview(window.location.pathname), [asPath]);
+  // useEffect(() => pageview(window.location.pathname), [asPath]);
 
   const isProd = isProduction();
   const TrackScripts = (
