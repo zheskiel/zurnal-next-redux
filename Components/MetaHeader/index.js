@@ -9,8 +9,22 @@ const { SITE_URL: siteUrl } = publicRuntimeConfig;
 function MetaHeader({ title = null, description = null, type = null, router }) {
   const ogImage = `${siteUrl}/images/og.jpg`;
 
-  let normalizedUrl =
-    type !== "index" ? `${siteUrl}/${type}/${title}` : `${siteUrl}/`;
+  let normalizedUrl;
+
+  switch (type) {
+    case "category":
+    case "tag":
+      normalizedUrl = `${siteUrl}/${type}/${title}`;
+      break;
+
+    case "username":
+      normalizedUrl = `${siteUrl}/user/${title}`;
+      break;
+
+    default:
+      normalizedUrl = `${siteUrl}/`;
+      break;
+  }
 
   const normalizedTitle =
     title !== null
