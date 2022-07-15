@@ -1,10 +1,12 @@
 import Head from "next/head";
 
+import { withRouter } from "next/router";
+
 import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
 const { SITE_URL: siteUrl } = publicRuntimeConfig;
 
-function MetaHeader({ title = null, description = null, type = null }) {
+function MetaHeader({ title = null, description = null, type = null, router }) {
   const ogImage = `${siteUrl}/images/og.jpg`;
 
   let normalizedUrl =
@@ -17,6 +19,11 @@ function MetaHeader({ title = null, description = null, type = null }) {
 
   const normalizedDescription =
     description !== null ? `${description}` : "Entertain, Inspire & Educate";
+
+  const { query, asPath } = router;
+  const { page } = query;
+
+  const canonical = page == 1 ? normalizedUrl : asPath;
 
   return (
     <Head>
@@ -41,9 +48,9 @@ function MetaHeader({ title = null, description = null, type = null }) {
       <meta property="og:image:secure_url" content={ogImage} />
       <meta property="og:description" content={normalizedDescription} />
 
-      <link rel="canonical" href={normalizedUrl} />
+      <link rel="canonical" href={canonical} />
     </Head>
   );
 }
 
-export default MetaHeader;
+export default withRouter(MetaHeader);
