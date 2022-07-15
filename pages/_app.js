@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import Script from "next/script";
-import { useRouter } from "next/router";
+
 import { useEffect } from "react";
 import { wrapper } from "../redux/store";
 import { useStore } from "react-redux";
@@ -9,7 +9,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import Layout from "../Components/Layout";
 
 import { loadStylesheet, loadScript, isProduction } from "../utils/helpers";
-import { pageview, GA_TRACKING } from "../utils/gtag";
+import { GA_TRACKING } from "../utils/gtag";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "nprogress/nprogress.css";
@@ -50,12 +50,6 @@ const App = ({ Component, pageProps }) => {
       scripts.map((script) => loadScript(false, script));
     }, 1000);
   }, []);
-
-  const router = useRouter();
-  const { asPath } = router;
-
-  // Analytics Track whenever asPath's value changed
-  // useEffect(() => pageview(window.location.pathname), [asPath]);
 
   const isProd = isProduction();
   const TrackScripts = (
