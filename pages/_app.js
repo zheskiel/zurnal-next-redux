@@ -57,7 +57,7 @@ const App = ({ Component, pageProps }) => {
   useEffect(() => {
     if (typeof window.gtag !== "undefined") {
       window.gtag("config", "${GA_TRACKING}", {
-        page_path: window.location.pathname,
+        page_path: asPath,
       });
     }
   }, [asPath]);
@@ -78,7 +78,7 @@ const App = ({ Component, pageProps }) => {
             function gtag() { dataLayer.push(arguments); }
             gtag("js", new Date());
             gtag("config", "${GA_TRACKING}", {
-                page_path: window.location.pathname,
+                page_path: ${asPath},
             });
            `,
         }}
