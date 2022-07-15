@@ -8,7 +8,7 @@ import { getPostUrl } from "../../utils/url-path";
 const { publicRuntimeConfig } = getConfig();
 const { SITE_URL: siteUrl } = publicRuntimeConfig;
 
-function PostMetaHeader({ elem }) {
+function PostMetaHeader({ elem, router }) {
   const brandName = `Zurnal`;
   const brandSlogan = `Entertain, Inspire & Educate`;
 
