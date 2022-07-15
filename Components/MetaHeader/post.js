@@ -1,4 +1,7 @@
 import Head from "next/head";
+
+import { withRouter } from "next/router";
+
 import getConfig from "next/config";
 import { getPostUrl } from "../../utils/url-path";
 
@@ -22,6 +25,11 @@ function PostMetaHeader({ elem }) {
 
   const ogImage = elem.featured_image;
 
+  const { query, asPath } = router;
+  const { page } = query;
+
+  const canonical = page == 1 ? normalizedUrl : asPath;
+
   return (
     <Head>
       <title key="title">{normalizedTitle}</title>
@@ -44,9 +52,9 @@ function PostMetaHeader({ elem }) {
       <meta property="og:description" content={normalizedDescription} />
       <meta property="og:url" content={normalizedUrl} />
 
-      <link rel="canonical" href={normalizedUrl} />
+      <link rel="canonical" href={canonical} />
     </Head>
   );
 }
 
-export default PostMetaHeader;
+export default withRouter(PostMetaHeader);
