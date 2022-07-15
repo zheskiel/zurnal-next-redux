@@ -9,7 +9,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import Layout from "../Components/Layout";
 
 import { loadStylesheet, loadScript, isProduction } from "../utils/helpers";
-import { GA_TRACKING } from "../utils/gtag";
+import { pageview, GA_TRACKING } from "../utils/gtag";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "nprogress/nprogress.css";
@@ -54,13 +54,8 @@ const App = ({ Component, pageProps }) => {
   const router = useRouter();
   const { asPath } = router;
 
-  useEffect(() => {
-    if (typeof window.gtag !== "undefined") {
-      window.gtag("config", "${GA_TRACKING}", {
-        page_path: window.location.pathname,
-      });
-    }
-  }, [asPath]);
+  // Analytics Track whenever asPath's value changed
+  useEffect(() => pageview(window.location.pathname), [asPath]);
 
   const isProd = isProduction();
   const TrackScripts = (
