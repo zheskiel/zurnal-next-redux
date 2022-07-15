@@ -78,7 +78,7 @@ const App = ({ Component, pageProps }) => {
             function gtag() { dataLayer.push(arguments); }
             gtag("js", new Date());
             gtag("config", "${GA_TRACKING}", {
-                page_path: ${asPath},
+                page_path: "${asPath}",
             });
            `,
         }}
