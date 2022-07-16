@@ -57,6 +57,7 @@ class Index extends Component {
 
         Router.push(url);
       })
+      .then(() => setTimeout(() => window.scrollTo(0, 0), 1000))
       .then(() => setTimeout(() => lazyloadContentImages(), 2000));
   };
 
