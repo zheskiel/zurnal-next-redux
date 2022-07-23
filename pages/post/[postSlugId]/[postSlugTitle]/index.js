@@ -12,6 +12,7 @@ import {
   retryOperation,
   LoadTwitterEmbed,
   processSSR,
+  processShouldTrack,
   loadScript,
 } from "../../../../utils/helpers";
 
@@ -108,8 +109,9 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export const getServerSideProps = async ({ req, query }) => {
+  let shouldTrack = processShouldTrack(req);
   let userAgent = req.headers["user-agent"];
-  let parameters = { query };
+  let parameters = { shouldTrack, query };
 
   return processSSR(userAgent, getPost, parameters);
 };

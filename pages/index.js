@@ -8,7 +8,7 @@ import { getPosts } from "../apis";
 import withListItems from "../HOC/withListItems";
 import ListItems from "../Components/ListItems";
 
-import { processSSR } from "../utils/helpers";
+import { processSSR, processShouldTrack } from "../utils/helpers";
 
 class Index extends Component {
   render() {
@@ -34,8 +34,10 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export const getServerSideProps = async ({ req, query }) => {
+  let shouldTrack = processShouldTrack(req);
+
   let userAgent = req.headers["user-agent"];
-  let parameter = { query, type: "index" };
+  let parameter = { shouldTrack, query, type: "index" };
 
   return processSSR(userAgent, getPosts, parameter);
 };

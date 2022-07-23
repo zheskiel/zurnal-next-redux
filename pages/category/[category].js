@@ -8,7 +8,12 @@ import { getPosts } from "../../apis";
 import ListItems from "../../Components/ListItems";
 import withListItems from "../../HOC/withListItems";
 
-import { capitalize, processSSR, isNull } from "../../utils/helpers";
+import {
+  capitalize,
+  processSSR,
+  processShouldTrack,
+  isNull,
+} from "../../utils/helpers";
 
 class Index extends Component {
   componentDidMount() {
@@ -47,8 +52,9 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export const getServerSideProps = ({ req, query }) => {
+  let shouldTrack = processShouldTrack(req);
   let userAgent = req.headers["user-agent"];
-  let parameter = { query, type: "category" };
+  let parameter = { shouldTrack, query, type: "category" };
 
   return processSSR(userAgent, getPosts, parameter);
 };

@@ -147,6 +147,16 @@ export const processSSR = async (userAgent, modelQuery, parameters) => {
   return response;
 };
 
+export const processShouldTrack = (req) => {
+  let forwarded = req.headers["x-forwarded-for"];
+
+  let ipAddress = forwarded
+    ? forwarded.split(/, /)[0]
+    : req.connection.remoteAddress;
+
+  return shouldTrack(ipAddress);
+};
+
 export const getHeaderCookie = (name, source) => {
   var nameEQ = name + "=";
 

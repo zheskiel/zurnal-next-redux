@@ -34,6 +34,8 @@ const renderComponent = (Children) => {
 };
 
 const App = ({ Component, pageProps }) => {
+  const { shouldTrack } = pageProps;
+
   useEffect(() => {
     const styles = [
       "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css",
@@ -88,7 +90,7 @@ const App = ({ Component, pageProps }) => {
 
   const component = (
     <>
-      {isProd && TrackScripts}
+      {isProd && shouldTrack && TrackScripts}
 
       <TopProgressBar />
 
