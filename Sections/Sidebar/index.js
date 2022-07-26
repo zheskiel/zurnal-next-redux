@@ -1,4 +1,6 @@
 const Sidebar = () => {
+  const year = new Date().getFullYear();
+
   return (
     <div className="sidebar-section col-md-3 col-12">
       <div className="sidebar">
@@ -33,7 +35,7 @@ const Sidebar = () => {
               </div>
 
               <div id="widget_copyright">
-                <p id="copyRight">Copyright © 2022 Zurnal.co</p>
+                <p id="copyRight">Copyright © {year} Zurnal.co</p>
               </div>
             </div>
           </div>
