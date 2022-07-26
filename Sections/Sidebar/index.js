@@ -1,5 +1,21 @@
+import Link from "next/link";
+
 const Sidebar = () => {
   const year = new Date().getFullYear();
+  const FTextFirst = `Copyright © ${year} `;
+  const FTextSecond = ` All Rights Reserved`;
+
+  const FLink = () => {
+    return (
+      <Link
+        href={{
+          pathname: `/`,
+        }}
+      >
+        Zurnal.co
+      </Link>
+    );
+  };
 
   return (
     <div className="sidebar-section col-md-3 col-12">
@@ -35,7 +51,12 @@ const Sidebar = () => {
               </div>
 
               <div id="widget_copyright">
-                <p id="copyRight">Copyright © {year} Zurnal.co</p>
+                <p id="copyRight">
+                  {FTextFirst}
+                  <FLink />
+                  <br />
+                  {FTextSecond}
+                </p>
               </div>
             </div>
           </div>
