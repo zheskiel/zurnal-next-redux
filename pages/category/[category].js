@@ -9,10 +9,10 @@ import ListItems from "../../Components/ListItems";
 import withListItems from "../../HOC/withListItems";
 
 import {
+  isNull,
   capitalize,
   processSSR,
   processShouldTrack,
-  isNull,
 } from "../../utils/helpers";
 
 class Index extends Component {

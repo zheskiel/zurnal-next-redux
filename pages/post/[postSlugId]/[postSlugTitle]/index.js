@@ -9,11 +9,11 @@ import { FetchPost, ResetPost } from "../../../../redux/actions";
 import { getPost } from "../../../../apis";
 
 import {
-  retryOperation,
-  LoadTwitterEmbed,
+  loadScript,
   processSSR,
   processShouldTrack,
-  loadScript,
+  retryOperation,
+  LoadTwitterEmbed,
 } from "../../../../utils/helpers";
 
 import PostShare from "../../../../Components/PostShare";

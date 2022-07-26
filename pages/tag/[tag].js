@@ -9,8 +9,8 @@ import ListItems from "../../Components/ListItems";
 import withListItems from "../../HOC/withListItems";
 
 import {
-  capitalize,
   isNull,
+  capitalize,
   processSSR,
   processShouldTrack,
 } from "../../utils/helpers";

@@ -9,8 +9,8 @@ import ListItems from "../../Components/ListItems";
 import withListItems from "../../HOC/withListItems";
 
 import {
-  capitalize,
   isNull,
+  capitalize,
   processSSR,
   processShouldTrack,
 } from "../../utils/helpers";
@@ -25,10 +25,10 @@ class Index extends Component {
   }
 
   render() {
-    const { type, query } = this.props;
+    const { query } = this.props;
     const params = {
       ...this.props,
-      description: `cari semua artikel dari ${type} hanya di Zurnal.co`,
+      description: `cari semua artikel dari ${query.username} hanya di Zurnal.co`,
       headerContent: `Semua artikel : ${capitalize(query.username)}`,
     };
 
