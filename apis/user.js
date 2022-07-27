@@ -1,11 +1,11 @@
 import { api } from "./api";
 
 export const getUser = async ({ username, page = null }) => {
-    let userQuery = {};
+  let query = {};
 
-    if (page !== null) userQuery.page = page;
+  if (page !== null) query.page = page;
 
-    return await api(`GET`, `user/${username}`, {
-        query: userQuery,
-    });
+  return await api(`GET`, `user/${username}`, {
+    query,
+  });
 };

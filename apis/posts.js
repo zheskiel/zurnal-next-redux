@@ -5,30 +5,30 @@ export const getPosts = async ({
   category = null,
   username = null,
 }) => {
-  let postQuery = {
+  let query = {
     page: page,
   };
 
-  if (category !== null) postQuery.category = category;
-  if (username !== null) postQuery.username = username;
+  if (category !== null) query.category = category;
+  if (username !== null) query.username = username;
 
-  return await api(`GET`, "posts", { query: postQuery });
+  return await api(`GET`, "posts", { query });
 };
 
 export const getPost = async ({ postSlugId, postSlugTitle, page = null }) => {
-  let postQuery = {};
+  let query = {};
 
-  if (page !== null) postQuery.page = page;
+  if (page !== null) query.page = page;
 
   return await api(`GET`, `post/${postSlugId}/${postSlugTitle}`, {
-    query: postQuery,
+    query,
   });
 };
 
 export const getRelatedPosts = async ({ postSlugId, postSlugTitle }) => {
-  let postQuery = {};
+  let query = {};
 
   return await api(`GET`, `related/${postSlugId}/${postSlugTitle}`, {
-    query: postQuery,
+    query,
   });
 };
