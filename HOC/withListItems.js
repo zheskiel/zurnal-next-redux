@@ -3,29 +3,34 @@ import React, { PureComponent } from "react";
 export default function ListItems(WrapperComponent) {
   return class extends PureComponent {
     componentDidMount() {
-      const { isRobot, query } = this.props;
+      const { isRobot } = this.props;
 
       if (isRobot) return;
 
-      let { page } = query;
-
-      this.handleFetch(page);
+      this.processFetching();
     }
 
     componentDidUpdate(prevProps) {
       const { isRobot, type } = this.props;
 
+      const { query: prevQuery } = prevProps;
+      const { query: thisQuery } = this.props;
+
       if (
         !isRobot &&
-        (prevProps.query.page !== this.props.query.page ||
-          prevProps.query[type] !== this.props.query[type])
+        (prevQuery.page !== thisQuery.page ||
+          prevQuery[type] !== thisQuery[type])
       ) {
-        const { query } = this.props;
-        const { page } = query;
-
-        this.handleFetch(page);
+        this.processFetching();
       }
     }
+
+    processFetching = () => {
+      const { query } = this.props;
+      const { page } = query;
+
+      this.handleFetch(page);
+    };
 
     handleFetch = async (page = 1) => {
       const { query, FetchPosts } = this.props;
