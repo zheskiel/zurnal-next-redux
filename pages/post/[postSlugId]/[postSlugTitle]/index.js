@@ -48,16 +48,14 @@ class Index extends Component {
       window.addthis !== undefined &&
       window.addthis.layers.refresh !== undefined
     ) {
-      Promise.resolve()
-        .then(() => this.setState({ mounted: true }))
-        .then(() => {
-          window.addthis.init();
-          window.addthis.layers.refresh();
-        });
+      Promise.resolve().then(() => {
+        window.addthis.init();
+        window.addthis.layers.refresh();
+      });
     }
   };
 
-  handleFetch = async (page = 1) => {
+  handleFetch = (page = 1) => {
     const { router, FetchPost } = this.props;
     const { query } = router;
 
