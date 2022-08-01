@@ -45,7 +45,7 @@ class PostsList extends Component {
 
         Router.push(url);
       })
-      .then(() => setTimeout(() => window.scrollTo(0, 0), 500));
+      .then(() => setTimeout(() => window.scrollTo(0, 0), 1000));
   };
 
   render() {
