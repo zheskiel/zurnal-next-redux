@@ -38,12 +38,14 @@ class PostsList extends Component {
 
     let targetUrl = this.getTargetUrl();
 
-    Promise.resolve().then(() => {
-      let params = { page },
-        url = buildUrl(targetUrl, params);
+    Promise.resolve()
+      .then(() => {
+        let params = { page },
+          url = buildUrl(targetUrl, params);
 
-      Router.push(url);
-    });
+        Router.push(url);
+      })
+      .then(() => setTimeout(() => window.scrollTo(0, 0), 500));
   };
 
   render() {
