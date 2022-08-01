@@ -51,8 +51,7 @@ class PostsList extends Component {
   render() {
     const { items, posts, isLoading } = this.props;
 
-    if (!posts) return <PostListSkeleton />;
-    if (isLoading) return <PostListSkeleton />;
+    if (!posts || isLoading) return <PostListSkeleton />;
 
     const newProps = {
       totalCount: items.total,
