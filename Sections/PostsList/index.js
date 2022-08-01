@@ -36,12 +36,11 @@ class PostsList extends Component {
   handlePagination = (e, page) => {
     e.preventDefault();
 
-    let targetUrl = this.getTargetUrl();
-
     Promise.resolve()
       .then(() => {
-        let params = { page },
-          url = buildUrl(targetUrl, params);
+        let params = { page };
+        let targetUrl = this.getTargetUrl();
+        let url = buildUrl(targetUrl, params);
 
         Router.push(url);
       })
