@@ -952,13 +952,12 @@ a {
 .post-tags {
   a {
     color: #626262;
-    border: 1px solid #eeeeee;
-    padding: 3px 8px;
-    display: inline;
+    padding: 4px;
+    display: inline-block;
     list-style: none;
-    margin-right: 5px;
     text-align: center;
     font-size: 15px;
+    margin: 2px;
 
     &:hover {
       background-color: $brandYellow;
