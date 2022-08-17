@@ -285,7 +285,7 @@ export const calculatePagination = (totalItems, currentPage, pageSize) => {
   }
 };
 
-export const buildUrl = (url, parameters) => {
+export const buildUrl = (url, parameters = {}) => {
   var qs = "";
 
   for (var key in parameters) {

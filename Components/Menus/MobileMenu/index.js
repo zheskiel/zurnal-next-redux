@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "next/router";
-import Link from "next/link";
 
 import ThemeSwitcher from "../ThemeSwitcher";
 import Menus from "../../Menus";
@@ -30,7 +29,7 @@ class MobileMenu extends Component {
   };
 
   render() {
-    const { theme } = this.props;
+    const { theme, handlePagination } = this.props;
     const Img = theme == "dark" ? `zurnal_logo_dark` : `zurnal_logo`;
     const LogoImage = `https://www.zurnal.co/images/${Img}.png`;
 
@@ -41,9 +40,9 @@ class MobileMenu extends Component {
             <i className="fa fa-bars"></i>
           </div>
           <div className="center-section">
-            <Link href={{ pathname: `/` }}>
+            <a href="/" onClick={(e) => handlePagination(e)}>
               <img src={LogoImage} alt="zurnal" />
-            </Link>
+            </a>
           </div>
           <div className="right-section">
             <div className="section-detail">

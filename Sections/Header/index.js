@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import Router from "next/router";
 
 import DesktopMenu from "../../Components/Menus/DesktopMenu";
 import MobileMenu from "../../Components/Menus/MobileMenu";
 
-import { isMobileView } from "../../utils/helpers";
+import { buildUrl, isMobileView } from "../../utils/helpers";
 
 class HeaderSection extends Component {
   constructor(props) {
@@ -28,8 +29,32 @@ class HeaderSection extends Component {
     });
   };
 
+  handlePagination = (e) => {
+    e.preventDefault();
+
+    Promise.resolve()
+      .then(() => {
+        let url = buildUrl("/");
+
+        Router.push(url);
+      })
+      .then(() => setTimeout(() => window.scrollTo(0, 0), 1000));
+  };
+
   render() {
-    return <>{this.state.isMobile ? <MobileMenu /> : <DesktopMenu />}</>;
+    const props = {
+      handlePagination: (e) => this.handlePagination(e),
+    };
+
+    return (
+      <>
+        {this.state.isMobile ? (
+          <MobileMenu {...props} />
+        ) : (
+          <DesktopMenu {...props} />
+        )}
+      </>
+    );
   }
 }
 
