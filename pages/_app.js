@@ -63,7 +63,7 @@ const App = ({ Component, pageProps }) => {
       });
     }
 
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
+    // (window.adsbygoogle = window.adsbygoogle || []).push({});
   }, [asPath]);
 
   const isProd = isProduction();
