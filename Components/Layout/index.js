@@ -18,9 +18,18 @@ class Layout extends Component {
 
         <div id="main-container">
           <div id="main-wrapper">
-            <div className="container">
+            <div
+              className="container"
+              style={{
+                backgroundColor: "#ddd",
+                marginBottom: "20px",
+                padding: "0px",
+              }}
+            >
               <AdsUnit />
+            </div>
 
+            <div className="container">
               <div className="row">
                 {this.props.children}
 
