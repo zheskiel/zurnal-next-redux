@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import Router, { withRouter } from "next/router";
 
 import ImgDom from "../../Components/ImgDom";
-import AdsUnit from "../../Components/AdsUnit";
 import Pagination from "../../Components/Pagination";
 import PostContentSkeleton from "../../Components/Skeletons/PostContent";
 import PostFeaturedSkeleton from "../../Components/Skeletons/PostFeatured";
@@ -84,8 +83,6 @@ class Index extends Component {
 
     return (
       <article id="article">
-        <AdsUnit />
-
         <header className="entry-header">
           <span className="meta-category">
             <CategoryLink elem={post}>{post.category?.name}</CategoryLink>

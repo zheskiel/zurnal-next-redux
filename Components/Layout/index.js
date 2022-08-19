@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 import HeaderSection from "../../Sections/Header";
 import SidebarSection from "../../Sections/Sidebar";
 import FooterSection from "../../Sections/Footer";
 import FooterCategoriesSection from "../../Sections/FooterCategories";
+
+import AdsUnit from "../../Components/AdsUnit";
 
 class Layout extends Component {
   render() {
@@ -17,6 +19,8 @@ class Layout extends Component {
         <div id="main-container">
           <div id="main-wrapper">
             <div className="container">
+              <AdsUnit />
+
               <div className="row">
                 {this.props.children}
 
@@ -39,4 +43,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(Layout);
-
