@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 class Index extends Component {
   render() {
+    console.log("render ads");
+
     return (
       <div className="ads-unit-wrapper">
         <ins
