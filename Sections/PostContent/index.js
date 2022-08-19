@@ -93,11 +93,11 @@ class Index extends Component {
           <div className="entry-date">{post.published_at}</div>
         </header>
 
-        <AdsUnit />
-
         <div className="meta-image" ref={this.imgRef}>
           {ImgElem}
         </div>
+
+        <AdsUnit />
 
         <div className="pagination-area">
           {post.post_paginate_total > 1 && (
