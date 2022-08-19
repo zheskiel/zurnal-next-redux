@@ -27,14 +27,6 @@ const scripts = [
 ];
 
 class Index extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      mounted: false,
-    };
-  }
-
   componentDidMount() {
     const { isRobot, query } = this.props;
 
@@ -75,7 +67,6 @@ class Index extends Component {
   };
 
   render() {
-    const { mounted } = this.state;
     const { query, isRobot, clientData, ssrData } = this.props;
 
     let dataSource = isRobot ? ssrData : clientData;
@@ -94,7 +85,7 @@ class Index extends Component {
         <div className="main-box main-content post-content col-12">
           <PostContent post={dataPost} handleFetch={this.handleFetch} />
 
-          {mounted == true && <AdsUnit />}
+          <AdsUnit />
 
           <PostShare />
           <PostComment {...query} />
