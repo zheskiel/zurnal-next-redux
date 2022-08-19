@@ -1,14 +1,6 @@
-import React, { Component, useEffect } from "react";
+import React, { Component } from "react";
 
 const Index = () => {
-  useEffect(() => {
-    setTimeout(() => {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-
-      console.log("render ads");
-    }, 1000);
-  }, []);
-
   return (
     <div className="ads-unit-wrapper">
       <ins

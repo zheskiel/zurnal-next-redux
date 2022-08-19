@@ -62,6 +62,8 @@ const App = ({ Component, pageProps }) => {
         page_path: asPath,
       });
     }
+
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
   }, [asPath]);
 
   const isProd = isProduction();
