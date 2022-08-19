@@ -84,6 +84,8 @@ class Index extends Component {
 
     return (
       <article id="article">
+        <AdsUnit />
+
         <header className="entry-header">
           <span className="meta-category">
             <CategoryLink elem={post}>{post.category?.name}</CategoryLink>
@@ -96,8 +98,6 @@ class Index extends Component {
         <div className="meta-image" ref={this.imgRef}>
           {ImgElem}
         </div>
-
-        <AdsUnit />
 
         <div className="pagination-area">
           {post.post_paginate_total > 1 && (
