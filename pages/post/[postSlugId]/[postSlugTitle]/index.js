@@ -16,6 +16,7 @@ import {
   LoadTwitterEmbed,
 } from "../../../../utils/helpers";
 
+import AdsUnit from "../../../../Components/AdsUnit";
 import PostShare from "../../../../Components/PostShare";
 import PostComment from "../../../../Components/PostComment";
 import PostMetaHeader from "../../../../Components/MetaHeader/post";
@@ -82,6 +83,8 @@ class Index extends Component {
 
         <div className="main-box main-content post-content col-12">
           <PostContent post={dataPost} handleFetch={this.handleFetch} />
+
+          <AdsUnit />
 
           <PostShare />
           <PostComment {...query} />
