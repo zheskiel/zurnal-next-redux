@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Router, { withRouter } from "next/router";
 
 import ImgDom from "../../Components/ImgDom";
+import AdsUnit from "../../Components/AdsUnit";
 import Pagination from "../../Components/Pagination";
 import PostContentSkeleton from "../../Components/Skeletons/PostContent";
 import PostFeaturedSkeleton from "../../Components/Skeletons/PostFeatured";
@@ -91,6 +92,8 @@ class Index extends Component {
           <h1 className="entry-title">{post.title}</h1>
           <div className="entry-date">{post.published_at}</div>
         </header>
+
+        <AdsUnit />
 
         <div className="meta-image" ref={this.imgRef}>
           {ImgElem}
