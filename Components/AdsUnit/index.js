@@ -16,7 +16,7 @@ const Index = () => {
   return (
     <div className="ads-unit-wrapper">
       <ins
-        key={Math.random()}
+        key={`${asPath}`}
         className="adsbygoogle"
         style={{ display: "block" }}
         data-ad-client="ca-pub-6983942794145260"
