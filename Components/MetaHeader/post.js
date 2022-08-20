@@ -12,13 +12,18 @@ function PostMetaHeader({ elem, router }) {
   const brandName = `Zurnal`;
   const brandSlogan = `Entertain, Inspire & Educate`;
 
-  const { title = null, excerpt = null } = elem;
+  const { title = null, meta_description = null, excerpt = null } = elem;
   const normalizedTitle =
     title !== null
       ? `${title} | ${brandName}`
       : `${brandName} | ${brandSlogan}`;
 
-  const normalizedDescription = excerpt !== null ? excerpt : brandSlogan;
+  const normalizedDescription =
+    meta_description !== null
+      ? meta_description
+      : excerpt !== null
+      ? excerpt
+      : brandSlogan;
 
   const postUrl = getPostUrl(elem);
   const normalizedUrl = `${siteUrl}${postUrl}`;
