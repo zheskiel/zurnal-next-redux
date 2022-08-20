@@ -1,13 +1,17 @@
-import React, { Component, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
 
 const Index = () => {
+  const router = useRouter();
+  const { asPath } = router;
+
   useEffect(() => {
     setTimeout(() => {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
 
       console.log("render ads");
     }, 1000);
-  }, []);
+  }, [asPath]);
 
   return (
     <div className="ads-unit-wrapper">
