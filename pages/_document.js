@@ -45,7 +45,7 @@ class Document extends NextDocument {
             name="Copyright"
             content={`@${year} Zurnal.co All Rights Reserved.`}
           />
-          <meta property="fb:app_id" content="1016516678465561" />
+          <meta property="fb:app_id" content="396954390897339" />
           <meta property="og:image:type" content="image/jpg" />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="600" />
