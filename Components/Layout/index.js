@@ -27,6 +27,8 @@ class Layout extends Component {
                 <SidebarSection />
               </div>
 
+              <AdsUnit />
+
               <FooterCategoriesSection />
             </div>
           </div>
