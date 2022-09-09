@@ -18,6 +18,7 @@ const Index = () => {
       className="container"
       style={{
         backgroundColor: "#ddd",
+        marginTop: "20px",
         marginBottom: "20px",
         padding: "0px",
       }}
