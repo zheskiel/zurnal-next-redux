@@ -2,6 +2,7 @@ import React, { Component, createRef } from "react";
 import { connect } from "react-redux";
 import Router, { withRouter } from "next/router";
 
+import AdsUnit from "../../Components/AdsUnit";
 import ImgDom from "../../Components/ImgDom";
 import Pagination from "../../Components/Pagination";
 import PostContentSkeleton from "../../Components/Skeletons/PostContent";
@@ -95,6 +96,8 @@ class Index extends Component {
         <div className="meta-image" ref={this.imgRef}>
           {ImgElem}
         </div>
+
+        <AdsUnit />
 
         <div className="pagination-area">
           {post.post_paginate_total > 1 && (
