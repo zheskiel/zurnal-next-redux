@@ -7,6 +7,7 @@ import { FetchPosts } from "../../redux/actions";
 import Pagination from "../../Components/Pagination";
 import PostsListItem from "../../Components/PostListItem";
 import PostListSkeleton from "../../Components/Skeletons/PostList";
+import AdsUnit from "../../Components/AdsUnit";
 
 import { HOME_URL } from "../../utils/route-constants";
 import { buildUrl } from "../../utils/helpers";
@@ -64,9 +65,25 @@ class PostsList extends Component {
       <div className="main-box main-content col-12">
         <div className="main-box-inside">
           {posts &&
-            posts.map((post, index) => (
-              <PostsListItem key={index} elem={post} />
-            ))}
+            posts.map((post, index) => {
+              let res;
+
+              if (index == 3 || index == 7) {
+                res = (
+                  <>
+                    <PostsListItem key={index} elem={post} />
+
+                    <div className="ads-unit">
+                      <AdsUnit />
+                    </div>
+                  </>
+                );
+              } else {
+                res = <PostsListItem key={index} elem={post} />;
+              }
+
+              return res;
+            })}
         </div>
 
         {items && items.last_page > 1 && (

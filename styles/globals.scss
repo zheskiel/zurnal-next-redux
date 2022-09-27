@@ -685,6 +685,15 @@ a {
         height: auto;
         overflow: hidden;
 
+        .ads-unit {
+          width: 100%;
+          margin: 0;
+          float: left;
+          .container {
+            margin-top: 0px !important;
+          }
+        }
+
         article {
           float: left;
           background-color: $white;
