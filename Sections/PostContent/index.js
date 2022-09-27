@@ -97,7 +97,7 @@ class Index extends Component {
           {ImgElem}
         </div>
 
-        <AdsUnit />
+        {/* <AdsUnit /> */}
 
         <div className="pagination-area">
           {post.post_paginate_total > 1 && (
