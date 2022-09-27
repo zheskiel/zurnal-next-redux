@@ -85,7 +85,7 @@ class Index extends Component {
         <div className="main-box main-content post-content col-12">
           <PostContent post={dataPost} handleFetch={this.handleFetch} />
 
-          {/* <AdsUnit /> */}
+          <AdsUnit />
 
           <PostShare />
           <PostComment {...query} />

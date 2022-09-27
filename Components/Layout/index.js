@@ -18,7 +18,7 @@ class Layout extends Component {
 
         <div id="main-container">
           <div id="main-wrapper">
-            {/* <AdsUnit /> */}
+            <AdsUnit />
 
             <div className="container">
               <div className="row">
@@ -27,7 +27,7 @@ class Layout extends Component {
                 <SidebarSection />
               </div>
 
-              {/* <AdsUnit /> */}
+              <AdsUnit />
 
               <FooterCategoriesSection />
             </div>
