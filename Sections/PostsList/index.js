@@ -66,20 +66,25 @@ class PostsList extends Component {
         <div className="main-box-inside">
           {posts &&
             posts.map((post, index) => {
+              const Extension = () => (
+                <div className="ads-unit">
+                  <AdsUnit />
+                </div>
+              );
+
+              const List = () => <PostsListItem key={index} elem={post} />;
+
               let res;
 
               if (index == 3 || index == 7) {
                 res = (
                   <>
-                    <PostsListItem key={index} elem={post} />
-
-                    <div className="ads-unit">
-                      <AdsUnit />
-                    </div>
+                    <List />
+                    <Extension />
                   </>
                 );
               } else {
-                res = <PostsListItem key={index} elem={post} />;
+                res = <List />;
               }
 
               return res;
