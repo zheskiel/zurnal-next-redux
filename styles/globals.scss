@@ -372,6 +372,8 @@ a {
   .sidebar-section {
     @include for-desktop {
       position: relative;
+      padding-right: 0px;
+      padding-left: 0px;
     }
 
     @include for-desktop-only {
