@@ -32,6 +32,35 @@ class Index extends Component {
 
       // Lazy load user generated content's images
       lazyloadContentImages();
+
+      let articleDom = document.getElementById("article");
+      let h2Dom = articleDom.getElementsByTagName("h2");
+      let GAds = `
+        <div className="ads-unit-wrapper">
+          <ins class="adsbygoogle"
+            style="display:block;
+            text-align:center;"
+            data-ad-client="ca-pub-6983942794145260"
+            data-ad-slot="1294452039"
+            data-ad-format="auto"
+            data-full-width-responsive="true">
+          </ins>
+        </div>`;
+
+      Array.from(h2Dom).map((elem, index) => {
+        elem.id = "elem_" + index;
+
+        if (index > 0 && index % 3 == 0) {
+          let target = elem;
+
+          const tempDiv = document.createElement("div");
+
+          tempDiv.style.backgroundColor = "red";
+          tempDiv.innerHTML = `${GAds}`;
+
+          target.insertAdjacentElement("beforebegin", tempDiv);
+        }
+      });
     }, 2000);
   }
 
