@@ -30,6 +30,10 @@ class Document extends NextDocument {
             name="google-site-verification"
             content="nJt6gwBgHkE7LfyPHtHzwrjsKftGQS31wRwFoFWFSIU"
           />
+          <meta
+            name="facebook-domain-verification"
+            content="8lzihur4ozv1i67e90auodkla99y69"
+          />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-title" content="Zurnal.co" />
           <meta
