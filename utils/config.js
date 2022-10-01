@@ -8,7 +8,8 @@ const config = {
     "1.200.251.192", // Juan's phone ip
     "61.222.146.136", // Juan's office ip
     "101.128.127.27", // Alma Montana Village
-    "101.128.119.153" // Kantor PIK lantai 1
+    "101.128.119.153", // Kantor PIK lantai 1
+    "118.137.131.95", // Citra 8 (mama san) ip
   ],
 };
 
