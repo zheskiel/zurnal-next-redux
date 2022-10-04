@@ -20,6 +20,7 @@ import {
   retryOperation,
   LoadTwitterEmbed,
 } from "../../../../utils/helpers";
+import { PostLink } from "../../../../utils/link-generator";
 
 import AdsUnit from "../../../../Components/AdsUnit";
 import PostShare from "../../../../Components/PostShare";
@@ -74,8 +75,15 @@ class Index extends Component {
     Promise.resolve().then(() => FetchPost(params));
   };
 
+  handleFetchRelated = () => {
+    const { router, FetchPostRelated } = this.props;
+    const { query } = router;
+
+    Promise.resolve().then(() => FetchPostRelated(query));
+  };
+
   render() {
-    const { query, isRobot, clientData, ssrData } = this.props;
+    const { query, isRobot, clientData, ssrData, relatedPosts } = this.props;
 
     let dataSource = isRobot ? ssrData : clientData;
     let dataPost = dataSource.items;
@@ -95,6 +103,26 @@ class Index extends Component {
 
           <AdsUnit />
 
+          <div className="related-post-section">
+            <h2>Related Posts</h2>
+
+            <div className="related-post-wrapper">
+              {relatedPosts.length > 0 &&
+                relatedPosts.map((item) => {
+                  return (
+                    <div className="related-post-item">
+                      <PostLink elem={item}>
+                        <>
+                          <img src={item.featured_image} />
+                          <p>{item.title}</p>
+                        </>
+                      </PostLink>
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
+
           <PostShare />
           <PostComment {...query} />
         </div>
@@ -106,6 +134,7 @@ class Index extends Component {
 const mapStateToProps = (state) => {
   return {
     clientData: state.post,
+    relatedPosts: state.related.items,
   };
 };
 
