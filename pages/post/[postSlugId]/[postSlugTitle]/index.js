@@ -4,7 +4,12 @@ import { withRouter } from "next/router";
 
 import PostContent from "../../../../Sections/PostContent";
 
-import { FetchPost, ResetPost } from "../../../../redux/actions";
+import {
+  FetchPostRelated,
+  ResetPostRelated,
+  FetchPost,
+  ResetPost,
+} from "../../../../redux/actions";
 
 import { getPost } from "../../../../apis";
 
@@ -34,7 +39,10 @@ class Index extends Component {
 
     Promise.resolve()
       .then(() => this.setState({ mounted: true }))
-      .then(() => this.handleFetch(query.page))
+      .then(() => {
+        this.handleFetch(query.page);
+        this.handleFetchRelated();
+      })
       .then(() => scripts.map((script) => loadScript(false, script)))
       .then(() => this.refreshAddthis())
       .then(() => window.FB?.XFBML.parse())
@@ -102,6 +110,12 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
+  FetchPostRelated: (params) => {
+    dispatch(FetchPostRelated(params));
+  },
+  ResetPostRelated: () => {
+    dispatch(ResetPostRelated());
+  },
   FetchPost: (params) => {
     dispatch(FetchPost(params));
   },

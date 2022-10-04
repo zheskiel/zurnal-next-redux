@@ -11,3 +11,9 @@ export const FetchPostApi = async ({ postSlugId, postSlugTitle, page = 1 }) => {
 
   return await axiosInstance.get(newUrl);
 };
+
+export const FetchPostRelatedApi = async ({ postSlugId, postSlugTitle }) => {
+  let url = `${POST_URL}/${postSlugId}/${postSlugTitle}/related`;
+
+  return await axiosInstance.get(url);
+};
