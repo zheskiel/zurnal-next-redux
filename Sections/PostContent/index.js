@@ -82,6 +82,8 @@ class Index extends Component {
 
     const ImgElem = isInView ? ImgDomElem : ImgSkeleton;
 
+    const contents = post.content.split(/(?=<h2>)/);
+
     return (
       <article id="article">
         <header className="entry-header">
@@ -107,12 +109,22 @@ class Index extends Component {
           )}
         </div>
 
-        <div
-          className="entry-content"
-          dangerouslySetInnerHTML={{
-            __html: post.content.replace(/(<? *script)/gi, "illegalscript"),
-          }}
-        ></div>
+        <div className="entry-content">
+          {contents &&
+            contents.map((item, index) => {
+              return (
+                <>
+                  {index > 0 && index % 3 == 0 ? <AdsUnit /> : ""}
+
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: item.replace(/(<? *script)/gi, "illegalscript"),
+                    }}
+                  ></div>
+                </>
+              );
+            })}
+        </div>
 
         <div className="pagination-area">
           {post.post_paginate_total > 1 && (
