@@ -97,6 +97,8 @@ a {
     &.main-content {
       &.post-content {
         .related-post-section {
+          font-size: 18px;
+
           @include for-desktop {
             width: 500px;
             margin: 0 auto;
@@ -122,28 +124,49 @@ a {
           }
           .related-post-item {
             width: 31.3%;
-            margin-left: 1%;
-            margin-right: 1%;
+
+            @include for-desktop {
+              margin-left: 1%;
+              margin-right: 1%;
+            }
+
             a {
               &:hover {
                 color: #fff;
+              }
+              @include for-desktop {
+                display: block;
+              }
+
+              @include for-mobile {
+                display: flex;
               }
             }
 
             img {
               width: 100%;
+              object-fit: cover;
+              object-position: center;
+              height: 130px;
+
+              @include for-mobile {
+                height: 80px;
+              }
             }
             p {
-              padding-left: 5px;
-              padding-right: 5px;
               margin-top: 10px;
+
+              @include for-mobile {
+                margin-top: 0px;
+              }
             }
 
             @include for-mobile {
               display: flex;
               width: 100%;
-              margin-left: 10px;
-              margin-bottom: 10px;
+              padding-left: 10px;
+              padding-bottom: 10px;
+              padding-right: 10px;
 
               img {
                 width: 120px;

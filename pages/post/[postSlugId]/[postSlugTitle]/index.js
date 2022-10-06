@@ -150,7 +150,7 @@ class Index extends Component {
                 relatedPosts.map((item) => {
                   const Child = (
                     <a onClick={(e) => this.handleRelated(e, item)}>
-                      <img src={item.featured_image} />
+                      <img className="img-fluid" src={item.featured_image} />
                       <p>{item.title}</p>
                     </a>
                   );
