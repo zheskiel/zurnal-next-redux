@@ -124,6 +124,11 @@ a {
             width: 31.3%;
             margin-left: 1%;
             margin-right: 1%;
+            a {
+              &:hover {
+                color: #fff;
+              }
+            }
 
             img {
               width: 100%;

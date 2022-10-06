@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "next/router";
+import Router, { withRouter } from "next/router";
 
 import PostContent from "../../../../Sections/PostContent";
 
@@ -14,11 +14,13 @@ import {
 import { getPost } from "../../../../apis";
 
 import {
+  buildUrl,
   loadScript,
   processSSR,
   processShouldTrack,
   retryOperation,
   LoadTwitterEmbed,
+  lazyloadContentImages,
 } from "../../../../utils/helpers";
 import { PostLink } from "../../../../utils/link-generator";
 
@@ -34,25 +36,34 @@ const scripts = [
 
 class Index extends Component {
   componentDidMount() {
-    const { isRobot, query } = this.props;
+    const { isRobot } = this.props;
 
     if (isRobot) return;
 
     Promise.resolve()
       .then(() => this.setState({ mounted: true }))
       .then(() => {
-        this.handleFetch(query.page);
+        const { router } = this.props;
+        const { query } = router;
+        const { page } = query;
+
+        this.handleFetch(page);
         this.handleFetchRelated();
       })
-      .then(() => scripts.map((script) => loadScript(false, script)))
-      .then(() => this.refreshAddthis())
-      .then(() => window.FB?.XFBML.parse())
-      .then(() => retryOperation(LoadTwitterEmbed, 3000, 3));
+      .then(() => this.loadUtility());
   }
 
   componentWillUnmount() {
     Promise.resolve().then(() => this.props.ResetPost());
   }
+
+  loadUtility = () => {
+    Promise.resolve()
+      .then(() => scripts.map((script) => loadScript(false, script)))
+      .then(() => this.refreshAddthis())
+      .then(() => window.FB?.XFBML.parse())
+      .then(() => retryOperation(LoadTwitterEmbed, 3000, 3));
+  };
 
   refreshAddthis = () => {
     if (
@@ -64,6 +75,10 @@ class Index extends Component {
         window.addthis.layers.refresh();
       });
     }
+  };
+
+  getPostUrl = (elem) => {
+    return `/post/${elem.post_slug_id}/${elem.post_slug_title}`;
   };
 
   handleFetch = (page = 1) => {
@@ -80,6 +95,30 @@ class Index extends Component {
     const { query } = router;
 
     Promise.resolve().then(() => FetchPostRelated(query));
+  };
+
+  handleRelated = (e, elem) => {
+    e.preventDefault();
+
+    const { FetchPost, FetchPostRelated } = this.props;
+
+    let params = {
+      postSlugId: elem.post_slug_id,
+      postSlugTitle: elem.post_slug_title,
+    };
+
+    Promise.resolve()
+      .then(() => FetchPost(params))
+      .then(() => FetchPostRelated(params))
+      .then(() => {
+        let postUrl = this.getPostUrl(elem);
+        let url = buildUrl(postUrl);
+
+        Router.push(url);
+      })
+      .then(() => setTimeout(() => this.loadUtility(), 2000))
+      .then(() => setTimeout(() => window.scrollTo(0, 0), 500))
+      .then(() => setTimeout(() => lazyloadContentImages(), 2000));
   };
 
   render() {
@@ -109,14 +148,16 @@ class Index extends Component {
             <div className="related-post-wrapper">
               {relatedPosts.length > 0 &&
                 relatedPosts.map((item) => {
+                  const Child = (
+                    <a onClick={(e) => this.handleRelated(e, item)}>
+                      <img src={item.featured_image} />
+                      <p>{item.title}</p>
+                    </a>
+                  );
+
                   return (
                     <div className="related-post-item">
-                      <PostLink elem={item}>
-                        <>
-                          <img src={item.featured_image} />
-                          <p>{item.title}</p>
-                        </>
-                      </PostLink>
+                      <PostLink elem={item}>{Child}</PostLink>
                     </div>
                   );
                 })}
