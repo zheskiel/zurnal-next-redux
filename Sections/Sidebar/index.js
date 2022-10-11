@@ -28,7 +28,7 @@ const Sidebar = () => {
                 <span> - </span>
                 <a href="#">Term Of Services</a>
                 <span> - </span>
-                <a href="#">Privacy Policy</a>
+                <Link href="/privacy">Privacy Policy</Link>
                 <span> - </span>
                 <a href="#">EULA</a>
                 <span> - </span>
