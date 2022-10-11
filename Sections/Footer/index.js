@@ -41,7 +41,7 @@ const FooterSection = () => {
                 <a>Term of Services</a>
               </li>
               <li className="menu-item menu-item-type-post_type menu-item-object-page">
-                <a>Privacy Policy</a>
+                <Link href="/privacy">Privacy Policy</Link>
               </li>
               <li className="menu-item menu-item-type-post_type menu-item-object-page">
                 <a>EULA</a>
