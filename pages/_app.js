@@ -94,7 +94,7 @@ const App = ({ Component, pageProps }) => {
 
       <TopProgressBar />
 
-      <Layout>
+      <Layout {...pageProps}>
         <Component {...pageProps} />
       </Layout>
     </>

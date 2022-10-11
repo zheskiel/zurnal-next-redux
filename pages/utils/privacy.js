@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import { processShouldTrack } from "../../utils/helpers";
+
 class Privacy extends Component {
   render() {
     return (
@@ -121,5 +123,19 @@ class Privacy extends Component {
     );
   }
 }
+
+export const getServerSideProps = async ({ req }) => {
+  let shouldAds = false;
+  let shouldTrack = processShouldTrack(req);
+  let parameters = { shouldTrack, shouldAds };
+
+  const response = {
+    props: {
+      ...parameters,
+    },
+  };
+
+  return response;
+};
 
 export default Privacy;

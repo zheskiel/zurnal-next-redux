@@ -10,7 +10,8 @@ import AdsUnit from "../../Components/AdsUnit";
 
 class Layout extends Component {
   render() {
-    const { theme } = this.props;
+    // should Ads (should show Ads Unit or not to show)
+    const { theme, shouldAds = true } = this.props;
 
     return (
       <div className={theme}>
@@ -18,7 +19,7 @@ class Layout extends Component {
 
         <div id="main-container">
           <div id="main-wrapper">
-            <AdsUnit />
+            {shouldAds && <AdsUnit />}
 
             <div className="container">
               <div className="row">
@@ -28,7 +29,7 @@ class Layout extends Component {
               </div>
             </div>
 
-            <AdsUnit />
+            {shouldAds && <AdsUnit />}
 
             <div className="container">
               <FooterCategoriesSection />
