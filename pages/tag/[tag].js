@@ -26,10 +26,12 @@ class Index extends Component {
 
   render() {
     const { query } = this.props;
+    const tag = query.tag;
+    const headerText = tag.replace(/-/g, " ");
     const params = {
       ...this.props,
       description: `cari semua artikel dengan tagar #${query.tag} hanya di Zurnal.co`,
-      headerContent: `Tagar : ${capitalize(query.tag)}`,
+      headerContent: `Tagar : ${capitalize(headerText)}`,
     };
 
     return <ListItems {...params} />;

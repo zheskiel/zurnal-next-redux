@@ -26,10 +26,12 @@ class Index extends Component {
 
   render() {
     const { query } = this.props;
+    const username = query.username;
+    const headerText = username.replace(/-/g, " ");
     const params = {
       ...this.props,
       description: `cari semua artikel dari ${query.username} hanya di Zurnal.co`,
-      headerContent: `Semua artikel : ${capitalize(query.username)}`,
+      headerContent: `Semua artikel : ${capitalize(headerText)}`,
     };
 
     return <ListItems {...params} />;

@@ -26,10 +26,12 @@ class Index extends Component {
 
   render() {
     const { query } = this.props;
+    const category = query.category;
+    const headerText = category.replace(/-/g, " ");
     const params = {
       ...this.props,
       description: `cari semua artikel dari kategori ${query.category} hanya di Zurnal.co`,
-      headerContent: `Kategori : ${capitalize(query.category)}`,
+      headerContent: `Kategori : ${capitalize(headerText)}`,
     };
 
     return <ListItems {...params} />;
