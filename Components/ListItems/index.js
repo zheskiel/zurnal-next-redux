@@ -16,7 +16,7 @@ class ListItems extends Component {
     } = this.props;
 
     const { query } = router;
-    const title = query[type].replace(/-/g, " ");
+    const title = query[type]?.replace(/-/g, " ");
 
     let isLoading = !isRobot ? clientData.loading : false,
       dataSource = isRobot ? ssrData : clientData,
