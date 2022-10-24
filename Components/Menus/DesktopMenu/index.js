@@ -6,7 +6,7 @@ import Menus from "../../Menus";
 
 class DesktopMenu extends Component {
   render() {
-    const { theme, handlePagination } = this.props;
+    const { isFixed, theme, handlePagination } = this.props;
 
     const Img = theme == "dark" ? `zurnal_logo_dark` : `zurnal_logo`;
     const LogoImage = `https://www.zurnal.co/images/${Img}.png`;
@@ -78,7 +78,7 @@ class DesktopMenu extends Component {
           </div>
         </div>
 
-        <div className="header-bottom-wrapper">
+        <div className={`header-bottom-wrapper ${isFixed ? "fixed" : ""}`}>
           <div className="container">
             <div className="row">
               <Menus />

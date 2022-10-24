@@ -44,6 +44,7 @@ class HeaderSection extends Component {
   render() {
     const props = {
       handlePagination: (e) => this.handlePagination(e),
+      ...this.props,
     };
 
     return (

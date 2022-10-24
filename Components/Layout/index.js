@@ -8,14 +8,39 @@ import FooterCategoriesSection from "../../Sections/FooterCategories";
 
 import AdsUnit from "../../Components/AdsUnit";
 
+const initialState = {
+  isFixed: false,
+};
+
 class Layout extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = initialState;
+  }
+
+  componentDidMount = () => {
+    window.addEventListener("scroll", this.handleScroll);
+  };
+
+  componentWillUnmount = () => {
+    window.removeEventListener("scroll", this.handleScroll);
+  };
+
+  handleScroll = () => {
+    let scrollPosition = window.pageYOffset;
+    let fixed = scrollPosition >= 125;
+
+    this.setState({ isFixed: fixed });
+  };
+
   render() {
     // should Ads (should show Ads Unit or not to show)
     const { theme, shouldAds = true } = this.props;
 
     return (
       <div className={theme}>
-        <HeaderSection />
+        <HeaderSection {...this.state} />
 
         <div id="main-container">
           <div id="main-wrapper">
@@ -25,7 +50,7 @@ class Layout extends Component {
               <div className="row">
                 {this.props.children}
 
-                <SidebarSection />
+                <SidebarSection {...this.state} />
               </div>
             </div>
 
