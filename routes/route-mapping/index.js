@@ -16,9 +16,9 @@ let redirects = [
     new: "/utils/privacy",
   },
   {
-    // test page
-    old: "/test",
-    new: "/test",
+    // lyrics page
+    old: "/lyrics",
+    new: "/lyrics",
   },
 ];
 
