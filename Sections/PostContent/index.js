@@ -82,7 +82,8 @@ class Index extends Component {
 
     const ImgElem = isInView ? ImgDomElem : ImgSkeleton;
 
-    const contents = post.content.split(/(?=<h2>)/);
+    const content = post.content;
+    const contents = content.join("").split(/(?=<h2>)/);
 
     return (
       <article id="article">
