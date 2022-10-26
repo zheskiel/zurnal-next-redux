@@ -15,6 +15,11 @@ let redirects = [
     old: "/privacy",
     new: "/utils/privacy",
   },
+  {
+    // test page
+    old: "/test",
+    new: "/test",
+  },
 ];
 
 redirects.map((route) => {
