@@ -1,4 +1,5 @@
-let posts = require('./posts'),
-  utilRoutes = require('./utils');
+let posts = require("./posts"),
+  lyrics = require("./lyrics"),
+  utilRoutes = require("./utils");
 
-module.exports = [...posts, ...utilRoutes];
+module.exports = [...posts, ...lyrics, ...utilRoutes];
