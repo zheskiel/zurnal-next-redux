@@ -50,7 +50,15 @@ const Menus = () => {
   return (
     <ul>
       <li className={activeSlug == null ? "current-item" : ""}>
-        <Link href={{ pathname: `/` }}>Home</Link>
+        <Link href={{ pathname: `/` }}>
+          <a>Home</a>
+        </Link>
+      </li>
+
+      <li className="menu-item-has-children">
+        <Link href={{ pathname: `/lyrics` }}>
+          <a>Lyrics</a>
+        </Link>
       </li>
 
       {categories &&
