@@ -55,7 +55,13 @@ const Menus = () => {
         </Link>
       </li>
 
-      <li className="menu-item-has-children">
+      <li>
+        <Link href={{ pathname: `/chords` }}>
+          <a>Chords</a>
+        </Link>
+      </li>
+
+      <li>
         <Link href={{ pathname: `/lyrics` }}>
           <a>Lyrics</a>
         </Link>
