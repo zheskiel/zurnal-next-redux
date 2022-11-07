@@ -19,7 +19,7 @@ class PostImageSkeleton extends Component {
 
   render() {
     const DesktopSkeleton = () => {
-      return <rect x="0" y="0" rx="1" ry="3" width="100%" height="210" />;
+      return <rect x="0" y="0" rx="1" ry="3" width="80" height="80" />;
     };
 
     const MobileSkeleton = () => {
@@ -34,9 +34,9 @@ class PostImageSkeleton extends Component {
       return (
         <ContentLoader
           speed={2}
-          style={{ width: !isMobile ? "100%" : 80 }}
-          width={!isMobile ? "100%" : 80}
-          height={!isMobile ? 210 : 80}
+          style={{ width: 80 }}
+          width={80}
+          height={80}
           backgroundColor={isLight ? "#f3f3f3" : "#272727"}
           foregroundColor={isLight ? "#ecebeb" : "#3b3b3b"}
         >

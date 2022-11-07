@@ -363,15 +363,18 @@ a {
           padding: 0;
         }
         @include for-desktop {
-          padding: 10px 2% 0;
+          // padding: 10px 2% 0;
+          padding: 0;
         }
 
         @include for-md-desktop {
-          padding: 20px 2% 0;
+          // padding: 20px 2% 0;
+          padding: 0;
         }
 
         @include for-lg-desktop {
-          padding: 20px 2% 0;
+          // padding: 20px 2% 0;
+          padding: 0;
         }
 
         article {
@@ -386,63 +389,90 @@ a {
           }
 
           @include for-desktop {
-            width: 48%;
+            width: 100%;
           }
 
           @include for-md-desktop {
-            width: 48%;
+            width: 100%;
           }
 
           @include for-lg-desktop {
-            width: 48.5%;
+            width: 100%;
           }
         }
 
-        @include for-mobile {
-          article {
-            display: flex !important;
+        article {
+          display: flex !important;
+          flex-direction: row-reverse;
+          padding-bottom: 0px !important;
+          border-bottom: 1px solid #ddd;
+          padding: 10px !important;
+          margin-bottom: 0px !important;
+
+          @include for-mobile {
             flex-direction: row;
-            padding-bottom: 0px !important;
-            border-bottom: 1px solid #ddd;
-            padding: 10px !important;
+          }
+
+          .entry-header {
+            padding-right: 10px;
+            @include for-mobile {
+              padding-right: 0px;
+            }
+            .meta-category {
+              a {
+                font-weight: normal !important;
+                text-transform: uppercase;
+              }
+            }
+
+            .entry-date {
+              padding-right: 0px !important;
+              font-size: 14px !important;
+            }
+            .entry-title {
+              padding: 0px 0px 0px 15px !important;
+              margin-bottom: 0px;
+              font-family: "Open Sans", arial, sans-serif;
+              font-weight: 900;
+              font-size: 20px;
+
+              @include for-mobile {
+                font-weight: normal;
+                font-size: 14px;
+              }
+              a {
+                display: block;
+              }
+            }
+
+            .entry-excerpt {
+              @include for-mobile {
+                display: none;
+              }
+            }
+          }
+
+          .meta-image {
             margin-bottom: 0px !important;
 
-            .entry-header {
-              .meta-category {
-                a {
-                  font-weight: normal !important;
-                  text-transform: uppercase;
-                }
-              }
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
 
-              .entry-date {
-                padding-right: 0px !important;
-                font-size: 14px !important;
-              }
-              .entry-title {
-                padding: 0px 0px 0px 15px !important;
-                margin-bottom: 0px;
-                font-family: "Noto sans", sans-serif;
-                font-weight: normal !important;
-                font-size: 14px !important;
-                a {
-                  display: block;
-                }
-              }
+            @include for-mobile {
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-start;
             }
 
-            .meta-image {
-              margin-bottom: 0px !important;
-
-              img {
-                width: 80px !important;
-                height: 80px !important;
-              }
+            img {
+              width: 80px !important;
+              height: 80px !important;
             }
+          }
 
-            header {
-              flex: 1;
-            }
+          header {
+            flex: 1;
           }
         }
       }
@@ -848,13 +878,15 @@ a {
               padding: 10px 15px 5px 15px;
               line-height: 24px;
               color: #232323;
-              font-family: "Noto sans", sans-serif;
-              font-size: 18px;
-              font-weight: 900;
+
               a,
               a:hover {
                 color: #232323;
               }
+            }
+            .entry-excerpt {
+              padding: 5px 15px 5px 15px;
+              color: #848484;
             }
           }
         }

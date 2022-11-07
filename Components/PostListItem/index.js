@@ -51,6 +51,8 @@ class PostsListItem extends Component {
           <h2 className="entry-title">
             <PostLink elem={elem}>{elem.title}</PostLink>
           </h2>
+
+          <div className="entry-excerpt">{elem.excerpt}</div>
         </header>
       </article>
     );

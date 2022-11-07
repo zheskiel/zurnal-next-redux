@@ -21,10 +21,14 @@ class PostListSkeleton extends Component {
     const DesktopSkeleton = () => {
       return (
         <>
-          <rect x="0" y="0" rx="3" ry="3" width="49%" height="300" />
-          <rect x="52%" y="0" rx="3" ry="3" width="49%" height="300" />
-          <rect x="0" y="320" rx="3" ry="3" width="49%" height="300" />
-          <rect x="52%" y="320" rx="3" ry="3" width="49%" height="300" />
+          <rect x="0" y="0" rx="3" ry="3" width="100%" height="134" />
+          <rect x="0%" y="135" rx="3" ry="3" width="100%" height="134" />
+          <rect x="0%" y="270" rx="3" ry="3" width="100%" height="134" />
+          <rect x="0%" y="405" rx="3" ry="3" width="100%" height="134" />
+
+          {/* <rect x="52%" y="0" rx="3" ry="3" width="49%" height="184" />
+          <rect x="0" y="320" rx="3" ry="3" width="49%" height="184" />
+          <rect x="52%" y="320" rx="3" ry="3" width="49%" height="184" /> */}
         </>
       );
     };
@@ -51,7 +55,7 @@ class PostListSkeleton extends Component {
           speed={2}
           style={{ width: "100%" }}
           width={"100%"}
-          height={isMobile ? 610 : 640}
+          height={isMobile ? 610 : 536}
           backgroundColor={isLight ? "#f3f3f3" : "#272727"}
           foregroundColor={isLight ? "#ecebeb" : "#3b3b3b"}
         >
