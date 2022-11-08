@@ -748,7 +748,6 @@ a {
     background: #fcfcfc;
 
     &.fixed {
-      border-bottom: 20px solid #f0f0f0;
       position: fixed;
       width: 100%;
       z-index: 1000;
@@ -1162,6 +1161,11 @@ body {
           }
         }
       }
+      .header-bottom-wrapper {
+        &.fixed {
+          border-bottom: 20px solid #f0f0f0;
+        }
+      }
     }
 
     .related-post-item {
@@ -1175,7 +1179,7 @@ body {
 
   &.dark,
   .dark {
-    background-color: #141414;
+    background-color: #1d1d1d;
     color: $white;
 
     #header {
@@ -1199,6 +1203,10 @@ body {
       .header-bottom-wrapper {
         box-shadow: inset 0 1px 3px #565555;
         background-color: $black;
+
+        &.fixed {
+          border-bottom: 20px solid #1d1d1d;
+        }
 
         a {
           color: $white;
