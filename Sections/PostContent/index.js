@@ -114,7 +114,7 @@ class Index extends Component {
           {contents &&
             contents.map((item, index) => {
               return (
-                <>
+                <React.Fragment key={index}>
                   {index > 0 && index % 3 == 0 ? <AdsUnit /> : ""}
 
                   <div
@@ -122,7 +122,7 @@ class Index extends Component {
                       __html: item.replace(/(<? *script)/gi, "illegalscript"),
                     }}
                   ></div>
-                </>
+                </React.Fragment>
               );
             })}
         </div>

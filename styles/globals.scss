@@ -185,6 +185,8 @@ a {
           }
         }
         .entry-title {
+          padding: 10px;
+
           @include for-xs-mobile {
             font-size: 18px;
           }
@@ -204,6 +206,7 @@ a {
         }
 
         .entry-content {
+          padding: 10px;
           img {
             opacity: 0;
 
@@ -338,17 +341,17 @@ a {
       }
 
       @include for-desktop {
-        width: 72%;
+        width: 63%;
         margin-right: 3%;
       }
 
       @include for-md-desktop {
-        width: 72%;
+        width: 63%;
         margin-right: 3%;
       }
 
       @include for-lg-desktop {
-        width: 72%;
+        width: 63%;
         margin-right: 3%;
       }
 
@@ -745,6 +748,7 @@ a {
     background: #fcfcfc;
 
     &.fixed {
+      border-bottom: 20px solid #f0f0f0;
       position: fixed;
       width: 100%;
       z-index: 1000;

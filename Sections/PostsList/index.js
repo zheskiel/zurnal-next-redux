@@ -62,7 +62,7 @@ class PostsList extends Component {
     };
 
     return (
-      <div className="main-box main-content col-12">
+      <div className="main-box main-content col-6">
         <div className="main-box-inside">
           {posts &&
             posts.map((post, index) => {

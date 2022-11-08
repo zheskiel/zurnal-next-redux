@@ -146,7 +146,8 @@ class Index extends Component {
             <h2>Related Posts</h2>
 
             <div className="related-post-wrapper">
-              {relatedPosts.length > 0 &&
+              {relatedPosts &&
+                relatedPosts.length > 0 &&
                 relatedPosts.map((item) => {
                   const Child = (
                     <a
