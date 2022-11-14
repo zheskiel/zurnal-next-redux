@@ -22,7 +22,7 @@ class Sidebar extends Component {
     const { isFixed } = this.props;
 
     return (
-      <div className="sidebar-section col-md-4 col-12">
+      <div className="sidebar-section col-md-3 col-12">
         <div className="sidebar">
           <div className={`vce-sticky ${isFixed ? "fixed" : ""}`}>
             <div id="text-3" className="main-box widget widget_text">

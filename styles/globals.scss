@@ -341,17 +341,17 @@ a {
       }
 
       @include for-desktop {
-        width: 63%;
+        width: 72%;
         margin-right: 3%;
       }
 
       @include for-md-desktop {
-        width: 63%;
+        width: 72%;
         margin-right: 3%;
       }
 
       @include for-lg-desktop {
-        width: 63%;
+        width: 72%;
         margin-right: 3%;
       }
 
@@ -423,8 +423,8 @@ a {
             }
             .meta-category {
               a {
-                font-weight: normal !important;
-                text-transform: uppercase;
+                font-family: "Open Sans", arial, sans-serif;
+                text-transform: capitalize;
               }
             }
 
@@ -469,8 +469,13 @@ a {
             }
 
             img {
-              width: 80px !important;
-              height: 80px !important;
+              width: 148px !important;
+              height: 100px !important;
+
+              @include for-mobile {
+                width: 80px !important;
+                height: 80px !important;
+              }
             }
           }
 
@@ -868,7 +873,6 @@ a {
               a {
                 font-weight: 700;
                 color: $brandYellow;
-                text-transform: uppercase;
               }
             }
 
