@@ -59,6 +59,15 @@ a {
   padding: 0px 10px;
 }
 
+.navbar-search {
+  float: right;
+
+  a {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
 .container,
 .container-lg,
 .container-md,
@@ -642,6 +651,37 @@ a {
 }
 
 #header {
+  &.mobile-container {
+    position: absolute;
+    width: 100%;
+    .search-container {
+      margin: 0;
+      margin-top: 50px;
+      --bs-gutter-x: 0;
+      .search-wrapper {
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+
+      input {
+        width: 100%;
+        padding: 8px 5px;
+        outline: none;
+      }
+
+      button {
+        position: absolute;
+        border-radius: 100%;
+        height: 30px;
+        width: 30px;
+        line-height: 30px;
+        right: 10px;
+      }
+    }
+  }
   .mobile-header {
     background-color: $white;
     position: fixed;
@@ -754,16 +794,43 @@ a {
     }
   }
 
-  .header-bottom-wrapper {
-    box-shadow: inset 0 1px 3px rgb(0 0 0 / 10%);
-    background: #fcfcfc;
-
+  .header-container {
     &.fixed {
       position: fixed;
       width: 100%;
       z-index: 1000;
       top: 0;
     }
+    .search-container {
+      padding: 0px;
+      position: relative;
+      .search-wrapper {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        input {
+          width: 100%;
+          padding: 8px 5px;
+          outline: none;
+        }
+
+        button {
+          position: absolute;
+          border-radius: 100%;
+          height: 30px;
+          width: 30px;
+          line-height: 30px;
+          right: 10px;
+        }
+      }
+    }
+  }
+  .header-bottom-wrapper {
+    box-shadow: inset 0 1px 3px rgb(0 0 0 / 10%);
+    background: #fcfcfc;
 
     ul {
       margin: 0;
@@ -1160,6 +1227,32 @@ body {
     color: #444444;
 
     #header {
+      .header-container {
+        .search-container {
+          .search-wrapper {
+            input {
+              background-color: #fff;
+              border: 1px solid #f0f0f0;
+              color: #fff;
+            }
+            button {
+              color: #696969;
+              border-color: #696969;
+            }
+          }
+        }
+      }
+
+      &.mobile-container {
+        .search-container {
+          input {
+            background-color: #fff;
+            border: 1px solid #f0f0f0;
+            color: #fff;
+          }
+        }
+      }
+
       .sidebar-menus-wrapper {
         .sidebar-menus {
           ul {
@@ -1210,6 +1303,26 @@ body {
     color: $white;
 
     #header {
+      .header-container {
+        .search-container {
+          .search-wrapper {
+            input {
+              background-color: #000;
+              border: 1px solid #565555;
+              color: #fff;
+            }
+          }
+        }
+      }
+      &.mobile-container {
+        .search-container {
+          input {
+            background-color: #000;
+            border: 1px solid #565555;
+            color: #fff;
+          }
+        }
+      }
       .sidebar-menus-wrapper {
         .sidebar-menus {
           background-color: $black;

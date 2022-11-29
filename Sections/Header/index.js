@@ -6,11 +6,16 @@ import MobileMenu from "../../Components/Menus/MobileMenu";
 
 import { buildUrl, isMobileView } from "../../utils/helpers";
 
+const initialState = {
+  isMobile: "",
+  isSearch: false,
+};
+
 class HeaderSection extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { isMobile: "" };
+    this.state = initialState;
   }
 
   componentDidMount() {
@@ -41,10 +46,18 @@ class HeaderSection extends Component {
       .then(() => setTimeout(() => window.scrollTo(0, 0), 1000));
   };
 
+  toggleSearch = (e) => {
+    this.setState({
+      isSearch: !this.state.isSearch,
+    });
+  };
+
   render() {
     const props = {
       handlePagination: (e) => this.handlePagination(e),
+      toggleSearch: (e) => this.toggleSearch(e),
       ...this.props,
+      ...this.state,
     };
 
     return (

@@ -6,7 +6,8 @@ import Menus from "../desktop";
 
 class DesktopMenu extends Component {
   render() {
-    const { isFixed, theme, handlePagination } = this.props;
+    const { isFixed, theme, handlePagination, isSearch, toggleSearch } =
+      this.props;
 
     const Img = theme == "dark" ? `zurnal_logo_dark` : `zurnal_logo`;
     const LogoImage = `https://www.zurnal.co/images/${Img}.png`;
@@ -78,12 +79,23 @@ class DesktopMenu extends Component {
           </div>
         </div>
 
-        <div className={`header-bottom-wrapper ${isFixed ? "fixed" : ""}`}>
-          <div className="container">
-            <div className="row">
-              <Menus />
+        <div className={`header-container ${isFixed ? "fixed" : ""}`}>
+          <div className="header-bottom-wrapper">
+            <div className="container">
+              <div className="row">
+                <Menus toggleSearch={toggleSearch} />
+              </div>
             </div>
           </div>
+
+          {isSearch && (
+            <div className="container search-container">
+              <div className="search-wrapper">
+                <input type="input" placeholder="Search Here..." />
+                <button onClick={toggleSearch}>X</button>
+              </div>
+            </div>
+          )}
         </div>
       </header>
     );

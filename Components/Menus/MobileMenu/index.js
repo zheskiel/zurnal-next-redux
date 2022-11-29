@@ -29,12 +29,12 @@ class MobileMenu extends Component {
   };
 
   render() {
-    const { theme, handlePagination } = this.props;
+    const { theme, handlePagination, isSearch, toggleSearch } = this.props;
     const Img = theme == "dark" ? `zurnal_logo_dark` : `zurnal_logo`;
     const LogoImage = `https://www.zurnal.co/images/${Img}.png`;
 
     return (
-      <header id="header" className="main-header">
+      <header id="header" className="main-header mobile-container">
         <div className="mobile-header">
           <div className="left-section" onClick={this.handleClick}>
             <i className="fa fa-bars"></i>
@@ -49,7 +49,9 @@ class MobileMenu extends Component {
               <ThemeSwitcher />
             </div>
             <div className="section-detail">
-              <i className="fa fa-search"></i>
+              <a onClick={toggleSearch}>
+                <i className="fa fa-search"></i>
+              </a>
             </div>
           </div>
         </div>
@@ -61,6 +63,15 @@ class MobileMenu extends Component {
             </div>
           </div>
         </div>
+
+        {isSearch && (
+          <div className="container search-container">
+            <div className="search-wrapper">
+              <input type="input" placeholder="Search Here..." />
+              <button onClick={toggleSearch}>X</button>
+            </div>
+          </div>
+        )}
       </header>
     );
   }

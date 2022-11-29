@@ -6,7 +6,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 
 import { list } from "./menuList";
 
-const Menus = () => {
+const Menus = ({ toggleSearch }) => {
   const router = useRouter();
   const { category: activeSlug } = router.query;
 
@@ -46,6 +46,12 @@ const Menus = () => {
             </li>
           );
         })}
+
+      <li className="navbar-search">
+        <a onClick={toggleSearch}>
+          <i className="fa fa-search"></i>
+        </a>
+      </li>
     </ul>
   );
 };
