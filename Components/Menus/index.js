@@ -2,6 +2,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { CategoryLink } from "../../utils/link-generator";
 
+import NavDropdown from "react-bootstrap/NavDropdown";
+
 const Menus = () => {
   const router = useRouter();
   const { category: activeSlug } = router.query;
@@ -56,15 +58,10 @@ const Menus = () => {
       </li>
 
       <li>
-        <Link href={{ pathname: `/chords` }}>
-          <a>Chords</a>
-        </Link>
-      </li>
-
-      <li>
-        <Link href={{ pathname: `/lyrics` }}>
-          <a>Lyrics</a>
-        </Link>
+        <NavDropdown title="Apps">
+          <NavDropdown.Item href={`/chords`}>Chords</NavDropdown.Item>
+          <NavDropdown.Item href={`/lyrics`}>Lyrics</NavDropdown.Item>
+        </NavDropdown>
       </li>
 
       {categories &&
