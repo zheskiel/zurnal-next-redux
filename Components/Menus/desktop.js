@@ -4,40 +4,11 @@ import { CategoryLink } from "../../utils/link-generator";
 
 import NavDropdown from "react-bootstrap/NavDropdown";
 
+import { list } from "./menuList";
+
 const Menus = () => {
   const router = useRouter();
   const { category: activeSlug } = router.query;
-
-  const list = [
-    {
-      name: "Bisnis",
-      slug: "bisnis",
-    },
-    {
-      name: "Inspirasi",
-      slug: "inspirasi",
-    },
-    {
-      name: "Kesehatan",
-      slug: "kesehatan",
-    },
-    {
-      name: "Hubungan",
-      slug: "hubungan",
-    },
-    {
-      name: "Pengetahuan",
-      slug: "pengetahuan",
-    },
-    {
-      name: "Unik",
-      slug: "unik",
-    },
-    {
-      name: "Tekno",
-      slug: "tekno",
-    },
-  ];
 
   const categories = [];
 

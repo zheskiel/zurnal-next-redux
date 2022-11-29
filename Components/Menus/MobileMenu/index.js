@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "next/router";
 
 import ThemeSwitcher from "../ThemeSwitcher";
-import Menus from "../../Menus";
+import Menus from "../mobile";
 
 class MobileMenu extends Component {
   componentDidMount() {

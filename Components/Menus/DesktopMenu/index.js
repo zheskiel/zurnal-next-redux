@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import ThemeSwitcher from "../ThemeSwitcher";
-import Menus from "../../Menus";
+import Menus from "../desktop";
 
 class DesktopMenu extends Component {
   render() {
