@@ -269,6 +269,29 @@ a {
           a {
             color: #0d6efd;
           }
+
+          blockquote {
+            padding: 10px 15px;
+
+            ul {
+              margin: 0px;
+              padding: 0px;
+              li {
+                display: flex;
+                img {
+                  width: 148px !important;
+                  height: 100px !important;
+                  object-fit: cover;
+                  object-position: center;
+                  vertical-align: center;
+                }
+
+                a {
+                  margin-left: 10px;
+                }
+              }
+            }
+          }
         }
 
         .entry-content,
@@ -1226,6 +1249,25 @@ body {
     background-color: #f0f0f0;
     color: #444444;
 
+    .main-box {
+      &.main-content {
+        &.post-content {
+          blockquote {
+            border: 1px solid #444;
+
+            ul {
+              li {
+                a {
+                  font-weight: bolder;
+                  color: #444 !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
     #header {
       .header-container {
         .search-container {
@@ -1301,6 +1343,24 @@ body {
   .dark {
     background-color: #1d1d1d;
     color: $white;
+
+    .main-box {
+      &.main-content {
+        &.post-content {
+          blockquote {
+            border: 1px solid #fff;
+            ul {
+              li {
+                a {
+                  font-weight: bolder;
+                  color: #fff !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
     #header {
       .header-container {
