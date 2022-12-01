@@ -1,47 +1,51 @@
 let routes = [];
 let redirects = [
   {
-    old: "art",
-    new: "seni",
+    old: "/category/art",
+    new: "/category/seni",
   },
   {
-    old: "automotive",
-    new: "otomotif",
+    old: "/category/automotive",
+    new: "/category/otomotif",
   },
   {
-    old: "business",
-    new: "bisnis",
+    old: "/category/business",
+    new: "/category/bisnis",
   },
   {
-    old: "career",
-    new: "karir",
+    old: "/category/career",
+    new: "/category/karir",
   },
   {
-    old: "health",
-    new: "kesehatan",
+    old: "/category/health",
+    new: "/category/kesehatan",
   },
   {
-    old: "tech",
-    new: "tekno",
+    old: "/category/tech",
+    new: "/category/tekno",
   },
   {
-    old: "weird",
-    new: "unik",
+    old: "/category/weird",
+    new: "/category/unik",
   },
   {
-    old: "inspiration",
-    new: "inspirasi",
+    old: "/category/inspiration",
+    new: "/category/inspirasi",
   },
   {
-    old: "relationship",
-    new: "hubungan",
+    old: "/category/relationship",
+    new: "/category/hubungan",
+  },
+  {
+    old: "/user/juan.deleon",
+    new: "/user/juan.zheskiel",
   },
 ];
 
 redirects.map((route) => {
   const newRoute = {
-    source: `/category/${route.old}`,
-    destination: `/category/${route.new}`,
+    source: `${route.old}`,
+    destination: `${route.new}`,
     permanent: true,
   };
 
