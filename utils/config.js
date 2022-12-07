@@ -12,6 +12,7 @@ const config = {
     "101.128.119.97", // Kantor PIK lantai 1
     "101.128.119.85", // Kantor PIK lantai 1
     "118.137.131.95", // Citra 8 (mama san) ip
+    "180.243.12.226", // F10 lantai 4
   ],
 };
 
