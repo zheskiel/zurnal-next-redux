@@ -142,7 +142,7 @@ class Index extends Component {
 
           <AdsUnit />
 
-          <div className="related-post-section">
+          {/* <div className="related-post-section">
             <h2>Related Posts</h2>
 
             <div className="related-post-wrapper">
@@ -166,7 +166,7 @@ class Index extends Component {
                   );
                 })}
             </div>
-          </div>
+          </div> */}
 
           <PostShare />
           <PostComment {...query} />
